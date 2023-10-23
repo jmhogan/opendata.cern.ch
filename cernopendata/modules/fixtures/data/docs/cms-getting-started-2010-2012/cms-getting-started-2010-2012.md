@@ -5,7 +5,8 @@
 ## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a>
 
 === "2010"
-    Using virtual machine
+
+    ### Using virtual machine
     
     To analyse CMS data collected in 2010, you need **version 4.2.8** of CMSSW, supported only on **Scientific Linux 5**. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or try this interactive [command-line bootcamp](http://rik.smith-unna.com/command_line_bootcamp/). Once you have installed the [CMS-specific CERN Virtual Machine](/docs/cms-virtual-machine-2010), you need to open a terminal. In the "CMS-OpenData-1.1.2" VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop (only if using the VM version "CMS-OpenData-1.0.0-rc7", open a terminal with the X terminal emulator from an icon bottom-left of the VM screen). Execute the following command in the terminal if you haven't done so before; it ensures that you have this version of CMSSW running:
 
@@ -20,7 +21,7 @@
     $ cmsenv
     ```
 
-    Using Docker container
+    ### Using Docker container
 
     If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the [instruction](/docs/cms-guide-docker).
     
