@@ -52,7 +52,7 @@
 
 ## <a name="data">"What is in the CMS data?"</a>
 
-The primary data provided by CMS on the CERN Open Data Portal are in a format called "Analysis Object Data“ or AOD for short. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. A list and description of the physics objects contained in the AOD files can be found in the link for 2010](/docs/cms-physics-objects-2010) [2011](/docs/cms-physics-objects-2011) The files cannot be opened and understood as simple data tables but require [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data, in order to be read.
+The primary data provided by CMS on the CERN Open Data Portal are in a format called "Analysis Object Data“ or AOD for short. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The list and the description of the physics objects contained in the AOD files can be found through the links for [2010](/docs/cms-physics-objects-2010) and for [2011](/docs/cms-physics-objects-2011). The AOD files cannot be opened and understood as simple data tables. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
 
 === "2010"
 
