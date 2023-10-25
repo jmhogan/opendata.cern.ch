@@ -54,11 +54,11 @@
 
 The primary data provided by CMS on the CERN Open Data Portal are in a format called "Analysis Object Data“ or AOD for short. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The list and the description of the physics objects contained in the AOD files can be found through the links for [2010](/docs/cms-physics-objects-2010) and for [2011](/docs/cms-physics-objects-2011). The AOD files cannot be opened and understood as simple data tables. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
 
+Don't panic if you do not have any exeprience with ROOT. The following instructions will walk you through the steps of checking the content of AOD files with ROOT. 
+
 === "2010"
 
-So, let's see what an AOD file looks like and take ROOT for a spin!
-
-Make sure that you are in the **CMSSW_4_2_8/src/** folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM), and you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+Make sure that you are in the **CMSSW_4_2_8/src/** folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
 
 You can now open a CMS AOD file in ROOT. Let us open one of the files from the CERN Open Data Portal by entering the following command:
 
