@@ -353,7 +353,6 @@ process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.c
 process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
 ```
 </details>
-
 <details>
 <summary> <a name="pat"> Step 2: Performing your analysis on the PATtuples </a> </summary>
         
