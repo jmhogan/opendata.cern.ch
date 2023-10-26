@@ -1,7 +1,7 @@
 1. ["I have installed the CMS open data environment: now what?"](#vm)
 2. ["OK! What is in the CMS data?"](#data)
 3. ["Nice! But how do I analyse these data?"](#nice)
-
+   
 ## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a>
 
 === "2010"
