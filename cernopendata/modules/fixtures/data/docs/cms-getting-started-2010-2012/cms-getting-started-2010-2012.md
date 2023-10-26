@@ -351,11 +351,8 @@ As mentioned above, you do not typically perform an analysis directly on the AOD
         ```
         </details>
 
-</details>
-
-</details>
 <summary> <a name="pat"> Step2: Performing your analysis on the PATtuples </a> <summary>
-<br>
+
 Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in [this second GitHub repo](https://github.com/ayrodrig/OutreachExercise2010) and follow the instructions on that page.
 
 Note that even though these are derived datasets, running the analysis code over the full data can take several hours. So if you want just give it a try, you can limit the number events or read only part of the files. Bear in mind that running on a low number of files will not give you a meaningful plot.
