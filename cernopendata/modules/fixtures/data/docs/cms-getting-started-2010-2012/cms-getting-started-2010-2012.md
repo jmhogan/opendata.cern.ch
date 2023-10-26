@@ -352,7 +352,7 @@ process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
 </details>
 
 <summary> <a name="pat"> Step2: Performing your analysis on the PATtuples </a> <summary>
-
+</details>
 Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in [this second GitHub repo](https://github.com/ayrodrig/OutreachExercise2010) and follow the instructions on that page.
 
 Note that even though these are derived datasets, running the analysis code over the full data can take several hours. So if you want just give it a try, you can limit the number events or read only part of the files. Bear in mind that running on a low number of files will not give you a meaningful plot.
@@ -449,4 +449,5 @@ Let us take a peek, for example, at the muons, which are found in `mymuons`. Loo
 You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
 
 That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/) and have a look at the other example analysis workflows such as the [tool to produce reduced "NanoAOD" format for outreach and education](/record/12340) and the example analyses on its output implemented in python for the [di-muon spectrum](/record/12342) or the [Higgs boson decay to two tau leptons](/record/12350), or the Higgs decay to four leptons implemented in [C++](/record/5500) or using [ROOT's RDataFrame](/record/12360), or the [di-muon spectrum analysis using Julia](/record/22350).
+</details>
 </details>
