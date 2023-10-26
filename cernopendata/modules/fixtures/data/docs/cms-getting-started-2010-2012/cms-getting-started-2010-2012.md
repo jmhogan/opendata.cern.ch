@@ -285,3 +285,9 @@ The output gives the energy of muons in these events:
     Muon # 2 with E = 5.61441 GeV.
     19-Nov-2022 19:53:51 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
 ```
+
+
+## <a name="nice">"Nice! But how do I analyse these data?"</a>
+
+In AOD files, reconstructed [physics objects](/docs/cms-physics-objects-2011) are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
+
