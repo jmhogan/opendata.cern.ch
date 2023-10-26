@@ -312,44 +312,44 @@ As mentioned above, you do not typically perform an analysis directly on the AOD
 <details>
 <summary> <a name="b">Option B: Analysing reduced datasets</a> </summary>
         
-        <details>
-        <summary> <a name="b"> Step 1: Reducing the AOD files to PATtuples </a> </summary>
+<details>
+<summary> <a name="b"> Step 1: Reducing the AOD files to PATtuples </a> </summary>
         
-        We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the [CMSSW PAT WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT).
+We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the [CMSSW PAT WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT).
         
-        **Important**: Be aware that the instructions in the WorkBook are in use in CMS currently and have been updated for more recent CMSSW releases. With the 2010 data, you should always use the releases in the series of CMSSW_4_2 and not higher. Also note that more recent code does not work with older releases, so whenever you see `git cms-addpkg...` in the instruction, it is likely that the code package this command adds does not work with the release you need. However, the material under the pages gives you a good introduction to PAT.
+**Important**: Be aware that the instructions in the WorkBook are in use in CMS currently and have been updated for more recent CMSSW releases. With the 2010 data, you should always use the releases in the series of CMSSW_4_2 and not higher. Also note that more recent code does not work with older releases, so whenever you see `git cms-addpkg...` in the instruction, it is likely that the code package this command adds does not work with the release you need. However, the material under the pages gives you a good introduction to PAT.
         
-        Code as well as instructions for producing PATtuples from the CMS open data can be found in [this GitHub repo](https://github.com/ayrodrig/pattuples2010). However, since it took a dedicated computing cluster nine days (!!!) to run this step and reduce the several TB of AOD files to a few GB of PATtuples, we have provided you with the PATtuples in that GitHub repo, saving you quite a lot of time! So you can jump to the next step, below ("Performing your analysis…"). Although you do not need to run this step, it is worth looking at [the configuration file](https://github.com/ayrodrig/pattuples2010/blob/master/PAT_data_repo.py):
+Code as well as instructions for producing PATtuples from the CMS open data can be found in [this GitHub repo](https://github.com/ayrodrig/pattuples2010). However, since it took a dedicated computing cluster nine days (!!!) to run this step and reduce the several TB of AOD files to a few GB of PATtuples, we have provided you with the PATtuples in that GitHub repo, saving you quite a lot of time! So you can jump to the next step, below ("Performing your analysis…"). Although you do not need to run this step, it is worth looking at [the configuration file](https://github.com/ayrodrig/pattuples2010/blob/master/PAT_data_repo.py):
 
-        You can see that the line `removeAllPATObjectsBut(process, ['Muons','Electrons'])` removes all "PATObjects" but muon and electrons, which will be needed in the final analysis step of this example.
+You can see that the line `removeAllPATObjectsBut(process, ['Muons','Electrons'])` removes all "PATObjects" but muon and electrons, which will be needed in the final analysis step of this example.
 
-        Note also how only the validated runs are selected on lines:
+Note also how only the validated runs are selected on lines:
 
-        ```python
-        import FWCore.ParameterSet.Config as cms
-        import PhysicsTools.PythonAnalysis.LumiList as LumiList
-        myLumis = LumiList.LumiList(filename='Cert_136033-                                        149442_7TeV_Apr21ReReco_Collisions10_JSON_v2.txt').getCMSSWString().split(',')
-        process.source.lumisToProcess = cms.untracked.VLuminosityBlockRange()
-        process.source.lumisToProcess.extend(myLumis)
-        ```
+```python
+import FWCore.ParameterSet.Config as cms
+import PhysicsTools.PythonAnalysis.LumiList as LumiList
+myLumis = LumiList.LumiList(filename='Cert_136033-                                        149442_7TeV_Apr21ReReco_Collisions10_JSON_v2.txt').getCMSSWString().split(',')
+process.source.lumisToProcess = cms.untracked.VLuminosityBlockRange()
+process.source.lumisToProcess.extend(myLumis)
+```
 
-        This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
+This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
 
-        When using the "CMS-OpenData-1.1.2" VM, it is recommended reading the condition data as instructed in the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). Set the symbolic links to the condition database for 2010 data
+When using the "CMS-OpenData-1.1.2" VM, it is recommended reading the condition data as instructed in the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). Set the symbolic links to the condition database for 2010 data
 
-        ```
-        ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
-        ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db FT_R_42_V10A.db
-        ```
+```
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db FT_R_42_V10A.db
+```
 
-        Then replace the Global Tag definition on lines 45–46 in the file `PAT_data_repo.py` with
+Then replace the Global Tag definition on lines 45–46 in the file `PAT_data_repo.py` with
 
-        ```
-        #globaltag
-        process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
-        process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
-        ```
-        </details>
+```
+#globaltag
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
+process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
+```
+</details>
 
 <summary> <a name="pat"> Step2: Performing your analysis on the PATtuples </a> <summary>
 
