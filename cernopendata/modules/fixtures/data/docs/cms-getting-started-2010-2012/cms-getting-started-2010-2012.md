@@ -316,7 +316,7 @@ As mentioned above, you do not typically perform an analysis directly on the AOD
 <summary> <a name="b">Option B: Analysing reduced datasets</a> </summary>
         
 <details>
-<summary> <a name="b"> Step 1: Reducing the AOD files to PATtuples </a> </summary>
+<summary> <a name="1"> Step 1: Reducing the AOD files to PATtuples </a> </summary>
         
 We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the [CMSSW PAT WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT).
         
@@ -354,8 +354,9 @@ process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
 ```
 </details>
 
-<summary> <a name="pat"> Step 2: Performing your analysis on the PATtuples </a> <summary>
 <details>
+<summary> <a name="pat"> Step 2: Performing your analysis on the PATtuples </a> <summary>
+        
 Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in [this second GitHub repo](https://github.com/ayrodrig/OutreachExercise2010) and follow the instructions on that page.
 
 Note that even though these are derived datasets, running the analysis code over the full data can take several hours. So if you want just give it a try, you can limit the number events or read only part of the files. Bear in mind that running on a low number of files will not give you a meaningful plot.
