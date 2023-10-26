@@ -355,7 +355,7 @@ process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
 </details>
 
 <details>
-<summary> <a name="pat"> Step 2: Performing your analysis on the PATtuples </a> <summary>
+<summary> <a name="pat"> Step 2: Performing your analysis on the PATtuples </a> </summary>
         
 Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in [this second GitHub repo](https://github.com/ayrodrig/OutreachExercise2010) and follow the instructions on that page.
 
