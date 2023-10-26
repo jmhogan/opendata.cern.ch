@@ -304,7 +304,7 @@ You can also pass the selection criteria through the configuration file. This fi
 We will now take you through these steps through a couple of specially prepared example analyses.
 
 <details>
-<summary> <a name="a">Option A: Analysing the primary dataset</a> </summary>
+## <summary> <a name="a">Option A: Analysing the primary dataset</a> </summary>
 <br>
 As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you can do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/560).
 </details>
