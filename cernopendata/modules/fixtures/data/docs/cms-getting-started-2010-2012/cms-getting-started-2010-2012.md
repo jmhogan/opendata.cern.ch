@@ -50,6 +50,7 @@
 
     <a name="container">Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in the CMS open data container</a> and in the VM (and in the "CMS Shell" terminal in VM).
 
+
 ## <a name="data">"What is in the CMS data?"</a>
 
 The primary data provided by CMS on the CERN Open Data Portal are in a format called "Analysis Object Data“ or AOD for short. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The list and the description of the physics objects contained in the AOD files can be found through the links for [2010](/docs/cms-physics-objects-2010) and for [2011](/docs/cms-physics-objects-2011). The AOD files cannot be opened and understood as simple data tables. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
@@ -286,7 +287,7 @@ The following instructions will walk you through the steps of checking the conte
             Muon # 1 with E = 4.90223 GeV.
             Muon # 2 with E = 5.61441 GeV.
             19-Nov-2022 19:53:51 CET  Closed file         root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-```
+        ```
 
 
 ## <a name="nice">"Nice! But how do I analyse these data?"</a>
