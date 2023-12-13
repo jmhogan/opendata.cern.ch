@@ -40,7 +40,7 @@ To analyse CMS data collected in 2011 and 2012, you need **version 5.3.32** of C
     
 ### Using virtual machine
     
-If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In the VM "CMS Shell", execute the following command in the terminal if you haven't done so before; it ensures that you have this version of CMSSW running:
+If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In the VM "CMS Shell", execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
 
 ```shell
 $ cmsrel CMSSW_5_3_32
