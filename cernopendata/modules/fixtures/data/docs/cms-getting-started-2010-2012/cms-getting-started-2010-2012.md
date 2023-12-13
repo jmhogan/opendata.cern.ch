@@ -103,7 +103,7 @@ You can exit the ROOT browser through the GUI by clicking on `Browser` on the me
 <summary> 2011-2012 </summary>
 Make sure that you are in the **CMSSW_5_3_32/src/** folder (and, in VM, you have executed the `cmsenv` command in your terminal).
 
-Select a dataset, for example, the [ElectronHad dataset](/record/24404) from Run2012A. You can select a file, (a listing is available for each dataset record) and print out it contents with:
+Select a dataset, for example, the [ElectronHad dataset](/cernopendata/modules/record/24404) from Run2012A. You can select a file, (a listing is available for each dataset record) and print out it contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2012A/ElectronHad/AOD/22Jan2013-v1/20000/FEE9E03A-F581-E211-8758-002618943901.root
