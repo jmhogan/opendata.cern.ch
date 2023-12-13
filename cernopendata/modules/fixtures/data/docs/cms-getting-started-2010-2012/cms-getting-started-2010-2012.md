@@ -55,7 +55,7 @@ $ cd CMSSW_5_3_32/src/
 $ cmsenv # do not execute this command if you are working in the container
 ```
 
-<a name="container">Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in the CMS open data container</a> and in the VM (and in the "CMS Shell" terminal in VM).
+Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in the CMS open data container</a> and in the VM (and in the "CMS Shell" terminal in VM).
 
 <br>
 </details>
