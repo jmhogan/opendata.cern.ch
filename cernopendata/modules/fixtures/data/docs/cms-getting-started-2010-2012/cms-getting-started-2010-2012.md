@@ -24,7 +24,7 @@ $ cmsenv
 
 ### Using Docker container
 
-If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the [instruction](/opendata/modules/fixtures/data/docs/cms-guide-docker).
+If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the [instruction](/cernopendata/modules/fixtures/data/docs/cms-guide-docker).
 
 <br>
 
