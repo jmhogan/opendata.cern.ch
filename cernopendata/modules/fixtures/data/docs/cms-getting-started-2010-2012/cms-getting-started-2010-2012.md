@@ -15,7 +15,7 @@ To analyse CMS data collected in 2010, you need **version 4.2.8** of CMSSW, supp
 ```shell
 $ cmsrel CMSSW_4_2_8
 ```
-Then, make sure that you are always in the **CMSSW_4_2_8/src/** directory and the CMS analysis environment is properly setup by entering the following commands in the terminal (you must do so every time you boot the VM before you can proceed):
+Then, make sure that you are always in the **CMSSW_4_2_8/src/** directory and that the CMS analysis environment is properly setup by entering the following commands in the terminal (you must do so every time you boot the VM before you can proceed):
 
 ```shell
 $ cd CMSSW_4_2_8/src/
@@ -40,7 +40,7 @@ To analyse CMS data collected in 2011 and 2012, you need **version 5.3.32** of C
     
 ### Using virtual machine
     
-If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In the VM "CMS Shell", execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
+If you are using the VM, always use the "CMS shell" terminal for all CMSSW-specific commands. It is available from the "CMS Shell" icon on the desktop. In the VM "CMS Shell", execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
 
 ```shell
 $ cmsrel CMSSW_5_3_32
@@ -64,7 +64,7 @@ Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in th
 
 ## <a name="data"> "OK! What is in the CMS data?" </a>
 
-The primary data provided by CMS on the CERN Open Data Portal are in a format called "Analysis Object Data“ or AOD for short. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The list and the description of the physics objects contained in the AOD files can be found through the links for [2010](/cernopendata/modules/fixtures/data/docs/cms-physics-objects-2010) and for [2011](/cernopendata/modules/fixtures/data/docs/cms-physics-objects-2011). The AOD files cannot be opened and understood as simple data tables. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
+The primary data provided by CMS on the CERN Open Data Portal are in a format called "Analysis Object Data“ or AOD for short. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS. The AOD files contain all the information that is needed for analysis. A list and the description of the physics objects contained in the AOD files can be found through the links for [2010](/cernopendata/modules/fixtures/data/docs/cms-physics-objects-2010) and for [2011](/cernopendata/modules/fixtures/data/docs/cms-physics-objects-2011). The AOD files cannot be opened and understood as simple data tables. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
 
 The following instructions will walk you through the steps of checking the content of AOD files. 
 
@@ -86,7 +86,7 @@ You will see the ROOT logo appear on screen. You can now open the ROOT GUI by en
 TBrowser t
 ```
 
-Excellent! You have successfully opened a CMS AOD file in ROOT. If this was the first time you've done so, pat yourself on the back. Now, to see what is inside this file, let us take a closer look at some collections of [physics objects](/cernopendata/modules/fixtures/docs/cms-physics-objects-2010#cms-data).
+Excellent! You have successfully opened a CMS AOD file in ROOT. Now, to see what is inside this file, let us take a closer look at some collections of [physics objects](/cernopendata/modules/fixtures/data/docs/cms-physics-objects-2010#cms-data).
 
 On the left window of ROOT (see the screenshot below), double-click on the file name (`root://eospublic.cern.ch//eos/opendata/...`). You should see a list of entries under `Events`, each corresponding to a collection of reconstructed data. We are interested in the collections containing information about reconstructed physics objects.
 
@@ -103,7 +103,7 @@ You can exit the ROOT browser through the GUI by clicking on `Browser` on the me
 <summary> 2011-2012 </summary>
 Make sure that you are in the **CMSSW_5_3_32/src/** folder (and, in VM, you have executed the `cmsenv` command in your terminal).
 
-Select a dataset, for example, the [ElectronHad dataset](/cernopendata/modules/record/24404) from Run2012A. You can select a file, (a listing is available for each dataset record) and print out it contents with:
+Select a dataset, for example, the [ElectronHad dataset](record/24404) from Run2012A. You can select a file (a listing is available for each dataset record) and print out it contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2012A/ElectronHad/AOD/22Jan2013-v1/20000/FEE9E03A-F581-E211-8758-002618943901.root
