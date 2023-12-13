@@ -36,7 +36,7 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
         
 ### Using Docker container
     
-To analyse CMS data collected in 2011 and 2012, you need **version 5.3.32** of CMSSW, supported only on **Scientific Linux 6**. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](cernopendata/modules/fixtures/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine](cernopendata/modules/fixtures/docs/cms-virtual-machine-2011), you need to open a terminal.
+To analyse CMS data collected in 2011 and 2012, you need **version 5.3.32** of CMSSW, supported only on **Scientific Linux 6**. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](cernopendata/modules/fixtures/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine](/cernopendata/modules/fixtures/docs/cms-virtual-machine-2011), you need to open a terminal.
     
 ### Using virtual machine
     
@@ -62,12 +62,40 @@ Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in th
 
 
 
-## <a name="vm"> "OK! What is in the CMS data?" </a>
+## <a name="data"> "OK! What is in the CMS data?" </a>
+
+The primary data provided by CMS on the CERN Open Data Portal are in a format called "Analysis Object Data“ or AOD for short. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The list and the description of the physics objects contained in the AOD files can be found through the links for [2010](/cernopendata/modules/fixtures/docs/cms-physics-objects-2010) and for [2011](/cernopendata/modules/fixtures/docs/cms-physics-objects-2011). The AOD files cannot be opened and understood as simple data tables. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
+
+The following instructions will walk you through the steps of checking the content of AOD files. 
 
 <details>
 <summary> 2010 </summary>
 <br>
-content
+        
+Make sure that you are in the **CMSSW_4_2_8/src/** folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+
+You can now open a CMS AOD file in ROOT. Let us open one of the files from the CERN Open Data Portal by entering the following command:
+
+```shell
+$ root root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-        90E6BA19A252.root
+```
+
+You will see the ROOT logo appear on screen. You can now open the ROOT GUI by entering:
+
+```shell
+TBrowser t
+```
+
+Excellent! You have successfully opened a CMS AOD file in ROOT. If this was the first time you've done so, pat yourself on the back. Now, to see what is inside this file, let us take a closer look at some collections of [physics objects](/cernopendata/modules/fixtures/docs/cms-physics-objects-2010#cms-data).
+
+On the left window of ROOT (see the screenshot below), double-click on the file name (`root://eospublic.cern.ch//eos/opendata/...`). You should see a list of entries under `Events`, each corresponding to a collection of reconstructed data. We are interested in the collections containing information about reconstructed physics objects.
+
+<img src="/static/docs/getting-started-with-cms-2010-data/cms_tbrowser.png" width="70%">
+
+Let us take a peek, for example, at the electrons, which are found in `recoGsfElectrons_gsfElectrons__RECO`, as shown on the list of [physics objects](/docs/cms-physics-objects-2010). Look in there by double-clicking on that line and then double-clicking on `recoGsfElectrons_gsfElectrons__RECO.obj`. Here, you can have a look at various properties of this collection, such as the plot for the transverse momentum of the electrons: `recoGsfElectrons_gsfElectrons__RECO.obj.pt_`.
+
+You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
+        
 </details>
 
 <details>
@@ -91,37 +119,7 @@ content
 </details>
 
 
-## <a name="data">"What is in the CMS data?"</a>
-
-The primary data provided by CMS on the CERN Open Data Portal are in a format called "Analysis Object Data“ or AOD for short. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The list and the description of the physics objects contained in the AOD files can be found through the links for [2010](/docs/cms-physics-objects-2010) and for [2011](/docs/cms-physics-objects-2011). The AOD files cannot be opened and understood as simple data tables. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
-
-The following instructions will walk you through the steps of checking the content of AOD files. 
-
-=== "2010"
-
-        Make sure that you are in the **CMSSW_4_2_8/src/** folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
-
-        You can now open a CMS AOD file in ROOT. Let us open one of the files from the CERN Open Data Portal by entering the following command:
-
-        ```shell
-        $ root root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-        90E6BA19A252.root
-        ```
-
-        You will see the ROOT logo appear on screen. You can now open the ROOT GUI by entering:
-
-        ```shell
-        TBrowser t
-        ```
-
-        Excellent! You have successfully opened a CMS AOD file in ROOT. If this was the first time you've done so, pat yourself on the back. Now, to see what is inside this file, let us take a closer look at some collections of [physics objects](/docs/cms-physics-objects-2010#cms-data).
-
-        On the left window of ROOT (see the screenshot below), double-click on the file name (`root://eospublic.cern.ch//eos/opendata/...`). You should see a list of entries under `Events`, each corresponding to a collection of reconstructed data. We are interested in the collections containing information about reconstructed physics objects.
-
-        <img src="/static/docs/getting-started-with-cms-2010-data/cms_tbrowser.png" width="70%">
-
-        Let us take a peek, for example, at the electrons, which are found in `recoGsfElectrons_gsfElectrons__RECO`, as shown on the list of [physics objects](/docs/cms-physics-objects-2010). Look in there by double-clicking on that line and then double-clicking on `recoGsfElectrons_gsfElectrons__RECO.obj`. Here, you can have a look at various properties of this collection, such as the plot for the transverse momentum of the electrons: `recoGsfElectrons_gsfElectrons__RECO.obj.pt_`.
-
-        You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
+        
 
 === "2011/2012"
 
