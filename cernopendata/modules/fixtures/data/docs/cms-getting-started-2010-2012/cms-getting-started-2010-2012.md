@@ -25,7 +25,9 @@ $ cmsenv
 ### Using Docker container
 
 If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the [instruction](/docs/cms-guide-docker).
-    
+
+<br>
+
 </details>
 
 <details>
@@ -34,7 +36,7 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 content
 </details>
 
-<br>
+
 
 ## <a name="vm"> "OK! What is in the CMS data?" </a>
 
