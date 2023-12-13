@@ -307,7 +307,11 @@ The output gives the energy of muons in these events:
 <br>
 </details>
 
-## <a name="vm"> "Nice! But how do I analyse these data?" </a>
+## <a name="nice">"Nice! But how do I analyse these data?"</a>
+
+In AOD files, reconstructed [physics objects](cernopendata/modules/fixtures/data/docs/cms-physics-objects-2011) are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
+
+<br>
 
 <details>
 <summary> 2010 </summary>
@@ -322,9 +326,7 @@ content
 </details>
 
 
-## <a name="nice">"Nice! But how do I analyse these data?"</a>
 
-In AOD files, reconstructed [physics objects](/docs/cms-physics-objects-2011) are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
 
 === "2010"
 
