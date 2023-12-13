@@ -3,7 +3,7 @@
 3. ["Nice! But how do I analyse these data?"](#nice)
    
 <details>
-<summary> <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a> </summary>
+<summary> <a name="vm">" ## I have installed the CMS open data environment / virtual machine: now what?"## </a> </summary>
 <br>
         <details>
         <summary> 2010 </summary>
