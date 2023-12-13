@@ -2,7 +2,11 @@
 2. ["OK! What is in the CMS data?"](#data)
 3. ["Nice! But how do I analyse these data?"](#nice)
    
-## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a>
+<details>
+<summary> ## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a> </summary>
+<br>
+This is how you dropdown.
+</details>
 
 === "2010"
 
