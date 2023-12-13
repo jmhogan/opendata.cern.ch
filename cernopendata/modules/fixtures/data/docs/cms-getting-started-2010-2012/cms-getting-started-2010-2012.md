@@ -92,7 +92,7 @@ On the left window of ROOT (see the screenshot below), double-click on the file 
 
 <img src="/static/docs/getting-started-with-cms-2010-data/cms_tbrowser.png" width="70%">
 
-Let us take a peek, for example, at the electrons, which are found in `recoGsfElectrons_gsfElectrons__RECO`, as shown on the list of [physics objects](/docs/cms-physics-objects-2010). Look in there by double-clicking on that line and then double-clicking on `recoGsfElectrons_gsfElectrons__RECO.obj`. Here, you can have a look at various properties of this collection, such as the plot for the transverse momentum of the electrons: `recoGsfElectrons_gsfElectrons__RECO.obj.pt_`.
+Let us take a peek, for example, at the electrons, which are found in `recoGsfElectrons_gsfElectrons__RECO`, as shown on the list of [physics objects](/cernopendata/modules/fixtures/data//docs/cms-physics-objects-2010). Look in there by double-clicking on that line and then double-clicking on `recoGsfElectrons_gsfElectrons__RECO.obj`. Here, you can have a look at various properties of this collection, such as the plot for the transverse momentum of the electrons: `recoGsfElectrons_gsfElectrons__RECO.obj.pt_`.
 
 You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
         
@@ -103,13 +103,13 @@ You can exit the ROOT browser through the GUI by clicking on `Browser` on the me
 <summary> 2011-2012 </summary>
 Make sure that you are in the **CMSSW_5_3_32/src/** folder (and, in VM, you have executed the `cmsenv` command in your terminal).
 
-Select a dataset, for example, the [ElectronHad dataset](record/24404) from Run2012A. You can select a file (a listing is available for each dataset record) and print out it contents with:
+Select a dataset, for example, the [ElectronHad dataset](https://opendata.cern.ch/record/24404) from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2012A/ElectronHad/AOD/22Jan2013-v1/20000/FEE9E03A-F581-E211-8758-002618943901.root
 ```
 
-The ouput is a list of different objects that the file contains, such as
+The ouput is a list of objects that the file contains, such as
 
 ```shell
     Type                                  Module                      Label             Process
@@ -123,9 +123,9 @@ The ouput is a list of different objects that the file contains, such as
     [...]
 ```
 
-Documentation of the objects of main interest to physics analysis is available in [the CMS Open Data guide](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/). The objects are implemented as C++ classes in the CMS software package [CMSSW](https://github.com/cms-sw/cmssw), and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/annotated.html). To see the properties of electrons, you would navigate to the [namespace "reco"](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d1/d57/namespacereco.html) and find the entry for `GsfElectron`. The [reco::GsfElectron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html) lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes, and are listed separately under "Public Member Functions inherited from ... ". You can find more information on each object in the CMS Open Data guide (e.g. [electrons](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)).
+Documentation of the objects of main interest to physics analysis is available in [the CMS Open Data guide](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/). The objects are implemented as C++ classes in the CMS software package [CMSSW](https://github.com/cms-sw/cmssw), and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/annotated.html). To see the properties of electrons, you would navigate to the [namespace "reco"](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d1/d57/namespacereco.html) and find the entry for `GsfElectron`. The [reco::GsfElectron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html) lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. [electrons](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)).
 
-These objects can be accessed in a software module which can be built with a helper script available in the CMS open data environment. Do the following:
+The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script available in the CMS open data environment. Do the following:
 
 ```shell
 $ mkdir Demo
@@ -160,7 +160,7 @@ Run the code with:
 $ cmsRun demoanalyzer_cfg.py
 ```
 
-and you will get an output like:
+You will get an output like:
 
 ```
     221119 18:53:23 1032 Xrd: XrdClientConn: Error resolving this host's domain name.
@@ -199,7 +199,7 @@ and you will get an output like:
     System                  3                   3
 ```
 
-This is a simple loop over the first 10 events in the file. To access the physics object information, for example that of muons, add the following lines in `src/DemoAnalyzer.cc` (the lines before and after of the lines to be added are also shown):
+This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in `src/DemoAnalyzer.cc` (the lines before and after of the lines to be added are also shown):
 
 ```shell
 [...]
