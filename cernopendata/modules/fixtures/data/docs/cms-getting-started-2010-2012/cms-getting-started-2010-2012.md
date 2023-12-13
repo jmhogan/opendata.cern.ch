@@ -17,9 +17,33 @@ content
 content
 </details>
 
+### <a name="vm"> "OK! What is in the CMS data?" </a>
 
+<details>
+<summary> 2010 </summary>
+<br>
+content
+</details>
 
-=== "2010"
+<details>
+<summary> 2011-2012 </summary>
+<br>
+content
+</details>
+
+### <a name="vm"> "Nice! But how do I analyse these data?" </a>
+
+<details>
+<summary> 2010 </summary>
+<br>
+content
+</details>
+
+<details>
+<summary> 2011-2012 </summary>
+<br>
+content
+</details>
 
     ### Using virtual machine
     
