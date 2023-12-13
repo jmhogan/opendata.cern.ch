@@ -7,7 +7,6 @@
 
 <details>
 <summary> 2010 </summary>
-<br>
         
 ### Using virtual machine
     
@@ -34,6 +33,8 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 <br>
 content
 </details>
+
+<br>
 
 ## <a name="vm"> "OK! What is in the CMS data?" </a>
 
