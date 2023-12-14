@@ -2,6 +2,7 @@
 2. ["OK! What is in the CMS data?"](#data)
 3. ["Nice! But how do I analyse these data?"](#nice)
 
+The CMS simulation and collsion data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyse CMS data in this format for each year.
 
 ## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?" </a>
 
@@ -66,7 +67,7 @@ Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in th
 
 The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for [2010](/docs/cms-physics-objects-2010) and for [2011](/docs/cms-physics-objects-2011). The AOD files are not simple tables that you can click on and read right away. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
 
-But let's first see what an AOD file contains.
+Let's first see what an AOD file contains.
 
 <details>
 <summary> 2010 </summary>
@@ -93,7 +94,7 @@ The ouput is a list of objects that the file contains, such as
     [...]
 ```
 
-Documentation of the objects of main interest to physics analysis is available in [the CMS Open Data guide](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/). The objects are implemented as C++ classes in the CMS software package [CMSSW](https://github.com/cms-sw/cmssw), and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/annotated.html). To see the properties of electrons, you would navigate to the [namespace "reco"](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d1/d57/namespacereco.html) and find the entry for `GsfElectron`. The [reco::GsfElectron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html) lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. [electrons](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)).
+Documentation of the objects of main interest to physics analysis is available in [the CMS Open Data guide](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/). The objects are implemented as C++ classes in the CMS software package [CMSSW](https://github.com/cms-sw/cmssw), and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html). To see the properties of electrons, you would navigate to the [namespace "reco"](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html) and find the entry for `GsfElectron`. The [reco::GsfElectron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html) lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. [electrons](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)).
 
 The objects contained in the AOD files can be accessed through a software module, which can be built with Event Data Analyzer (EDAnalyzer). EDAnalyzer is a helper script available in the CMS open data environment. Do the following:
 
@@ -498,7 +499,6 @@ Depending on the nature of your analysis you *can* run your analysis code direct
 First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria (e.g. whether the objects in your analysis are isolated from or close to other particles in the same collision).
 
 Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for [2011](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011) and [2012](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012) AOD data. POET is, in essence, a collection of EDAnalyzer. Thus, although is not available for the 2010 data, we can still perform selection and extraction using Event Data Analyzer (EDAnalyzer). 
-
 
 Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow [these instructions in the CMSSW WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule). Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
 
