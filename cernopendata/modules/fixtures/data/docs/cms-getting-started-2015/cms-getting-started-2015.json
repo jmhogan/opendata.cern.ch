@@ -17,7 +17,7 @@
     ],
     "experiment": "CMS",
     "short_description": {
-      "content": "To analyse CMS data collected in 2015, you need version 7.6.7 of CMSSW, supported only on Scientific Linux 6. If you are unfamiliar with Linux, take a look at this short introduction to Linux or try this..."
+      "content": "The CMS simulation and collsion data for 2015-2016 are provided on the CERN Open Data Portal in the miniAOD format, derived from Analysis Object Data (AOD). This page provides tutorials on how to access and analyse CMS data in this format for each year."
     },
     "slug": "cms-getting-started-2015",
     "tags": [
