@@ -508,7 +508,8 @@ Depending on the nature of your analysis you *can* run your analysis code direct
 **NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
 
 <details>
-<summary> <a name="2010a">Option A: Analysing the primary dataset</a> </summary>
+<summary> Option A: Analysing the primary dataset</a> 
+<a name="2010a">  </summary>
 <br>
 As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/560).
 </details>
