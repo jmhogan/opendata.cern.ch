@@ -492,32 +492,29 @@ The output gives the energy of muons in these events:
 
 In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
 
-Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way. However, this can be resource-intensive and is done only for very specific usecases.
-
-**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
-
-First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria (e.g. whether the objects in your analysis are isolated from or close to other particles in the same collision).
-
-Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for [2011](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011) and [2012](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012) AOD data. POET is, in essence, a collection of EDAnalyzer. Thus, although is not available for the 2010 data, we can still perform selection and extraction using Event Data Analyzer (EDAnalyzer). 
-
-Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow [these instructions in the CMSSW WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule). Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
-
-You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the `cmsRun` executable. You can see how this is done in our analysis example.
+Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for [2011](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011) and [2012](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012) AOD data. POET is just a collection of Event Data Analyzer (EDAnalyzer). It is not available for the 2010 data, but we can still perform selection and extraction using EDAnalyzer. 
 
 <br>
 
 <details>
 <summary> 2010 </summary>
 
+Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow [these instructions in the CMSSW WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule). Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
+
+You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the `cmsRun` executable. You can see how this is done in our analysis example.
+
+Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way. However, this can be resource-intensive and is done only for very specific usecases.
+
+**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
 
 <details>
-<summary> <a name="a">Option A: Analysing the primary dataset</a> </summary>
+<summary> <a name="2010a">Option A: Analysing the primary dataset</a> </summary>
 <br>
 As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/560).
 </details>
 
 <details>
-<summary> <a name="b">Option B: Analysing reduced datasets</a> </summary>
+<summary> <a name="2010b">Option B: Analysing reduced datasets</a> </summary>
         
 ### Step1: Reduce the AOD files to PATtuples
         
@@ -578,6 +575,20 @@ That's it! Follow the rest of the instructions on the README and you have perfor
 <details>
 <summary> 2011-2012 </summary>
 
+<details>
+<summary> <a name="a">Option A: Analysing primary datasets</a> </summary>
+<br>
+As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/5001).
+
+**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database).
+
+</details>
+
+<details>
+<summary> <a name="b">Option B: Analysing reduced datasets</a> </summary>
+
+First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria (e.g. whether the objects in your analysis are isolated from or close to other particles in the same collision).
+
 For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012). You can use [ROOT](http://root.cern.ch) to inspect reconstructed particles and the distributions of their properties.
 
 Start by getting the code and compiling it. Make sure that you are back in the **CMSSW_5_3_32/src/** folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with `cd ~/CMSSW_5_3_32/src`. In the container, keep using the normal container shell and go to the right folder with `cd $CMSSW_BASE/src`.
@@ -593,9 +604,7 @@ $ git checkout 2012
 $ scram b
 ```
 
-**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database).
-
-Note also how only the validated runs are selected in the configuration file. The relevant lines are:
+Note how only the validated runs are selected in the configuration file. The relevant lines are:
 
 ```python
     import FWCore.ParameterSet.Config as cms
@@ -659,4 +668,5 @@ That's it! Hope you enjoyed this exercise. Feel free to play around with the res
 
 
 <br>
+</details>
 </details>
