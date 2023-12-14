@@ -580,6 +580,7 @@ That's it! Follow the rest of the instructions on the README and you have perfor
 <br>
 As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/5001).
 
+
 **NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database).
 
 </details>
