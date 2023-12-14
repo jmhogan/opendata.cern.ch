@@ -491,109 +491,91 @@ The output gives the energy of muons in these events:
 
 In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
 
-First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria (e.g. whether the objects in your analysis are isolated from or close to other particles in the same collision).
-
-Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for [2011](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011) and [2012](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012) AOD data. POET is, in essence, a collection of EDAnalyzer. Thus, although is not available for the 2010 data, we can still perform selection and extraction with Event Data Analyzer (EDAnalyzer). 
-
-<br>
-
-<details>
-<summary> 2010 </summary>
-content
-<br>
-</details>
-
-<details>
-<summary> 2011-2012 </summary>
-content
-<br>
-</details>
-
-
-
-
-=== "2010"
-
 Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way. However, this can be resource-intensive and is done only for very specific usecases.
 
-**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the example for analysing the primary datasets below.
+**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
+
+First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria (e.g. whether the objects in your analysis are isolated from or close to other particles in the same collision).
+
+Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for [2011](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011) and [2012](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012) AOD data. POET is, in essence, a collection of EDAnalyzer. Thus, although is not available for the 2010 data, we can still perform selection and extraction using Event Data Analyzer (EDAnalyzer). 
+
 
 Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow [these instructions in the CMSSW WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule). Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
 
 You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the `cmsRun` executable. You can see how this is done in our analysis example.
 
-We will now take you through these steps through a couple of specially prepared example analyses.
+<br>
 
-        <details>
-        <summary> <a name="a">Option A: Analysing the primary dataset</a> </summary>
-        <br>
-        As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be casese when you can do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS     analysis example](/record/560).
-        </details>
+<details>
+<summary> 2010 </summary>
 
-        <details>
-        <summary> <a name="b">Option B: Analysing reduced datasets</a> </summary>
+
+<details>
+<summary> <a name="a">Option A: Analysing the primary dataset</a> </summary>
+<br>
+As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/560).
+</details>
+
+<details>
+<summary> <a name="b">Option B: Analysing reduced datasets</a> </summary>
         
-        <details>
-        <summary> <a name="1"> Step 1: Reducing the AOD files to PATtuples </a> </summary>
+### Step1: Reduce the AOD files to PATtuples
         
-        We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the [CMSSW PAT WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT).
+We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the [CMSSW PAT WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT).
         
-        **Important**: Be aware that the instructions in the WorkBook are in use in CMS currently and have been updated for more recent CMSSW releases. With the 2010 data, you should always use the releases in the series of CMSSW_4_2 and not higher. Also note that more recent code does not work with older releases, so whenever you see `git cms-addpkg...` in the instruction, it is likely that the code package this command adds does not work with the release you need. However, the material under the pages gives you a good introduction to PAT.
+**Important**: Be aware that the instructions in the WorkBook are in use in CMS currently and have been updated for more recent CMSSW releases. With the 2010 data, you should always use the releases in the series of CMSSW_4_2 and not higher. Also note that more recent code does not work with older releases, so whenever you see `git cms-addpkg...` in the instruction, it is likely that the code package this command adds does not work with the release you need. However, the material under the pages gives you a good introduction to PAT.
         
-        Code as well as instructions for producing PATtuples from the CMS open data can be found in [this GitHub repo](https://github.com/ayrodrig/pattuples2010). However, since it took a dedicated computing cluster nine days (!!!) to run this step and reduce the several TB of AOD files to a few GB of PATtuples, we have provided you with the PATtuples in that GitHub repo, saving you quite a lot of time! So you can jump to the next step, below ("Performing your analysis…"). Although you do not need to run this step, it is worth looking at [the configuration file](https://github.com/ayrodrig/pattuples2010/blob/master/PAT_data_repo.py):
+Code as well as instructions for producing PATtuples from the CMS open data can be found in [this GitHub repo](https://github.com/ayrodrig/pattuples2010). However, since it took a dedicated computing cluster nine days (!!!) to run this step and reduce the several TB of AOD files to a few GB of PATtuples, we have provided you with the PATtuples in that GitHub repo, saving you quite a lot of time! So you can jump to the next step, below ("Performing your analysis…"). Although you do not need to run this step, it is worth looking at [the configuration file](https://github.com/ayrodrig/pattuples2010/blob/master/PAT_data_repo.py):
 
-        You can see that the line `removeAllPATObjectsBut(process, ['Muons','Electrons'])` removes all "PATObjects" but muon and electrons, which will be needed in the final analysis step of this example.
+You can see that the line `removeAllPATObjectsBut(process, ['Muons','Electrons'])` removes all "PATObjects" but muon and electrons, which will be needed in the final analysis step of this example.
 
-        Note also how only the validated runs are selected on lines:
+Note also how only the validated runs are selected on lines:
 
-        ```python
-        import FWCore.ParameterSet.Config as cms
-        import PhysicsTools.PythonAnalysis.LumiList as LumiList
-        myLumis = LumiList.LumiList(filename='Cert_136033-                                                149442_7TeV_Apr21ReReco_Collisions10_JSON_v2.txt').getCMSSWString().split(',')
-        process.source.lumisToProcess = cms.untracked.VLuminosityBlockRange()
-        process.source.lumisToProcess.extend(myLumis)
-        ```
+```python
+import FWCore.ParameterSet.Config as cms
+import PhysicsTools.PythonAnalysis.LumiList as LumiList
+myLumis = LumiList.LumiList(filename='Cert_136033-149442_7TeV_Apr21ReReco_Collisions10_JSON_v2.txt').getCMSSWString().split(',')
+process.source.lumisToProcess = cms.untracked.VLuminosityBlockRange()
+process.source.lumisToProcess.extend(myLumis)
+```
 
-        This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
+This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
 
-        When using the "CMS-OpenData-1.1.2" VM, it is recommended reading the condition data as instructed in the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). Set the symbolic links to the condition database for 2010 data
+When using the "CMS-OpenData-1.1.2" VM, it is recommended reading the condition data as instructed in the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). Set the symbolic links to the condition database for 2010 data
 
-        ```
-        ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
-        ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db FT_R_42_V10A.db
-        ```
+```
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
+ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db FT_R_42_V10A.db
+```
 
-        Then replace the Global Tag definition on lines 45–46 in the file `PAT_data_repo.py` with
+Then replace the Global Tag definition on lines 45–46 in the file `PAT_data_repo.py` with
 
-        ```
-        #globaltag
-        process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
-        process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
-        ```
-        </details>
-        <details>
-        <summary> <a name="pat"> Step 2: Performing your analysis on the PATtuples </a> </summary>
-        
-        Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in [this second GitHub repo](https://github.com/ayrodrig/OutreachExercise2010) and follow the instructions on that page.
+```
+#globaltag
+process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
+process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
+```
 
-        Note that even though these are derived datasets, running the analysis code over the full data can take several hours. So if you want just give it a try, you can limit the number events or read only part of the files. Bear in mind that running on a low number of files will not give you a meaningful plot.
+### Step2: Perform your analysis on the PATtuples
 
-        Your analysis job is defined in `OutreachExercise2010/DecaysToLeptons/run/run.py`. The analysis code is in the files located in the `OutreachExercise2010/DecaysToLeptons/python` directory.
+Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in [this second GitHub repo](https://github.com/ayrodrig/OutreachExercise2010) and follow the instructions on that page.
 
-        This example uses IPython, which gets configured and starts the job with the following command:
+Note that even though these are derived datasets, running the analysis code over the full data can take several hours. So if you want just give it a try, you can limit the number events or read only part of the files. Bear in mind that running on a low number of files will not give you a meaningful plot.
 
-        ```python
-        ipython run.py
-        ```
+Your analysis job is defined in `OutreachExercise2010/DecaysToLeptons/run/run.py`. The analysis code is in the files located in the `OutreachExercise2010/DecaysToLeptons/python` directory.
 
-        That's it! Follow the rest of the instructions on the README and you have performed an analysis using data from CMS. Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. To exit IPython, enter `exit()`.
+This example uses IPython, which gets configured and starts the job with the following command:
 
-        </details>
-        </details>
+```python
+ipython run.py
+```
 
-=== "2011/2012"
+That's it! Follow the rest of the instructions on the README and you have performed an analysis using data from CMS. Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. To exit IPython, enter `exit()`.
+<br>
+</details>
 
-
+<details>
+<summary> 2011-2012 </summary>
 
 For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012). You can use [ROOT](http://root.cern.ch) to inspect reconstructed particles and the distributions of their properties.
 
@@ -614,62 +596,66 @@ $ scram b
 
 Note also how only the validated runs are selected in the configuration file. The relevant lines are:
 
-        ```python
-            import FWCore.ParameterSet.Config as cms
-            import FWCore.PythonUtilities.LumiList as LumiList
+```python
+    import FWCore.ParameterSet.Config as cms
+    import FWCore.PythonUtilities.LumiList as LumiList
 
-            [...]
+    [...]
 
-	        goodJSON = "data/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.txt"
-	        myLumis = LumiList.LumiList(filename=goodJSON).getCMSSWString().split(",")
-	        process.source.lumisToProcess = CfgTypes.untracked(
-	    	        CfgTypes.VLuminosityBlockRange())
-	        process.source.lumisToProcess.extend(myLumis)
-        ```
+	goodJSON = "data/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.txt"
+	myLumis = LumiList.LumiList(filename=goodJSON).getCMSSWString().split(",")
+	process.source.lumisToProcess = CfgTypes.untracked(
+	    	CfgTypes.VLuminosityBlockRange())
+	process.source.lumisToProcess.extend(myLumis)
+```
 
-        This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
+This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
 
-        To produce a root file with selected objects, do the following:
+To produce a root file with selected objects, do the following:
 
-        ```shell
-        $ cd PhysObjectExtractor
-        $ cmsRun python/poet_cfg.py
-        ```
+```shell
+$ cd PhysObjectExtractor
+$ cmsRun python/poet_cfg.py
+```
 
-        The configuration file sets it to run over 1000 events in a simulated dataset.
+The configuration file sets it to run over 1000 events in a simulated dataset.
 
-        If you are using the CMS open data container with the VNC application installed (see the [container guide page](/docs/cms-guide-docker#vnc)), for opening the graphical user interface, start the VNC application in the container by typing
+If you are using the CMS open data container with the VNC application installed (see the [container guide page](/docs/cms-guide-docker#vnc)), for opening the graphical user interface, start the VNC application in the container by typing
 
-        ```shell
-        $ start_vnc
-        ```
+```shell
+$ start_vnc
+```
 
-        and then start a VNC viewer on your local computer using the password `cms.cern`. The http option for a GUI in the browser is not guaranteed to work in the container with this CMSSW version.
+and then start a VNC viewer on your local computer using the password `cms.cern`. The http option for a GUI in the browser is not guaranteed to work in the container with this CMSSW version.
 
-        You can now open the POET output file in ROOT:
+You can now open the POET output file in ROOT:
 
-        ```shell
-        $ root myoutput.root
-        ```
+```shell
+$ root myoutput.root
+```
 
-        You will see the ROOT logo appear on screen. You can now open the ROOT GUI by entering:
+You will see the ROOT logo appear on screen. You can now open the ROOT GUI by entering:
 
-        ```shell
-        TBrowser t
-        ```
+```shell
+TBrowser t
+```
 
-        and you will see the ROOT browser window:
+and you will see the ROOT browser window:
 
-        <img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_1.png" width="70%">
+<img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_1.png" width="70%">
 
-        Now, let us take a closer look at some collections of physics objects.
+Now, let us take a closer look at some collections of physics objects.
 
-        On the left window of ROOT, double-click on the file name (`myoutput.root`). You should see a list of names, each corresponding to a collection of reconstructed data.
+On the left window of ROOT, double-click on the file name (`myoutput.root`). You should see a list of names, each corresponding to a collection of reconstructed data.
 
-        Let us take a peek, for example, at the muons, which are found in `mymuons`. Look in there by double-clicking on that line and then double-clicking on `Events`. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: `muon_pt`. Double-click on it to draw the distribution.
+Let us take a peek, for example, at the muons, which are found in `mymuons`. Look in there by double-clicking on that line and then double-clicking on `Events`. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: `muon_pt`. Double-click on it to draw the distribution.
 
-        <img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%">
+<img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%">
 
-        You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
+You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
 
-        That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/) and have a look at the other example analysis workflows such as the [tool to produce reduced "NanoAOD" format for outreach and education](/record/12340) and the example analyses on its output implemented in python for the [di-muon spectrum](/record/12342) or the [Higgs boson decay to two tau leptons](/record/12350), or the Higgs decay to four leptons implemented in [C++](/record/5500) or using [ROOT's RDataFrame](/record/12360), or the [di-muon spectrum analysis using Julia](/record/22350).
+That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/) and have a look at the other example analysis workflows such as the [tool to produce reduced "NanoAOD" format for outreach and education](/record/12340) and the example analyses on its output implemented in python for the [di-muon spectrum](/record/12342) or the [Higgs boson decay to two tau leptons](/record/12350), or the Higgs decay to four leptons implemented in [C++](/record/5500) or using [ROOT's RDataFrame](/record/12360), or the [di-muon spectrum analysis using Julia](/record/22350).
+
+
+<br>
+</details>
