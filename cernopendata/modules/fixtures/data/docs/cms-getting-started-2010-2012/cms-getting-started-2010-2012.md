@@ -573,6 +573,7 @@ ipython run.py
 That's it! Follow the rest of the instructions on the README and you have performed an analysis using data from CMS. Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. To exit IPython, enter `exit()`.
 <br>
 </details>
+</details>
 
 <details>
 <summary> 2011-2012 </summary>
