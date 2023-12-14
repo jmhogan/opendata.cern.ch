@@ -309,7 +309,7 @@ The output gives the energy of muons in these events:
 
 ## <a name="nice">"Nice! But how do I analyse these data?"</a>
 
-In AOD files, reconstructed [physics objects](cernopendata/modules/fixtures/data/docs/cms-physics-objects-2011) are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
+In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
 
 <br>
 
@@ -330,15 +330,15 @@ content
 
 === "2010"
 
-        Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way. However, this can be resource-intensive and is done only for very specific usecases.
+Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way. However, this can be resource-intensive and is done only for very specific usecases.
 
-        **NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the example for analysing the primary datasets below.
+**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the example for analysing the primary datasets below.
 
-        Your final analysis is done using a software module called an "analyzer". If you have followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow [these instructions in the CMSSW WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule). Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
+Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow [these instructions in the CMSSW WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule). Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
 
-        You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the `cmsRun` executable. You can see how this is done in our analysis example.
+You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the `cmsRun` executable. You can see how this is done in our analysis example.
 
-        We will now take you through these steps through a couple of specially prepared example analyses.
+We will now take you through these steps through a couple of specially prepared example analyses.
 
         <details>
         <summary> <a name="a">Option A: Analysing the primary dataset</a> </summary>
@@ -409,26 +409,26 @@ content
 
 === "2011/2012"
 
-        First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria, such as if the objects in your analysis are isolated from or close to other particles in the same collision.
+First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria, such as if the objects in your analysis are isolated from or close to other particles in the same collision.
 
-        For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012). You can use [ROOT](http://root.cern.ch) to inspect reconstructed particles and the distributions of their properties.
+For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012). You can use [ROOT](http://root.cern.ch) to inspect reconstructed particles and the distributions of their properties.
 
-        Start by getting the code and compiling it. Make sure that you are back in the **CMSSW_5_3_32/src/** folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with `cd ~/CMSSW_5_3_32/src`. In the container, keep using the normal container shell and go to the right folder with `cd $CMSSW_BASE/src`.
+Start by getting the code and compiling it. Make sure that you are back in the **CMSSW_5_3_32/src/** folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with `cd ~/CMSSW_5_3_32/src`. In the container, keep using the normal container shell and go to the right folder with `cd $CMSSW_BASE/src`.
 
-        ```shell
-        $ git clone https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
-        ```
-        If you are using the VM, change now back to the "CMS shell" terminal. Get the 2012 "branch" of the repository and, always in the **CMSSW_5_3_32/src/** folder, compile the code with:
+```shell
+$ git clone https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
+```
+If you are using the VM, change now back to the "CMS shell" terminal. Get the 2012 "branch" of the repository and, always in the **CMSSW_5_3_32/src/** folder, compile the code with:
 
-        ```
-        $ cd PhysObjectExtractorTool
-        $ git checkout 2012
-        $ scram b
-        ```
+```
+$ cd PhysObjectExtractorTool
+$ git checkout 2012
+$ scram b
+```
 
-        **NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database).
+**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database).
 
-        Note also how only the validated runs are selected in the configuration file. The relevant lines are:
+Note also how only the validated runs are selected in the configuration file. The relevant lines are:
 
         ```python
             import FWCore.ParameterSet.Config as cms
