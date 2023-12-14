@@ -311,6 +311,10 @@ The output gives the energy of muons in these events:
 
 In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
 
+First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria (e.g. whether the objects in your analysis are isolated from or close to other particles in the same collision).
+
+Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for [2011](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011) and [2012](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012) AOD data. POET is, in essence, a collection of EDAnalyzer. Thus, although is not available for the 2010 data, we can still perform selection and extraction with Event Data Analyzer (EDAnalyzer). 
+
 <br>
 
 <details>
@@ -409,7 +413,7 @@ We will now take you through these steps through a couple of specially prepared 
 
 === "2011/2012"
 
-First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria, such as if the objects in your analysis are isolated from or close to other particles in the same collision.
+
 
 For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012). You can use [ROOT](http://root.cern.ch) to inspect reconstructed particles and the distributions of their properties.
 
