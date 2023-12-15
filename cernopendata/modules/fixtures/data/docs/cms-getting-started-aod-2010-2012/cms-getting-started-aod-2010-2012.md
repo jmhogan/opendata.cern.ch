@@ -31,7 +31,7 @@ $ cmsenv
 </p>
 
 <header>
-  <h2>Using Docker container</h2>
+  <h3>Using Docker container</h3>
 </header>
 
 <p>
@@ -42,35 +42,45 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 
 
 <details>
-<summary> 2011-2012 </summary>
+<summary><h4>2011-2012</h4>h4></summary>
 <br>
 
 <header>
-  <h2>Using Docker container</h2>
+  <h3>Using Docker container</h3>
 </header>
 
 <p>
 To analyse CMS data collected in 2011 and 2012, you need <b>version 5.3.32</b> of CMSSW, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](cernopendata/modules/fixtures/data/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine](/cernopendata/modules/fixtures/data/docs/cms-virtual-machine-2011), you need to open a terminal.
 </p>
 
-### Using virtual machine
-    
+<header>
+  <h3>Using virtual machine</h3>
+</header>
+
+<p>
 If you are using the VM, always use the "CMS shell" terminal for all CMSSW-specific commands. It is available from the "CMS Shell" icon on the desktop. In the VM "CMS Shell", execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
 
 ```shell
 $ cmsrel CMSSW_5_3_32
 ```
+</p>
 
+<p>
 Note that if you get a warning message about the current OS not being slc6, you are using a wrong terminal ("Outer Shell") which is CERN CentOS 7 (cc7). Open a "CMS Shell" terminal as explained above and execute the cmsrel command there.
+</p>
 
+<p>
 In the VM, the CMS analysis environment needs to be properly setup by entering the following commands in the terminal (you must do so every time you boot the VM before you can proceed):
 
 ```shell
 $ cd CMSSW_5_3_32/src/
 $ cmsenv # do not execute this command if you are working in the container
 ```
+</p>
 
+<p>
 Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in the CMS open data container</a> and in the VM (and in the "CMS Shell" terminal in VM).
+</p>
 
 <br>
 </details>
