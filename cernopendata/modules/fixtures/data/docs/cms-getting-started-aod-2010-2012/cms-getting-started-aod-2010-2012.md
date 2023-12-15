@@ -42,7 +42,7 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 
 
 <details>
-<summary><h4>2011-2012</h4>h4></summary>
+<summary><h4>2011-2012</h4></summary>
 <br>
 
 <header>
