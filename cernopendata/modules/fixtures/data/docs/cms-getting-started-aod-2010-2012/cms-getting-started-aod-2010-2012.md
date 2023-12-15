@@ -10,7 +10,7 @@ The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in 
 <summary><h4>2010</h4></summary>
   
   <header>
-    <h2>Using virtual machine</h2>
+    <h3>Using virtual machine</h3>
   </header>
 
 <p>
