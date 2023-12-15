@@ -53,8 +53,13 @@ $ cmsenv # do not execute this command if you are working in the container
  
 <br>
 </details>
+
+
 ## <a name="data">"OK! What is in the CMS data?"</a>
 
+<details>
+<summary> 2015 </summary>
+ 
 The primary data provided by CMS on the CERN Open Data Portal is in a format called "[Analysis Object Data](/docs/cms-physics-objects-2015)" or AOD for short, and from 2015 onwards, in a slimmer format called MINIAOD. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The files cannot be opened and understood as simple data tables but require specific sofware in order to be read.
 
 So, let's see what a MINIAOD file looks like.
@@ -207,6 +212,174 @@ Begin processing the 9th record. Run 258434, Event 269845067, LumiSection 165 at
 electron with pt 23.0, eta -2.378, cluster eta -2.395, pass conversion veto 1
 Begin processing the 10th record. Run 258434, Event 268437313, LumiSection 165 at 09-Dec-2021 12:11:17.752 CET
 ```
+
+<br>
+</details>
+
+
+<details>
+<summary> 2016 </summary>
+
+The primary data provided by CMS on the CERN Open Data Portal is in a format called "[Analysis Object Data](/docs/cms-physics-objects-2016)" or AOD for short, and from 2016 onwards, in a slimmer format called MINIAOD. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The files cannot be opened and understood as simple data tables but require specific sofware in order to be read.
+
+So, let's see what a MINIAOD file looks like.
+
+Make sure that you are in the **CMSSW_10_6_30/src/** folder, and, in VM, you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+
+You can select a file from a dataset (a listing is available for each dataset record) and print out it contents with:
+
+(UPDATE FILE PATH)
+```shell
+$ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root
+```
+
+The ouput is a list of different objects that the file contains, such as
+
+```shell
+Type                                  Module                      Label             Process
+----------------------------------------------------------------------------------------------
+edm::TriggerResults                   "TriggerResults"            ""                "HLT"
+[...]
+vector<pat::Electron>                 "slimmedElectrons"          ""                "RECO"
+[...]
+```
+
+Documentation of these objects is available in [the CMS WorkBook 2016 MiniAOD page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2016#High_level_physics_objects). The objects are implemented as C++ classes in the CMS software package CMSSW, and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_10_6_30/doc/html/annotated.html). To see the properties of electrons, you would navigate to "pat" and find the entry for "Electron". The [pat::Electron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_10_6_30/doc/html/d2/d1f/classpat_1_1Electron.html) lists all member functions through which the different properties of reconstructed electron can be accessed. Note that many of the basic propertied are "inherited" from the parent classes, and are listed separately under "Public Member Functions inherited from ... ".
+
+These objects can be accessed in a software module which can be built with a helper script available in the CMS open data environment. If you are using the VM, this helper scripts does not work out of the box, so skip this part and go directly to [the next section](#nice). If you are using the CMS open data container, you can do the following:
+
+```shell
+$ mkdir Test
+$ cd Test
+$ mkedanlzr MiniAnalyzer
+$ cd MiniAnalyzer
+```
+
+This will create several template files in the new MiniAnalyzer directory. For more information, have a look in [the CMS open data guide](https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/).
+
+To access the physics object properties, add `<use name="DataFormats/PatCandidates"/>` in `plugins/BuildFile.xml`. Compile the code with:
+
+```shell
+$ scram b
+```
+
+To run over the example file, change the input file name `file:myfile.root` in `python/ConfFile_cfg.py` to `root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root` (UPDATE FILE PATH). Change the number of events from `-1` (runs over all events in the file) to `10` for testing. You can run this "empty" analyzer to see that the data are accessed properly:
+
+(PASTE NEW OUTPUTS)
+```shell
+$ cmsRun python/ConfFile_cfg.py
+09-Dec-2021 12:00:35 CET  Initiating request to open file root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root
+211209 12:00:35 722 secgsi_InitProxy: cannot access private key file: /home/cmsusr/.globus/userkey.pem
+%MSG-w XrdAdaptor:  file_open 09-Dec-2021 12:00:37 CET pre-events
+Data is served from cern.ch instead of original site eospublic
+%MSG
+09-Dec-2021 12:00:38 CET  Successfully opened file root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root
+Begin processing the 1st record. Run 258434, Event 269235992, LumiSection 165 at 09-Dec-2021 12:01:10.140 CET
+Begin processing the 2nd record. Run 258434, Event 269040066, LumiSection 165 at 09-Dec-2021 12:01:10.141 CET
+Begin processing the 3rd record. Run 258434, Event 269567329, LumiSection 165 at 09-Dec-2021 12:01:10.142 CET
+Begin processing the 4th record. Run 258434, Event 268674092, LumiSection 165 at 09-Dec-2021 12:01:10.143 CET
+Begin processing the 5th record. Run 258434, Event 269416541, LumiSection 165 at 09-Dec-2021 12:01:10.143 CET
+Begin processing the 6th record. Run 258434, Event 269251857, LumiSection 165 at 09-Dec-2021 12:01:10.143 CET
+Begin processing the 7th record. Run 258434, Event 268739237, LumiSection 165 at 09-Dec-2021 12:01:10.144 CET
+Begin processing the 8th record. Run 258434, Event 269456225, LumiSection 165 at 09-Dec-2021 12:01:10.144 CET
+Begin processing the 9th record. Run 258434, Event 269845067, LumiSection 165 at 09-Dec-2021 12:01:10.144 CET
+Begin processing the 10th record. Run 258434, Event 268437313, LumiSection 165 at 09-Dec-2021 12:01:10.145 CET
+09-Dec-2021 12:01:10 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 XrdAdaptor           -w file_open                              1        1
+    2 fileAction           -s file_close                             1        1
+    3 fileAction           -s file_open                              2        2
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 XrdAdaptor           pre-events
+    2 fileAction           PostEndRun
+    3 fileAction           pre-events       pre-events
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+Warning                 1                   1
+System                  3                   3
+```
+
+To access the physics object information in the code, for example that of electrons, add the following lines in `plugins/MiniAnalyzer.cc` (the lines before and after of the line to be added are also shown):
+
+```shell
+[...]
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
+#include "DataFormats/PatCandidates/interface/Electron.h" // add this line
+//
+[...]
+      // ----------member data ---------------------------
+      edm::EDGetTokenT<pat::ElectronCollection> electronToken_; // add this line
+};
+[...]
+MiniAnalyzer::MiniAnalyzer(const edm::ParameterSet& iConfig): // add the colon to the end of this line
+    electronToken_(consumes<pat::ElectronCollection>(iConfig.getParameter<edm::InputTag>("electrons"))) // add this line
+{
+[...]
+using namespace edm;
+   edm::Handle<pat::ElectronCollection> electrons; // add from this line
+    iEvent.getByToken(electronToken_, electrons);
+    for (const pat::Electron &el : *electrons) {
+        if (el.pt() < 5) continue;
+        printf("electron with pt %4.1f, eta %+5.3f, cluster eta %+5.3f, pass conversion veto %d\n",
+                    el.pt(), el.eta(), el.superCluster()->eta(), el.passConversionVeto());
+    }                                              // to this line
+
+#ifdef THIS_IS_AN_EVENT_EXAMPLE
+[...]
+```
+
+Replace the `process.demo` definition in `python/ConfFile_cfg.py` with the following:
+
+```shell
+process.demo = cms.EDAnalyzer("MiniAnalyzer",
+    electrons = cms.InputTag("slimmedElectrons")
+)
+```
+Compile and run again with:
+
+```shell
+$ scram b
+$ cmsRun python/ConfFile_cfg.py
+```
+
+and the output gives information on the electrons in these events:
+
+(PASTE NEW OUTPUTS)
+
+```shell
+Begin processing the 1st record. Run 258434, Event 269235992, LumiSection 165 at 09-Dec-2021 12:11:17.653 CET
+electron with pt 94.4, eta -1.959, cluster eta -1.969, pass conversion veto 1
+Begin processing the 2nd record. Run 258434, Event 269040066, LumiSection 165 at 09-Dec-2021 12:11:17.748 CET
+electron with pt 19.3, eta -0.215, cluster eta -0.236, pass conversion veto 1
+electron with pt 18.1, eta -2.271, cluster eta -2.296, pass conversion veto 1
+Begin processing the 3rd record. Run 258434, Event 269567329, LumiSection 165 at 09-Dec-2021 12:11:17.749 CET
+electron with pt 47.2, eta +0.530, cluster eta +0.548, pass conversion veto 1
+electron with pt 42.6, eta +0.362, cluster eta +0.377, pass conversion veto 1
+Begin processing the 4th record. Run 258434, Event 268674092, LumiSection 165 at 09-Dec-2021 12:11:17.750 CET
+electron with pt 23.3, eta +2.008, cluster eta +2.045, pass conversion veto 0
+Begin processing the 5th record. Run 258434, Event 269416541, LumiSection 165 at 09-Dec-2021 12:11:17.751 CET
+electron with pt 17.7, eta +2.101, cluster eta +2.081, pass conversion veto 1
+Begin processing the 6th record. Run 258434, Event 269251857, LumiSection 165 at 09-Dec-2021 12:11:17.751 CET
+Begin processing the 7th record. Run 258434, Event 268739237, LumiSection 165 at 09-Dec-2021 12:11:17.751 CET
+Begin processing the 8th record. Run 258434, Event 269456225, LumiSection 165 at 09-Dec-2021 12:11:17.752 CET
+electron with pt 23.2, eta +0.491, cluster eta +0.483, pass conversion veto 1
+Begin processing the 9th record. Run 258434, Event 269845067, LumiSection 165 at 09-Dec-2021 12:11:17.752 CET
+electron with pt 23.0, eta -2.378, cluster eta -2.395, pass conversion veto 1
+Begin processing the 10th record. Run 258434, Event 268437313, LumiSection 165 at 09-Dec-2021 12:11:17.752 CET
+```
+
+<br>
+</details>
+
 
 ## <a name="nice">"Nice! But how do I analyse these data?"</a>
 
