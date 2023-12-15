@@ -2,7 +2,7 @@
 2. ["OK! What is in the CMS data?"](#data)
 3. ["Nice! But how do I analyse these data?"](#nice)
 
-The CMS simulation and collsion data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyse CMS data in this format for each year.
+The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyse CMS data in this format for each year.
 
 ## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?" </a>
 
