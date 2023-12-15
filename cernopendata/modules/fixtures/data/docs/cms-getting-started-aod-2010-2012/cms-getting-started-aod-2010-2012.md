@@ -288,6 +288,7 @@ $ cmsRun demoanalyzer_cfg.py
 ```
 </p>
 
+<p>
 The output gives the energy of muons in these events:
 
 ```
@@ -332,20 +333,24 @@ The output gives the energy of muons in these events:
     Muon # 2 with E = 5.61441 GeV.
     19-Nov-2022 19:53:51 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
 ```
-     
+</p>
 </details>
 
 
 <details>
-<summary> 2011-2012 </summary>
-Make sure that you are in the **CMSSW_5_3_32/src/** folder (and, in VM, you have executed the `cmsenv` command in your terminal).
-
+<summary><h4>2011-2012</h4></summary>
+<p>
+Make sure that you are in the <b>CMSSW_5_3_32/src/</b> folder (and, in VM, you have executed the `cmsenv` command in your terminal).
+</p>
+<p>
 Select a dataset, for example, the [ElectronHad dataset](https://opendata.cern.ch/record/24404) from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2012A/ElectronHad/AOD/22Jan2013-v1/20000/FEE9E03A-F581-E211-8758-002618943901.root
 ```
+</p>
 
+<p>
 The ouput is a list of objects that the file contains, such as
 
 ```shell
@@ -359,9 +364,13 @@ The ouput is a list of objects that the file contains, such as
     vector<reco::Muon>                    "muons"                     ""                "RECO"
     [...]
 ```
+</p>
 
+<p>
 Documentation of the objects of main interest to physics analysis is available in [the CMS Open Data guide](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/). The objects are implemented as C++ classes in the CMS software package [CMSSW](https://github.com/cms-sw/cmssw), and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/annotated.html). To see the properties of electrons, you would navigate to the [namespace "reco"](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d1/d57/namespacereco.html) and find the entry for `GsfElectron`. The [reco::GsfElectron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html) lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. [electrons](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)).
+</p>
 
+<p>
 The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script available in the CMS open data environment. Do the following:
 
 ```shell
@@ -370,15 +379,21 @@ $ cd Demo
 $ mkedanlzr DemoAnalyzer
 $ cd DemoAnalyzer
 ```
+</p>
 
+<p>
 This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in [the CMS open data guide](https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/).
+</p>
 
+<p>
 Compile the code with:
 
 ```shell
 $ scram b
 ```
+</p>
 
+<p>
 You can ignore the message
 
 ```
@@ -387,16 +402,24 @@ You can ignore the message
 ```
 
 or take action and remove the indicated section from ```BuildFile.xml```.
+</p>
 
+<p>
 Change the file name in the configuration file ```demoanalyzer_cfg.py``` in the DemoAnalyzer directory. Take, for example, the [SingleMu dataset](/record/24460) from Run2012D i.e. replace ```file:myfile.root``` with ```root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root```.
+</p>
+<p>
 Change the max number of events to 10 (i.e change -1 to 10 in ```process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)```).
+</p>
 
+<p>
 Run the code with:
 
 ```shell
 $ cmsRun demoanalyzer_cfg.py
 ```
+</p>
 
+<p>
 You will get an output like:
 
 ```
@@ -435,7 +458,9 @@ You will get an output like:
     --------    -------------   -----------------
     System                  3                   3
 ```
+</p>
 
+<p>
 This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in `src/DemoAnalyzer.cc` (the lines before and after of the lines to be added are also shown):
 
 ```shell
@@ -478,7 +503,9 @@ This is a simple loop over the first 10 events in the file. To access the physic
 #ifdef THIS_IS_AN_EVENT_EXAMPLE
 [...]
 ```
+</p>
 
+<p>
 Modify the `BuildFile.xml` to include `DataFormats/MuonReco` dependencies so that it becomes:
 
 ```shell
@@ -488,14 +515,18 @@ Modify the `BuildFile.xml` to include `DataFormats/MuonReco` dependencies so tha
 <use name="FWCore/ParameterSet"/>
 <flags EDM_PLUGIN="1"/>
 ```
+</p>
 
+<p>
 Compile and run again with:
 
 ```shell
 $ scram b
 $ cmsRun demoanalyzer_cfg.py
 ```
+</p>
 
+<p>
 The output gives the energy of muons in these events:
 
 ```
@@ -540,33 +571,44 @@ The output gives the energy of muons in these events:
     Muon # 2 with E = 5.61441 GeV.
     19-Nov-2022 19:53:51 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
 ```
-
+</p>
 <br>
 </details>
 
 ## <a name="nice">"Nice! But how do I analyse these data?"</a>
 
+<p>
 In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
+</p>
 
-Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for [2011](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011) and [2012](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012) AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
+<p>
+Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="(https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011)">2011</a> and <a href="(https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012)">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
+</p>
 
 <br>
-
 <details>
-<summary> 2010 </summary>
+<summary><h4>2010</h4></summary>
 
+<p>
 Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow [these instructions in the CMSSW WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule). Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
+</p>
 
+<p>
 You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the `cmsRun` executable. You can see how this is done in our analysis example.
+</p>
 
-Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way (Option A) or run your analysis on a reduced dataset (Option B).
+<p>
+Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way [Option A](#2010a) or run your analysis on a reduced dataset (Option B).
+</p>
 
-**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
+<p>
+<strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
+</p>
 
 <details>
-<summary> Option A: Analysing the primary dataset </summary>
+<summary><a name="2010a">Option A: Analysing the primary dataset</a></summary>
 <br>
-As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/560).
+As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in <a href="(/record/560)">this CMS analysis example</a>.
 </details>
 
 <details>
