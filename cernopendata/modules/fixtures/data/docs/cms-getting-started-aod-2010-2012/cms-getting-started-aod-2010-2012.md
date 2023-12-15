@@ -598,7 +598,7 @@ You can also pass the selection criteria through the configuration file. This fi
 </p>
 
 <p>
-Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way <a href="2010a">[Option A]</a> or run your analysis on a reduced dataset (Option B).
+Depending on the nature of your analysis you *can* run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way (Option A) or run your analysis on a reduced dataset (Option B).
 </p>
 
 <p>
@@ -606,24 +606,33 @@ Depending on the nature of your analysis you *can* run your analysis code direct
 </p>
 
 <details>
-<summary><a name="2010a">Option A: Analysing the primary dataset</a></summary>
+<summary><h3>Option A: Analysing the primary dataset</h3></summary>
 <br>
 As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in <a href="(/record/560)">this CMS analysis example</a>.
 </details>
 
 <details>
-<summary> <a name="2010b">Option B: Analysing reduced datasets</a> </summary>
-        
-### Step1: Reduce the AOD files to PATtuples
-        
+<summary><h3>Option B: Analysing reduced datasets</h3></summary>
+
+<head>
+<h4>Step1: Reduce the AOD files to PATtuples</h4>
+</head>
+
+<p>
 We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the [CMSSW PAT WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT).
-        
-**Important**: Be aware that the instructions in the WorkBook are in use in CMS currently and have been updated for more recent CMSSW releases. With the 2010 data, you should always use the releases in the series of CMSSW_4_2 and not higher. Also note that more recent code does not work with older releases, so whenever you see `git cms-addpkg...` in the instruction, it is likely that the code package this command adds does not work with the release you need. However, the material under the pages gives you a good introduction to PAT.
-        
+</p>
+
+<strong>Important</strong>: Be aware that the instructions in the WorkBook are in use in CMS currently and have been updated for more recent CMSSW releases. With the 2010 data, you should always use the releases in the series of CMSSW_4_2 and not higher. Also note that more recent code does not work with older releases, so whenever you see `git cms-addpkg...` in the instruction, it is likely that the code package this command adds does not work with the release you need. However, the material under the pages gives you a good introduction to PAT.
+
+<p>
 Code as well as instructions for producing PATtuples from the CMS open data can be found in [this GitHub repo](https://github.com/ayrodrig/pattuples2010). However, since it took a dedicated computing cluster nine days (!!!) to run this step and reduce the several TB of AOD files to a few GB of PATtuples, we have provided you with the PATtuples in that GitHub repo, saving you quite a lot of time! So you can jump to the next step, below ("Performing your analysis…"). Although you do not need to run this step, it is worth looking at [the configuration file](https://github.com/ayrodrig/pattuples2010/blob/master/PAT_data_repo.py):
+</p>
 
+<p>
 You can see that the line `removeAllPATObjectsBut(process, ['Muons','Electrons'])` removes all "PATObjects" but muon and electrons, which will be needed in the final analysis step of this example.
+</p>
 
+<p>
 Note also how only the validated runs are selected on lines:
 
 ```python
@@ -633,16 +642,22 @@ myLumis = LumiList.LumiList(filename='Cert_136033-149442_7TeV_Apr21ReReco_Collis
 process.source.lumisToProcess = cms.untracked.VLuminosityBlockRange()
 process.source.lumisToProcess.extend(myLumis)
 ```
+</p>
 
+<p>
 This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
+</p>
 
+<p>
 When using the "CMS-OpenData-1.1.2" VM, it is recommended reading the condition data as instructed in the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). Set the symbolic links to the condition database for 2010 data
 
 ```
 ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
 ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db FT_R_42_V10A.db
 ```
+</p>
 
+<p>
 Then replace the Global Tag definition on lines 45–46 in the file `PAT_data_repo.py` with
 
 ```
@@ -650,51 +665,73 @@ Then replace the Global Tag definition on lines 45–46 in the file `PAT_data_re
 process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
 process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
 ```
+</p>
 
-### Step2: Perform your analysis on the PATtuples
+<head>
+<h4>Step2: Perform your analysis on the PATtuples</h4>
+</head>
 
+<p>
 Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in [this second GitHub repo](https://github.com/ayrodrig/OutreachExercise2010) and follow the instructions on that page.
+</p>
 
+<p>
 Note that even though these are derived datasets, running the analysis code over the full data can take several hours. So if you want just give it a try, you can limit the number events or read only part of the files. Bear in mind that running on a low number of files will not give you a meaningful plot.
+</p>
 
+<p>
 Your analysis job is defined in `OutreachExercise2010/DecaysToLeptons/run/run.py`. The analysis code is in the files located in the `OutreachExercise2010/DecaysToLeptons/python` directory.
+</p>
 
+<p>
 This example uses IPython, which gets configured and starts the job with the following command:
 
 ```python
 ipython run.py
 ```
+</p>
 
+<p>
 That's it! Follow the rest of the instructions on the README and you have performed an analysis using data from CMS. Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. To exit IPython, enter `exit()`.
+</p>
 <br>
 </details>
 </details>
 
 <details>
-<summary> 2011-2012 </summary>
+<summary><h4>2011-2012</h4>h4></summary>
 
 <details>
-<summary> <a name="a">Option A: Analysing primary datasets</a> </summary>
-<br>
-As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/5001).
+<summary><h3>Option A: Analysing primary datasets</h3> </summary>
+<p>
+As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in [this CMS analysis example](/record/5001).  
+</p>
 
-
-**NOTE**: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database).
-
+<p>
+<b>NOTE</b>: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database).
+</p>
 </details>
 
 <details>
-<summary> <a name="b">Option B: Analysing reduced datasets</a> </summary>
+<summary><h3>Option B: Analysing reduced datasets</h3></summary>
 
+<p>
 First of all, you will need to apply a filter for validated data. Then, you will want to apply some identification and selection criteria (e.g. whether the objects in your analysis are isolated from or close to other particles in the same collision).
+</p>
 
-For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012). You can use [ROOT](http://root.cern.ch) to inspect reconstructed particles and the distributions of their properties.
+<p>
+For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in <a href="(https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012)">this repository</a>. You can use <a href="(http://root.cern.ch)">ROOT</a> to inspect reconstructed particles and the distributions of their properties.
+</p>
 
-Start by getting the code and compiling it. Make sure that you are back in the **CMSSW_5_3_32/src/** folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with `cd ~/CMSSW_5_3_32/src`. In the container, keep using the normal container shell and go to the right folder with `cd $CMSSW_BASE/src`.
+<p>
+Start by getting the code and compiling it. Make sure that you are back in the <b>CMSSW_5_3_32/src/</b> folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with `cd ~/CMSSW_5_3_32/src`. In the container, keep using the normal container shell and go to the right folder with `cd $CMSSW_BASE/src`.
 
 ```shell
 $ git clone https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
 ```
+</p>
+
+<p>
 If you are using the VM, change now back to the "CMS shell" terminal. Get the 2012 "branch" of the repository and, always in the **CMSSW_5_3_32/src/** folder, compile the code with:
 
 ```
@@ -702,7 +739,9 @@ $ cd PhysObjectExtractorTool
 $ git checkout 2012
 $ scram b
 ```
+</p>
 
+<p>
 Note how only the validated runs are selected in the configuration file. The relevant lines are:
 
 ```python
@@ -717,23 +756,32 @@ Note how only the validated runs are selected in the configuration file. The rel
 	    	CfgTypes.VLuminosityBlockRange())
 	process.source.lumisToProcess.extend(myLumis)
 ```
+</p>
 
+<p>
 This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
+</p>
 
+<p>
 To produce a root file with selected objects, do the following:
 
 ```shell
 $ cd PhysObjectExtractor
 $ cmsRun python/poet_cfg.py
 ```
+</p>
 
+<p>
 The configuration file sets it to run over 1000 events in a simulated dataset.
+</p>
+
 
 If you are using the CMS open data container with the VNC application installed (see the [container guide page](/docs/cms-guide-docker#vnc)), for opening the graphical user interface, start the VNC application in the container by typing
 
 ```shell
 $ start_vnc
 ```
+
 
 and then start a VNC viewer on your local computer using the password `cms.cern`. The http option for a GUI in the browser is not guaranteed to work in the container with this CMSSW version.
 
