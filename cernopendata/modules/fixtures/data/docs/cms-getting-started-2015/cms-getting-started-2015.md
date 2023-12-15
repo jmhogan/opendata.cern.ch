@@ -383,6 +383,9 @@ Begin processing the 10th record. Run 258434, Event 268437313, LumiSection 165 a
 
 ## <a name="nice">"Nice! But how do I analyse these data?"</a>
 
+<details>
+<summary> 2015 </summary>
+ 
 We start off with a quick introduction to **[ROOT](http://root.cern.ch)**. ROOT is the framework used by several particle-physics experiments to work with the collected data. For a quick start on how to write the most common objects and their properties in a root file, use "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD). You can use ROOT to inspect reconstructed particles and the distributions of their properties.
 
 Start by getting the code and compiling it. Make sure that you are back in the the **CMSSW_7_6_7/src/** folder. If you are using the VM, do the next two commands in the "Outer shell" terminal. In the container, keep using the normal container shell.
@@ -464,3 +467,14 @@ process.source.lumisToProcess.extend(myLumis)
 This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
 
 That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/).
+
+<br>
+</details>
+
+<details>
+<summary> 2016 </summary>
+
+(POET DOES NOT HAVE 2016 BRANCH)
+
+<br>
+</details>
