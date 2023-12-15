@@ -89,22 +89,30 @@ Make sure that you are always in the <b>CMSSW_5_3_32/src/</b> directory, both in
 
 ## <a name="data"> "OK! What is in the CMS data?" </a>
 
+<p>
 The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="(/docs/cms-physics-objects-2010)">2010</a> and for <a href="(/docs/cms-physics-objects-2011)">2011</a>. The AOD files are not simple tables that you can click on and read right away. To read these files, you would need <a href="(http://root.cern.ch)">ROOT</a>, a framework used by several particle-physics experiments to work with the collected data.
+</p>
 
+<p>
 Let's first see what an AOD file contains.
+</p>
 
 <details>
 <summary><h4>2010<h4></summary>
-<br>
-        
-Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
 
+<p>
+Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+</p>
+
+<p>
 Select a dataset, for example, the <a href="(/record/24404)">Mu primary dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root
 ```
+</p>
 
+<p>
 The ouput is a list of objects that the file contains, such as
 ```shell
     Type                                  Module                      Label             Process
@@ -117,9 +125,13 @@ The ouput is a list of objects that the file contains, such as
     vector<reco::Muon>                    "muons"                     ""                "RECO"
     [...]
 ```
+</p>
 
-Documentation of the objects of main interest to physics analysis is available in [the CMS Open Data guide](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/). The objects are implemented as C++ classes in the CMS software package [CMSSW](https://github.com/cms-sw/cmssw), and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html). To see the properties of electrons, you would navigate to the [namespace "reco"](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html) and find the entry for `GsfElectron`. The [reco::GsfElectron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html) lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. [electrons](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)).
+<p>
+Documentation of the objects of main interest to physics analysis is available in <a href="(https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/)">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="(https://github.com/cms-sw/cmssw)">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="(https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html)">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="(https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html)">namespace "reco"</a> and find the entry for `GsfElectron`. The <a href="(https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html)">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="(https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)">electrons</a>).
+</p>
 
+<p>
 The objects contained in the AOD files can be accessed through a software module, which can be built with Event Data Analyzer (EDAnalyzer). EDAnalyzer is a helper script available in the CMS open data environment. Do the following:
 
 ```shell
@@ -128,15 +140,21 @@ $ cd Demo
 $ mkedanlzr DemoAnalyzer
 $ cd DemoAnalyzer
 ```
+</p>
 
-This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in [the CMS open data guide](https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/).
+<p>
+This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="(https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/)">the CMS open data guide</a>.
+</p>
 
+<p>
 Compile the code with:
 
 ```shell
 $ scram b
 ```
+</p>
 
+<p>
 You can ignore the message
 
 ```
@@ -145,16 +163,25 @@ You can ignore the message
 ```
 
 or take action and remove the indicated section from ```BuildFile.xml```.
+</p>
 
-Change the file name in the configuration file ```demoanalyzer_cfg.py``` in the DemoAnalyzer directory. Take, for example, the [Mu primary dataset](/record/14) from Run2010B i.e. replace ```file:myfile.root``` with ```root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root```.
+<p>
+Change the file name in the configuration file ```demoanalyzer_cfg.py``` in the DemoAnalyzer directory. Take, for example, the <a href="(/record/14)">Mu primary dataset</a> from Run2010B i.e. replace ```file:myfile.root``` with ```root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root```.
+</p>
+
+<p>
 Change the max number of events to 10 (i.e change -1 to 10 in ```process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)```).
+</p>
 
+<p>
 Run the code with:
 
 ```shell
 $ cmsRun demoanalyzer_cfg.py
 ```
+</p>
 
+<p>
 You will get an output like (UPDATE OUTPUT):
 
 ```
@@ -193,9 +220,11 @@ You will get an output like (UPDATE OUTPUT):
     --------    -------------   -----------------
     System                  3                   3
 ```
+</p>
 
+<p>
 This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in `src/DemoAnalyzer.cc` (the lines before and after of the lines to be added are also shown):
-
+        
 (UPDATE THE CODE)
 
 ```shell
@@ -248,13 +277,16 @@ Modify the `BuildFile.xml` to include `DataFormats/MuonReco` dependencies so tha
 <use name="FWCore/ParameterSet"/>
 <flags EDM_PLUGIN="1"/>
 ```
+</p>
 
+<p>
 Compile and run again with:
 
 ```shell
 $ scram b
 $ cmsRun demoanalyzer_cfg.py
 ```
+</p>
 
 The output gives the energy of muons in these events:
 
