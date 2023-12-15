@@ -44,11 +44,15 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 <details>
 <summary> 2011-2012 </summary>
 <br>
-        
-### Using Docker container
-    
-To analyse CMS data collected in 2011 and 2012, you need **version 5.3.32** of CMSSW, supported only on **Scientific Linux 6**. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](cernopendata/modules/fixtures/data/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine](/cernopendata/modules/fixtures/data/docs/cms-virtual-machine-2011), you need to open a terminal.
-    
+
+<header>
+  <h2>Using Docker container</h2>
+</header>
+
+<p>
+To analyse CMS data collected in 2011 and 2012, you need <b>version 5.3.32</b> of CMSSW, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](cernopendata/modules/fixtures/data/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine](/cernopendata/modules/fixtures/data/docs/cms-virtual-machine-2011), you need to open a terminal.
+</p>
+
 ### Using virtual machine
     
 If you are using the VM, always use the "CMS shell" terminal for all CMSSW-specific commands. It is available from the "CMS Shell" icon on the desktop. In the VM "CMS Shell", execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
