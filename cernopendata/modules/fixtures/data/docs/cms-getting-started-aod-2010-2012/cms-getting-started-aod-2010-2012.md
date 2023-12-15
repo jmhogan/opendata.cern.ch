@@ -19,14 +19,16 @@ To analyse CMS data collected in 2010, you need <b>version 4.2.8</b> of CMSSW, s
 ```shell
 $ cmsrel CMSSW_4_2_8
 ```
-<\p>
+</p>
 
+<p>
 Then, make sure that you are always in the <b>CMSSW_4_2_8/src/</b> directory and that the CMS analysis environment is properly setup by entering the following commands in the terminal (you must do so every time you boot the VM before you can proceed):
 
 ```shell
 $ cd CMSSW_4_2_8/src/
 $ cmsenv
 ```
+</p>
 
 ### Using Docker container
 
