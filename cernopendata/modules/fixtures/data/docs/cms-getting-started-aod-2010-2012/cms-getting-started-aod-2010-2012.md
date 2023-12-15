@@ -50,7 +50,7 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 </header>
 
 <p>
-To analyse CMS data collected in 2011 and 2012, you need <b>version 5.3.32</b> of CMSSW, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](cernopendata/modules/fixtures/data/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine](/cernopendata/modules/fixtures/data/docs/cms-virtual-machine-2011), you need to open a terminal.
+To analyse CMS data collected in 2011 and 2012, you need <b>version 5.3.32</b> of CMSSW, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="(https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux)">this short introduction to Linux</a> or <a href="(https://swcarpentry.github.io/shell-novice/)">tutorial</a>. Once you have installed the <a href=(cernopendata/modules/fixtures/data/docs/cms-guide-docker)">CMS open data container</a> or the <a href="(/cernopendata/modules/fixtures/data/docs/cms-virtual-machine-2011)">CMS-specific CERN Virtual Machine</a>, you need to open a terminal.
 </p>
 
 <header>
@@ -79,7 +79,7 @@ $ cmsenv # do not execute this command if you are working in the container
 </p>
 
 <p>
-Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in the CMS open data container</a> and in the VM (and in the "CMS Shell" terminal in VM).
+Make sure that you are always in the <b>CMSSW_5_3_32/src/</b> directory, both in the CMS open data container and in the VM (and in the "CMS Shell" terminal in VM).
 </p>
 
 <br>
@@ -89,7 +89,7 @@ Make sure that you are always in the **CMSSW_5_3_32/src/** directory, both in th
 
 ## <a name="data"> "OK! What is in the CMS data?" </a>
 
-The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for [2010](/docs/cms-physics-objects-2010) and for [2011](/docs/cms-physics-objects-2011). The AOD files are not simple tables that you can click on and read right away. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
+The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="(/docs/cms-physics-objects-2010)">2010</a> and for [2011](/docs/cms-physics-objects-2011). The AOD files are not simple tables that you can click on and read right away. To read these files, you would need [ROOT](http://root.cern.ch), a framework used by several particle-physics experiments to work with the collected data.
 
 Let's first see what an AOD file contains.
 
