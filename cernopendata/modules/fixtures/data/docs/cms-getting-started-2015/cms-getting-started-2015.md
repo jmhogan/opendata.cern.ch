@@ -4,6 +4,9 @@
 
 ## <a name="env">"I have installed the CMS open data environment: now what?"</a>
 
+<details>
+<summary> 2015 </summary>
+ 
 To analyse CMS data collected in 2015, you need **version 7.6.7** of CMSSW, supported on **Scientific Linux 6**. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or try this [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine (VM)](/docs/cms-virtual-machine-2015), you need to open a terminal.
 
 If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In VM, execute the following command in the terminal if you haven't done so before; it ensures that you have this version of CMSSW running:
@@ -22,7 +25,34 @@ In VM, the CMS analysis environment needs to be properly setup by entering the f
 $ cd CMSSW_7_6_7/src/
 $ cmsenv # do not execute this command if you are working in the container
 ```
+<br>
+</details>
 
+
+<details>
+<summary> 2016 </summary>
+
+To analyse CMS data collected in 2016, you need **version 10.6.30** of CMSSW, supported on **Scientific Linux 7**. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or try this [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine (VM)](/docs/cms-virtual-machine-2016), you need to open a terminal.
+
+If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In VM, execute the following command in the terminal if you haven't done so before; it ensures that you have this version of CMSSW running:
+
+```shell
+$ cmsrel CMSSW_10_6_30
+```
+
+Note that if you get a warning message about the current OS not being slc7, you are using a wrong terminal ("Outer Shell") which is CERN CentOS 7 (cc7) (HOW TO EDIT THIS?). Open a "CMS Shell" terminal as explained above and execute the cmsrel command there.
+
+Both in CMS open data container and in the VM, make sure that you are always in the **CMSSW_10_6_30/src/** directory (and in the "CMS Shell" terminal in VM).
+
+In VM, the CMS analysis environment needs to be properly setup by entering the following commands in the terminal (you must do so every time you boot the VM before you can proceed):
+
+```shell
+$ cd CMSSW_10_6_30/src/
+$ cmsenv # do not execute this command if you are working in the container
+```
+ 
+<br>
+</details>
 ## <a name="data">"OK! What is in the CMS data?"</a>
 
 The primary data provided by CMS on the CERN Open Data Portal is in a format called "[Analysis Object Data](/docs/cms-physics-objects-2015)" or AOD for short, and from 2015 onwards, in a slimmer format called MINIAOD. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The files cannot be opened and understood as simple data tables but require specific sofware in order to be read.
