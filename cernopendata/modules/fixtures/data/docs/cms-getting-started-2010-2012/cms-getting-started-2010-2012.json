@@ -12,14 +12,14 @@
         "primary": "education"
       },
       {
-        "year": "2011"
+        "year": "2010-2012"
       }
     ],
     "experiment": "CMS",
     "short_description": {
-      "content": "The CMS simulation and collsion data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyse CMS data in this format for each year."
+      "content": "The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyse CMS data in this format for each year."
     },
-    "slug": "cms-getting-started-2011",
+    "slug": "cms-getting-started-2010-2012",
     "tags": [
       "Getting Started"
     ],
