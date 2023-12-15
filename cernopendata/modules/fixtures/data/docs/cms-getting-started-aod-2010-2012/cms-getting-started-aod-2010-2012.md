@@ -11,15 +11,15 @@ The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in 
   
   <header>
     <h2>Using virtual machine</h2>
-        <p>
-            To analyse CMS data collected in 2010, you need <b>version 4.2.8</b> of CMSSW, supported only on <b>Scientific Linux 5</b>. If you are unfamiliar with Linux, take a look at <a href="[url](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux)">this short introduction to Linux </a> or try this interactive <a href="[url](http://rik.smith-unna.com/command_line_bootcamp/)"> command-line bootcamp <\a>. Once you have installed the <a href="[url](https://opendata.cern.ch/docs/cms-virtual-machine-2010)"> CMS-specific CERN Virtual Machine <\a>, you need to open a terminal. In the "CMS-OpenData-1.1.2" VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop (only if using the VM version "CMS-OpenData-1.0.0-rc7". Open a terminal with the X terminal emulator from an icon bottom-left of the VM screen). Execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
+  </header>
+
+<p>
+To analyse CMS data collected in 2010, you need <b>version 4.2.8</b> of CMSSW, supported only on <b>Scientific Linux 5</b>. If you   are unfamiliar with Linux, take a look at <a href="[url](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux)">this short introduction to Linux </a> or try this interactive <a href="[url](http://rik.smith-unna.com/command_line_bootcamp/)"> command-line bootcamp <\a>. Once you have installed the <a href="[url](https://opendata.cern.ch/docs/cms-virtual-machine-2010)"> CMS-specific CERN Virtual Machine <\a>, you need to open a terminal. In the "CMS-OpenData-1.1.2" VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop (only if using the VM version "CMS-OpenData-1.0.0-rc7". Open a terminal with the X terminal emulator from an icon bottom-left of the VM screen). Execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
 
 ```shell
 $ cmsrel CMSSW_4_2_8
-```    
-        <\p>
-  </header>
-  
+```
+<\p>
 
 Then, make sure that you are always in the <b>CMSSW_4_2_8/src/</b> directory and that the CMS analysis environment is properly setup by entering the following commands in the terminal (you must do so every time you boot the VM before you can proceed):
 
