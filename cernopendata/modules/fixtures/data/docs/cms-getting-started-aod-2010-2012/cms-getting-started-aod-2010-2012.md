@@ -89,17 +89,17 @@ Make sure that you are always in the <b>CMSSW_5_3_32/src/</b> directory, both in
 
 ## <a name="data"> "OK! What is in the CMS data?" </a>
 
-The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="(/docs/cms-physics-objects-2010)">2010</a> and for <a href="(/docs/cms-physics-objects-2011)2011</a>. The AOD files are not simple tables that you can click on and read right away. To read these files, you would need <a href="(http://root.cern.ch)">ROOT</a>, a framework used by several particle-physics experiments to work with the collected data.
+The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="(/docs/cms-physics-objects-2010)">2010</a> and for <a href="(/docs/cms-physics-objects-2011)">2011</a>. The AOD files are not simple tables that you can click on and read right away. To read these files, you would need <a href="(http://root.cern.ch)">ROOT</a>, a framework used by several particle-physics experiments to work with the collected data.
 
 Let's first see what an AOD file contains.
 
 <details>
-<summary> 2010 </summary>
+<summary><h4>2010<h4></summary>
 <br>
         
-Make sure that you are in the **CMSSW_4_2_8/src/** folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
 
-Select a dataset, for example, the [Mu primary dataset](/record/24404) from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
+Select a dataset, for example, the <a href="(/record/24404)">Mu primary dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root
