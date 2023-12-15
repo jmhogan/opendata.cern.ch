@@ -7,7 +7,7 @@ The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in 
 ## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?" </a>
 
 <details>
-<summary><h3>2010</h3></summary>
+<summary><h4>2010</h4></summary>
   
   <header>
     <h2>Using virtual machine</h2>
