@@ -7,7 +7,7 @@ The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in 
 ## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?" </a>
 
 <details>
-<summary> 2010 </summary>
+<summary><h2>2010</h2></summary>
   
   <header>
     <h2>Using virtual machine</h2>
@@ -30,10 +30,13 @@ $ cmsenv
 ```
 </p>
 
-### Using Docker container
+<header>
+  <h2>Using Docker container</h2>
+</header>
 
+<p>
 If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the [instruction](/cernopendata/modules/fixtures/data/docs/cms-guide-docker).
-
+</p>
 <br>
 </details>
 
