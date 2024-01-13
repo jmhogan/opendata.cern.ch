@@ -29,6 +29,7 @@ import json
 import pkg_resources
 from flask import (
     Blueprint,
+    Response,
     abort,
     current_app,
     escape,
@@ -37,10 +38,9 @@ from flask import (
     render_template,
     request,
     url_for,
-    Response,
 )
-from invenio_i18n import lazy_gettext as _
 from flask_breadcrumbs import default_breadcrumb_root
+from invenio_i18n import lazy_gettext as _
 from jinja2.exceptions import TemplateNotFound
 from speaklater import make_lazy_string
 
@@ -173,7 +173,7 @@ def record_redirect(recid):
 @blueprint.route("/glossary")
 def glossary():
     """Display glossary terms."""
-    return redirect("/search?type=Glossary&sort=title")
+    return redirect("/search?f=type%3AGlossary&sort=title")
 
 
 @blueprint.route("/glossary/json")
@@ -315,33 +315,33 @@ def redirect_old_urls(path, year=None):
     """Redirect old urls."""
     old_to_new_url_map = {
         "about": "docs/about",
-        "about/cms": "docs/about-cms",
-        "about/cms-pileup-simulation": "docs/cms-guide-pileup-simulation",
-        "about/cms-simulated-dataset-names": "docs/cms-simulated-dataset-names",
+        "about/cms": "../docs/about-cms",
+        "about/cms-pileup-simulation": "../docs/cms-guide-pileup-simulation",
+        "about/cms-simulated-dataset-names": "../docs/cms-simulated-dataset-names",
         "about/cms-physics-objects": "/docs/cms-physics-objects-{}".format(
             year or 2011
         ),
-        "about/lhcb": "docs/about-lhcb",
-        "about/atlas": "docs/about-atlas",
-        "about/alice": "docs/about-alice",
-        "about/opera": "docs/about-opera",
-        "alice/getstarted": "docs/alice-getting-started",
-        "cms/getstarted": "docs/cms-getting-started-{}".format(year or 2011),
+        "about/lhcb": "../docs/about-lhcb",
+        "about/atlas": "../docs/about-atlas",
+        "about/alice": "../docs/about-alice",
+        "about/opera": "../docs/about-opera",
+        "alice/getstarted": "../docs/alice-getting-started",
+        "cms/getstarted": "../docs/cms-getting-started-{}".format(year or 2011),
         "cms-physics-objects": "/docs/cms-physics-objects-{}".format(year or 2011),
-        "education/cms": "docs/about-cms",
-        "getstarted/cms": "docs/cms-getting-started-{}".format(year or 2011),
-        "getting-started/alice": "docs/alice-getting-started",
-        "getting-started/cms": "docs/cms-getting-started-{}".format(year or 2011),
-        "getting-started/lhcb": "docs/lhcb-getting-started",
-        "lhcb/getstarted": "docs/lhcb-getting-started",
+        "education/cms": "../docs/about-cms",
+        "getstarted/cms": "../docs/cms-getting-started-{}".format(year or 2011),
+        "getting-started/alice": "../docs/alice-getting-started",
+        "getting-started/cms": "../docs/cms-getting-started-{}".format(year or 2011),
+        "getting-started/lhcb": "../docs/lhcb-getting-started",
+        "lhcb/getstarted": "../docs/lhcb-getting-started",
         "privacy-policy": "docs/privacy-policy",
-        "research/cms": "docs/about-cms",
+        "research/cms": "../docs/about-cms",
         "terms-of-use": "docs/terms-of-use",
-        "vm/alice": "docs/alice-virtual-machine",
-        "vm/cms": "docs/cms-virtual-machine-{}".format(year or 2011),
-        "vm/lhcb": "docs/lhcb-virtual-machine",
-        "vm/validation/report": "docs/cms-vm-validation-2010",
-        "vm/cms/validation/report": "docs/cms-vm-validation-2010",
+        "vm/alice": "../docs/alice-virtual-machine",
+        "vm/cms": "../docs/cms-virtual-machine-{}".format(year or 2011),
+        "vm/lhcb": "../docs/lhcb-virtual-machine",
+        "vm/validation/report": "../../docs/cms-vm-validation-2010",
+        "vm/cms/validation/report": "../../../docs/cms-vm-validation-2010",
     }
 
     new_url = old_to_new_url_map.get(path) or abort(404)
