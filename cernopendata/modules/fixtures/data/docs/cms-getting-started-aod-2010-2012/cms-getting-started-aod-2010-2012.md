@@ -590,7 +590,7 @@ Physics Object Extractor Tool (POET) is an example code to extract the physics o
 <summary><h4>2010</h4></summary>
 
 <p>
-Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow [these instructions in the CMSSW WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule). Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
+Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow <a href="(https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule)">these instructions in the CMSSW WorkBook</a>. Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
 </p>
 
 <p>
