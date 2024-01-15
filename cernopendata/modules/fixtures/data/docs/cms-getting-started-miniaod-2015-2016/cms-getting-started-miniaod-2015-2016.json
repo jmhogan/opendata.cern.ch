@@ -1,7 +1,7 @@
 [
   {
     "body": {
-      "content": "cms-getting-started-2015.md",
+      "content": "cms-getting-started-2015-2016.md",
       "format": "md"
     },
     "collections": [
@@ -23,7 +23,7 @@
     "tags": [
       "Getting Started"
     ],
-    "title": "Getting Started with CMS MiniAOD Open Data 2015-2016",
+    "title": "Getting Started with CMS MiniAOD Open Data (2015-2016)",
     "type": {
       "primary": "Documentation",
       "secondary": [
