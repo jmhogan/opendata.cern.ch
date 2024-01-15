@@ -14,7 +14,7 @@ The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in 
   </header>
 
 <p>
-To analyse CMS data collected in 2010, you need <b>version 4.2.8</b> of CMSSW, supported only on <b>Scientific Linux 5</b>. If you are unfamiliar with Linux, take a look at <a href="[url](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux)">this short introduction to Linux </a> or try this interactive <a href="[url](http://rik.smith-unna.com/command_line_bootcamp/)"> command-line bootcamp </a>. Once you have installed the <a href="[url](https://opendata.cern.ch/docs/cms-virtual-machine-2010)"> CMS-specific CERN Virtual Machine </a>, you need to open a terminal. In the "CMS-OpenData-1.1.2" VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop (only if using the VM version "CMS-OpenData-1.0.0-rc7". Open a terminal with the X terminal emulator from an icon bottom-left of the VM screen). Execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
+To analyse CMS data collected in 2010, you need <b>version 4.2.8</b> of CMSSW, supported only on <b>Scientific Linux 5</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux </a> or try this interactive <a href="http://rik.smith-unna.com/command_line_bootcamp/"> command-line bootcamp </a>. Once you have installed the <a href="https://opendata.cern.ch/docs/cms-virtual-machine-2010"> CMS-specific CERN Virtual Machine </a>, you need to open a terminal. In the "CMS-OpenData-1.1.2" VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop (only if using the VM version "CMS-OpenData-1.0.0-rc7". Open a terminal with the X terminal emulator from an icon bottom-left of the VM screen). Execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
 
 ```shell
 $ cmsrel CMSSW_4_2_8
@@ -35,7 +35,7 @@ $ cmsenv
 </header>
 
 <p>
-If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the <a href="(/cernopendata/modules/fixtures/data/docs/cms-guide-docker)">instruction</a>.
+If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the <a href="/cernopendata/modules/fixtures/data/docs/cms-guide-docker">instruction</a>.
 </p>
 <br>
 </details>
@@ -50,7 +50,7 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 </header>
 
 <p>
-To analyse CMS data collected in 2011 and 2012, you need <b>version 5.3.32</b> of CMSSW, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="(https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux)">this short introduction to Linux</a> or <a href="(https://swcarpentry.github.io/shell-novice/)">tutorial</a>. Once you have installed the <a href=(cernopendata/modules/fixtures/data/docs/cms-guide-docker)">CMS open data container</a> or the <a href="(/cernopendata/modules/fixtures/data/docs/cms-virtual-machine-2011)">CMS-specific CERN Virtual Machine</a>, you need to open a terminal.
+To analyse CMS data collected in 2011 and 2012, you need <b>version 5.3.32</b> of CMSSW, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a> or <a href="https://swcarpentry.github.io/shell-novice/">tutorial</a>. Once you have installed the <a href="cernopendata/modules/fixtures/data/docs/cms-guide-docker">CMS open data container</a> or the <a href="/cernopendata/modules/fixtures/data/docs/cms-virtual-machine-2011">CMS-specific CERN Virtual Machine</a>, you need to open a terminal.
 </p>
 
 <header>
@@ -90,7 +90,7 @@ Make sure that you are always in the <b>CMSSW_5_3_32/src/</b> directory, both in
 ## <a name="data"> "OK! What is in the CMS data?" </a>
 
 <p>
-The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="(/docs/cms-physics-objects-2010)">2010</a> and for <a href="(/docs/cms-physics-objects-2011)">2011</a>. The AOD files are not simple tables that you can click on and read right away. To read these files, you would need <a href="(http://root.cern.ch)">ROOT</a>, a framework used by several particle-physics experiments to work with the collected data.
+The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="/docs/cms-physics-objects-2010">2010</a> and for <a href="/docs/cms-physics-objects-2011">2011</a>. The AOD files are not simple tables that you can click on and read right away. To read these files, you would need <a href="http://root.cern.ch">ROOT</a>, a framework used by several particle-physics experiments to work with the collected data.
 </p>
 
 <p>
@@ -105,7 +105,7 @@ Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Sh
 </p>
 
 <p>
-Select a dataset, for example, the <a href="(/record/24404)">Mu primary dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
+Select a dataset, for example, the <a href="/record/24404">Mu primary dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root
@@ -128,7 +128,7 @@ The ouput is a list of objects that the file contains, such as
 </p>
 
 <p>
-Documentation of the objects of main interest to physics analysis is available in <a href="(https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/)">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="(https://github.com/cms-sw/cmssw)">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="(https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html)">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="(https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html)">namespace "reco"</a> and find the entry for `GsfElectron`. The <a href="(https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html)">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="(https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)">electrons</a>).
+Documentation of the objects of main interest to physics analysis is available in <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="https://github.com/cms-sw/cmssw">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html">namespace "reco"</a> and find the entry for `GsfElectron`. The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/">electrons</a>).
 </p>
 
 <p>
@@ -143,7 +143,7 @@ $ cd DemoAnalyzer
 </p>
 
 <p>
-This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="(https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/)">the CMS open data guide</a>.
+This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
 </p>
 
 <p>
@@ -166,7 +166,7 @@ or take action and remove the indicated section from ```BuildFile.xml```.
 </p>
 
 <p>
-Change the file name in the configuration file ```demoanalyzer_cfg.py``` in the DemoAnalyzer directory. Take, for example, the <a href="(/record/14)">Mu primary dataset</a> from Run2010B i.e. replace ```file:myfile.root``` with ```root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root```.
+Change the file name in the configuration file ```demoanalyzer_cfg.py``` in the DemoAnalyzer directory. Take, for example, the <a href="/record/14">Mu primary dataset</a> from Run2010B i.e. replace ```file:myfile.root``` with ```root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root```.
 </p>
 
 <p>
@@ -343,7 +343,7 @@ The output gives the energy of muons in these events:
 Make sure that you are in the <b>CMSSW_5_3_32/src/</b> folder (and, in VM, you have executed the `cmsenv` command in your terminal).
 </p>
 <p>
-Select a dataset, for example, the [ElectronHad dataset](https://opendata.cern.ch/record/24404) from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
+Select a dataset, for example, the <a href="[/record/14](https://opendata.cern.ch/record/24404)">ElectronHad dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2012A/ElectronHad/AOD/22Jan2013-v1/20000/FEE9E03A-F581-E211-8758-002618943901.root
@@ -367,7 +367,7 @@ The ouput is a list of objects that the file contains, such as
 </p>
 
 <p>
-Documentation of the objects of main interest to physics analysis is available in [the CMS Open Data guide](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/). The objects are implemented as C++ classes in the CMS software package [CMSSW](https://github.com/cms-sw/cmssw), and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/annotated.html). To see the properties of electrons, you would navigate to the [namespace "reco"](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d1/d57/namespacereco.html) and find the entry for `GsfElectron`. The [reco::GsfElectron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html) lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. [electrons](https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/)).
+Documentation of the objects of main interest to physics analysis is available in <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="https://github.com/cms-sw/cmssw">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d1/d57/namespacereco.html">namespace "reco"</a> and find the entry for `GsfElectron`. The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/">electrons</a>).
 </p>
 
 <p>
@@ -382,7 +382,7 @@ $ cd DemoAnalyzer
 </p>
 
 <p>
-This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in [the CMS open data guide](https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/).
+This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
 </p>
 
 <p>
@@ -582,7 +582,7 @@ In AOD files, reconstructed physics objects are included without checking their 
 </p>
 
 <p>
-Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="(https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011)">2011</a> and <a href="(https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012)">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
+Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
 </p>
 
 <br>
@@ -590,7 +590,7 @@ Physics Object Extractor Tool (POET) is an example code to extract the physics o
 <summary><h4>2010</h4></summary>
 
 <p>
-Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow <a href="(https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule)">these instructions in the CMSSW WorkBook</a>. Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
+Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule">these instructions in the CMSSW WorkBook</a>. Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
 </p>
 
 <p>
@@ -608,7 +608,7 @@ Depending on the nature of your analysis you *can* run your analysis code direct
 <details>
 <summary><h3>Option A: Analysing the primary dataset</h3></summary>
 <br>
-As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in <a href="(/record/560)">this CMS analysis example</a>.
+As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in <a href="/record/560">this CMS analysis example</a>.
 </details>
 
 <details>
@@ -619,13 +619,13 @@ As mentioned above, you do not typically perform an analysis directly on the AOD
 </head>
 
 <p>
-We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the <a href="(https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT)">CMSSW PAT WorkBook</a>.
+We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT">CMSSW PAT WorkBook</a>.
 </p>
 
 <strong>Important</strong>: Be aware that the instructions in the WorkBook are in use in CMS currently and have been updated for more recent CMSSW releases. With the 2010 data, you should always use the releases in the series of CMSSW_4_2 and not higher. Also note that more recent code does not work with older releases, so whenever you see `git cms-addpkg...` in the instruction, it is likely that the code package this command adds does not work with the release you need. However, the material under the pages gives you a good introduction to PAT.
 
 <p>
-Code as well as instructions for producing PATtuples from the CMS open data can be found in <a href="(https://github.com/ayrodrig/pattuples2010)">this GitHub repo</a>. However, since it took a dedicated computing cluster nine days (!!!) to run this step and reduce the several TB of AOD files to a few GB of PATtuples, we have provided you with the PATtuples in that GitHub repo, saving you quite a lot of time! So you can jump to the next step, below ("Performing your analysis…"). Although you do not need to run this step, it is worth looking at <a href="(https://github.com/ayrodrig/pattuples2010/blob/master/PAT_data_repo.py)">the configuration file</a>:
+Code as well as instructions for producing PATtuples from the CMS open data can be found in <a href="https://github.com/ayrodrig/pattuples2010">this GitHub repo</a>. However, since it took a dedicated computing cluster nine days (!!!) to run this step and reduce the several TB of AOD files to a few GB of PATtuples, we have provided you with the PATtuples in that GitHub repo, saving you quite a lot of time! So you can jump to the next step, below ("Performing your analysis…"). Although you do not need to run this step, it is worth looking at <a href="https://github.com/ayrodrig/pattuples2010/blob/master/PAT_data_repo.py">the configuration file</a>:
 </p>
 
 <p>
@@ -672,7 +672,7 @@ process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
 </head>
 
 <p>
-Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in <a href="(https://github.com/ayrodrig/OutreachExercise2010)">this second GitHub repo</a> and follow the instructions on that page.
+Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in <a href="https://github.com/ayrodrig/OutreachExercise2010">this second GitHub repo</a> and follow the instructions on that page.
 </p>
 
 <p>
@@ -704,11 +704,11 @@ That's it! Follow the rest of the instructions on the README and you have perfor
 <details>
 <summary><h3>Option A: Analysing primary datasets</h3> </summary>
 <p>
-As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in <a href="(/record/5001)">this CMS analysis example</a>.  
+As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in <a href="/record/5001">this CMS analysis example</a>.  
 </p>
 
 <p>
-<b>NOTE</b>: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in <a href="(/docs/cms-guide-for-condition-database)">the guide to the CMS condition database</a>.
+<b>NOTE</b>: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in <a href="/docs/cms-guide-for-condition-database">the guide to the CMS condition database</a>.
 </p>
 </details>
 
@@ -720,7 +720,7 @@ First of all, you will need to apply a filter for validated data. Then, you will
 </p>
 
 <p>
-For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in <a href="(https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012)">this repository</a>. You can use <a href="(http://root.cern.ch)">ROOT</a> to inspect reconstructed particles and the distributions of their properties.
+For a quick start on how to do this and to write out the most common objects and their properties, use the "Physics Object Extractor Tool (POET)" available in <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">this repository</a>. You can use <a href="http://root.cern.ch">ROOT</a> to inspect reconstructed particles and the distributions of their properties.
 </p>
 
 <p>
@@ -776,7 +776,7 @@ The configuration file sets it to run over 1000 events in a simulated dataset.
 </p>
 
 
-If you are using the CMS open data container with the VNC application installed (see the <a href="(/docs/cms-guide-docker#vnc)">container guide page</a>), for opening the graphical user interface, start the VNC application in the container by typing
+If you are using the CMS open data container with the VNC application installed (see the <a href="/docs/cms-guide-docker#vnc">container guide page</a>), for opening the graphical user interface, start the VNC application in the container by typing
 
 ```shell
 $ start_vnc
@@ -811,7 +811,7 @@ Let us take a peek, for example, at the muons, which are found in `mymuons`. Loo
 
 You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
 
-That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="(https://cms-opendata-guide.web.cern.ch/)">the CMS Open data guide</a> and have a look at the other example analysis workflows such as the <a href="(/record/12340)">tool to produce reduced "NanoAOD" format for outreach and education</a> and the example analyses on its output implemented in python for the <a href="(/record/12342)">di-muon spectrum</a> or the <a href="(/record/12350)">Higgs boson decay to two tau leptons</a>, or the Higgs decay to four leptons implemented in <a href="(/record/5500)">C++</a> or using <a href="(/record/12360)">ROOT's RDataFrame</a>, or the <a href="(/record/22350)">di-muon spectrum analysis using Julia</a>.
+That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a> and have a look at the other example analysis workflows such as the <a href="/record/12340">tool to produce reduced "NanoAOD" format for outreach and education</a> and the example analyses on its output implemented in python for the <a href="/record/1234)">di-muon spectrum</a> or the <a href="/record/12350">Higgs boson decay to two tau leptons</a>, or the Higgs decay to four leptons implemented in <a href="/record/5500">C++</a> or using <a href="/record/12360">ROOT's RDataFrame</a>, or the <a href="/record/22350">di-muon spectrum analysis using Julia</a>.
 
 
 <br>
