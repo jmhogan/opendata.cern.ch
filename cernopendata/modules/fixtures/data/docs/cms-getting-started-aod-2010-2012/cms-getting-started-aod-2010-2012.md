@@ -699,7 +699,7 @@ That's it! Follow the rest of the instructions on the README and you have perfor
 </details>
 
 <details>
-<summary><h4>2011-2012</h4>h4></summary>
+<summary><h4>2011-2012</h4></summary>
 
 <details>
 <summary><h3>Option A: Analysing primary datasets</h3> </summary>
