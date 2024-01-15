@@ -797,7 +797,7 @@ You will see the ROOT logo appear on screen. You can now open the ROOT GUI by en
 TBrowser t
 ```
 
-and you will see the ROOT browser window:
+and you will see the ROOT browser window:<br>
 
 <img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_1.png" width="70%">
 
