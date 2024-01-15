@@ -14,7 +14,7 @@ The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in 
   </header>
 
 <p>
-To analyse CMS data collected in 2010, you need <b>version 4.2.8</b> of CMSSW, supported only on <b>Scientific Linux 5</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux </a> or try this interactive <a href="http://rik.smith-unna.com/command_line_bootcamp/"> command-line bootcamp </a>. Once you have installed the <a href="https://opendata.cern.ch/docs/cms-virtual-machine-2010"> CMS-specific CERN Virtual Machine </a>, you need to open a terminal. In the "CMS-OpenData-1.1.2" VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop (only if using the VM version "CMS-OpenData-1.0.0-rc7". Open a terminal with the X terminal emulator from an icon bottom-left of the VM screen). Execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
+To analyse CMS data collected in 2010, you need <b>version 4.2.8</b> of CMSSW, supported only on <b>Scientific Linux 5</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux </a> or try this interactive <a href="http://rik.smith-unna.com/command_line_bootcamp/"> command-line bootcamp </a>. Once you have installed the <a href="/docs/cms-virtual-machine-2010"> CMS-specific CERN Virtual Machine </a>, you need to open a terminal. In the "CMS-OpenData-1.1.2" VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop (only if using the VM version "CMS-OpenData-1.0.0-rc7". Open a terminal with the X terminal emulator from an icon bottom-left of the VM screen). Execute the following command in the terminal if you haven't done so yet. It ensures that you have this version of CMSSW running:
 
 ```shell
 $ cmsrel CMSSW_4_2_8
@@ -35,7 +35,7 @@ $ cmsenv
 </header>
 
 <p>
-If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the <a href="/cernopendata/modules/fixtures/data/docs/cms-guide-docker">instruction</a>.
+If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the <a href="/docs/cms-guide-docker">instruction</a>.
 </p>
 <br>
 </details>
@@ -50,7 +50,7 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 </header>
 
 <p>
-To analyse CMS data collected in 2011 and 2012, you need <b>version 5.3.32</b> of CMSSW, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a> or <a href="https://swcarpentry.github.io/shell-novice/">tutorial</a>. Once you have installed the <a href="cernopendata/modules/fixtures/data/docs/cms-guide-docker">CMS open data container</a> or the <a href="/cernopendata/modules/fixtures/data/docs/cms-virtual-machine-2011">CMS-specific CERN Virtual Machine</a>, you need to open a terminal.
+To analyse CMS data collected in 2011 and 2012, you need <b>version 5.3.32</b> of CMSSW, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a> or <a href="https://swcarpentry.github.io/shell-novice/">tutorial</a>. Once you have installed the <a href="/docs/cms-guide-docker">CMS open data container</a> or the <a href="/docs/cms-virtual-machine-2011">CMS-specific CERN Virtual Machine</a>, you need to open a terminal.
 </p>
 
 <header>
@@ -343,7 +343,7 @@ The output gives the energy of muons in these events:
 Make sure that you are in the <b>CMSSW_5_3_32/src/</b> folder (and, in VM, you have executed the `cmsenv` command in your terminal).
 </p>
 <p>
-Select a dataset, for example, the <a href="[/record/14](https://opendata.cern.ch/record/24404)">ElectronHad dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
+Select a dataset, for example, the <a href="/record/24404">ElectronHad dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
 
 ```shell
 $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2012A/ElectronHad/AOD/22Jan2013-v1/20000/FEE9E03A-F581-E211-8758-002618943901.root
@@ -602,7 +602,7 @@ Depending on the nature of your analysis you *can* run your analysis code direct
 </p>
 
 <p>
-<strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
+<strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
 </p>
 
 <details>
