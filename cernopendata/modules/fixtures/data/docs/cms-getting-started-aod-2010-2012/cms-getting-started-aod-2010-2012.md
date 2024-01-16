@@ -600,7 +600,7 @@ You can also pass the selection criteria through the configuration file. This fi
 </p>
 
 <p>
-Depending on the nature of your analysis you can run your analysis code directly on the AOD files themselves, if needed, performing the selections along the way (Option A) or run your analysis on a reduced dataset (Option B).
+Depending on the nature of your analysis you can either run your analysis code directly on the AOD files themselves and perform the selections along the way (Option A), or run your analysis on a reduced dataset (Option B).
 </p>
 
 <p>
