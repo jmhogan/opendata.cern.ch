@@ -101,7 +101,7 @@ Let's first see what an AOD file contains.
 <summary><h4>2010<h4></summary>
 
 <p>
-Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the <code>cmsenv</code> command in your terminal to launch the CMS analysis environment.
 </p>
 
 <p>
@@ -114,6 +114,7 @@ $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD
 
 <p>
 The ouput is a list of objects that the file contains, such as
+        
 ```shell
     Type                                  Module                      Label             Process
     ----------------------------------------------------------------------------------------------
@@ -128,7 +129,7 @@ The ouput is a list of objects that the file contains, such as
 </p>
 
 <p>
-Documentation of the objects of main interest to physics analysis is available in <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="https://github.com/cms-sw/cmssw">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html">namespace "reco"</a> and find the entry for `GsfElectron`. The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/">electrons</a>).
+Documentation of the objects of main interest to physics analysis is available in <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="https://github.com/cms-sw/cmssw">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html">namespace "reco"</a> and find the entry for <code>GsfElectron</code>. The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/">electrons</a>).
 </p>
 
 <p>
@@ -162,15 +163,15 @@ You can ignore the message
             Please cleanup src/Demo/DemoAnalyzer/BuildFile by removing the <export></export> section.
 ```
 
-or take action and remove the indicated section from ```BuildFile.xml```.
+or take action and remove the indicated section from <code>BuildFile.xml</code>.
 </p>
 
 <p>
-Change the file name in the configuration file ```demoanalyzer_cfg.py``` in the DemoAnalyzer directory. Take, for example, the <a href="/record/14">Mu primary dataset</a> from Run2010B i.e. replace ```file:myfile.root``` with ```root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root```.
+Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take, for example, the <a href="/record/14">Mu primary dataset</a> from Run2010B i.e. replace <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root</code>.
 </p>
 
 <p>
-Change the max number of events to 10 (i.e change -1 to 10 in ```process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)```).
+Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>).
 </p>
 
 <p>
@@ -223,7 +224,7 @@ You will get an output like (UPDATE OUTPUT):
 </p>
 
 <p>
-This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in `src/DemoAnalyzer.cc` (the lines before and after of the lines to be added are also shown):
+This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in <code>src/DemoAnalyzer.cc</code> (the lines before and after of the lines to be added are also shown):
         
 (UPDATE THE CODE)
 
@@ -405,10 +406,10 @@ or take action and remove the indicated section from ```BuildFile.xml```.
 </p>
 
 <p>
-Change the file name in the configuration file ```demoanalyzer_cfg.py``` in the DemoAnalyzer directory. Take, for example, the [SingleMu dataset](/record/24460) from Run2012D i.e. replace ```file:myfile.root``` with ```root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root```.
+Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take, for example, the [SingleMu dataset](/record/24460) from Run2012D i.e. replace <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>.
 </p>
 <p>
-Change the max number of events to 10 (i.e change -1 to 10 in ```process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)```).
+Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>).
 </p>
 
 <p>
@@ -461,7 +462,7 @@ You will get an output like:
 </p>
 
 <p>
-This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in `src/DemoAnalyzer.cc` (the lines before and after of the lines to be added are also shown):
+This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in <code>src/DemoAnalyzer.cc</code> (the lines before and after of the lines to be added are also shown):
 
 ```shell
 [...]
@@ -629,7 +630,7 @@ Code as well as instructions for producing PATtuples from the CMS open data can 
 </p>
 
 <p>
-You can see that the line `removeAllPATObjectsBut(process, ['Muons','Electrons'])` removes all "PATObjects" but muon and electrons, which will be needed in the final analysis step of this example.
+You can see that the line <code>removeAllPATObjectsBut(process, ['Muons','Electrons'])</code> removes all "PATObjects" but muon and electrons, which will be needed in the final analysis step of this example.
 </p>
 
 <p>
@@ -649,7 +650,7 @@ This selection must always be applied to any analysis on CMS open data, and to d
 </p>
 
 <p>
-When using the "CMS-OpenData-1.1.2" VM, it is recommended reading the condition data as instructed in the [Guide to the CMS condition database](/docs/cms-guide-for-condition-database). Set the symbolic links to the condition database for 2010 data
+When using the "CMS-OpenData-1.1.2" VM, it is recommended reading the condition data as instructed in the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. Set the symbolic links to the condition database for 2010 data
 
 ```
 ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
@@ -680,7 +681,7 @@ Note that even though these are derived datasets, running the analysis code over
 </p>
 
 <p>
-Your analysis job is defined in `OutreachExercise2010/DecaysToLeptons/run/run.py`. The analysis code is in the files located in the `OutreachExercise2010/DecaysToLeptons/python` directory.
+Your analysis job is defined in <code>OutreachExercise2010/DecaysToLeptons/run/run.py</code>. The analysis code is in the files located in the `OutreachExercise2010/DecaysToLeptons/python` directory.
 </p>
 
 <p>
@@ -692,7 +693,7 @@ ipython run.py
 </p>
 
 <p>
-That's it! Follow the rest of the instructions on the README and you have performed an analysis using data from CMS. Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. To exit IPython, enter `exit()`.
+That's it! Follow the rest of the instructions on the README and you have performed an analysis using data from CMS. Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. To exit IPython, enter <code>exit()</code>.
 </p>
 <br>
 </details>
@@ -708,7 +709,7 @@ As mentioned above, you do not typically perform an analysis directly on the AOD
 </p>
 
 <p>
-<b>NOTE</b>: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the `cvmfs` file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the `cmssw_5_3_32-slc6_amd64_gcc472` container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file `PhysObjectExtractor/python/poet_cfg.py`. See detailed instructions for the use of condition data for different data-taking years in <a href="/docs/cms-guide-for-condition-database">the guide to the CMS condition database</a>.
+<b>NOTE</b>: To analyse the full event content, the analysis job needs access to the "condition data", such as trigger information or jet-energy corrections. In the VM, the condition database is made available through the <code>cvmfs</code> file system, and in the container, the condition data can be read from predefined condition data servers. In both cases, reading the condition data for the first time can take very long. For the 2011 and 2012 collision and simulated data, a selection of condition databases is provided locally in the <code>cmssw_5_3_32-slc6_amd64_gcc472</code> container, and the access is much faster. Comment or uncomment the lines related to condition data depending of your environment following the instructions in the configuration file <code>PhysObjectExtractor/python/poet_cfg.py</code>. See detailed instructions for the use of condition data for different data-taking years in <a href="/docs/cms-guide-for-condition-database">the guide to the CMS condition database</a>.
 </p>
 </details>
 
@@ -724,7 +725,7 @@ For a quick start on how to do this and to write out the most common objects and
 </p>
 
 <p>
-Start by getting the code and compiling it. Make sure that you are back in the <b>CMSSW_5_3_32/src/</b> folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with `cd ~/CMSSW_5_3_32/src`. In the container, keep using the normal container shell and go to the right folder with `cd $CMSSW_BASE/src`.
+Start by getting the code and compiling it. Make sure that you are back in the <b>CMSSW_5_3_32/src/</b> folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with <code>cd ~/CMSSW_5_3_32/src</code>. In the container, keep using the normal container shell and go to the right folder with <code>cd $CMSSW_BASE/src</code>.
 
 ```shell
 $ git clone https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
@@ -783,7 +784,7 @@ $ start_vnc
 ```
 
 
-and then start a VNC viewer on your local computer using the password `cms.cern`. The http option for a GUI in the browser is not guaranteed to work in the container with this CMSSW version.
+and then start a VNC viewer on your local computer using the password <code>cms.cern</code>. The http option for a GUI in the browser is not guaranteed to work in the container with this CMSSW version.
 
 You can now open the POET output file in ROOT:
 
@@ -803,13 +804,13 @@ and you will see the ROOT browser window:<br>
 
 Now, let us take a closer look at some collections of physics objects.
 
-On the left window of ROOT, double-click on the file name (`myoutput.root`). You should see a list of names, each corresponding to a collection of reconstructed data.
+On the left window of ROOT, double-click on the file name (<code>myoutput.root</code>). You should see a list of names, each corresponding to a collection of reconstructed data.
 
-Let us take a peek, for example, at the muons, which are found in `mymuons`. Look in there by double-clicking on that line and then double-clicking on `Events`. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: `muon_pt`. Double-click on it to draw the distribution.
+Let us take a peek, for example, at the muons, which are found in <code>mymuons</code>. Look in there by double-clicking on that line and then double-clicking on <code>Events</code>. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: <code>muon_pt</code>. Double-click on it to draw the distribution.
 
 <img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%">
 
-You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
+You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on `Quit Root` or by entering <code>.q</code> in the terminal.
 
 That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a> and have a look at the other example analysis workflows such as the <a href="/record/12340">tool to produce reduced "NanoAOD" format for outreach and education</a> and the example analyses on its output implemented in python for the <a href="/record/1234)">di-muon spectrum</a> or the <a href="/record/12350">Higgs boson decay to two tau leptons</a>, or the Higgs decay to four leptons implemented in <a href="/record/5500">C++</a> or using <a href="/record/12360">ROOT's RDataFrame</a>, or the <a href="/record/22350">di-muon spectrum analysis using Julia</a>.
 
