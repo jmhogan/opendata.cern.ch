@@ -407,7 +407,7 @@ or take action and remove the indicated section from <code>BuildFile.xml</code>.
 </p>
 
 <p>
-Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take, for example, the [SingleMu dataset](/record/24460) from Run2012D i.e. replace <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>.
+Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take, for example, the <a href="/record/24460">SingleMu dataset</a> from Run2012D i.e. replace <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>.
 </p>
 <p>
 Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>).
