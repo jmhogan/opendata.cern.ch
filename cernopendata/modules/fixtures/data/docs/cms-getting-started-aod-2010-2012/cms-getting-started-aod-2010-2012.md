@@ -91,11 +91,10 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 ## <a name="data"> "OK! What is in the CMS data?" </a>
 
 <p>
-The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="/docs/cms-physics-objects-2010">2010</a> and for <a href="/docs/cms-physics-objects-2011">2011</a>. The AOD files are not simple tables that you can click on and read right away. To read these files, you would need <a href="http://root.cern.ch">ROOT</a>, a framework used by several particle-physics experiments to work with the collected data.
-</p>
+The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="/docs/cms-physics-objects-2010">2010</a> and for <a href="/docs/cms-physics-objects-2011">2011</a>. The AOD files contains physics objects (C++ classes) rather than numbers that you can click on and read. Follow the instructions below for a peak at these files.
 
 <p>
-Let's first see what an AOD file contains.
+Let's first see what physics objects are contained in an AOD file.
 </p>
 
 <details>
