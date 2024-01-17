@@ -201,6 +201,33 @@ $ mkedanlzr DemoAnalyzer
 $ cd DemoAnalyzer
 ```
 </p>
+
+<p>
+This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
+</p>
+
+<p>
+Compile the code with:
+
+```shell
+$ scram b
+```
+</p>
+
+<p>
+You can ignore the message
+
+```
+    ****WARNING: No need to export library once you have declared your library as plugin.
+            Please cleanup src/Demo/DemoAnalyzer/BuildFile by removing the <export></export> section.
+```
+
+or take action and remove the indicated section from <code>BuildFile.xml</code>.
+</p>
+
+<p>
+Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take the <a href="/record/14">Mu primary dataset</a> from Run2010B (<a href="/record/24460">SingleMu dataset</a> from Run2012D) as an example. Replace <code>file:myfile.root</code> with <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root</code (<code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>). 
+</p>
         
 </details>
 
