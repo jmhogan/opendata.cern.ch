@@ -93,12 +93,12 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 <p>
 The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="/docs/cms-physics-objects-2010">2010</a> and for <a href="/docs/cms-physics-objects-2011">2011</a>. The AOD files contains physics objects (C++ classes) rather than numbers that you can click on and read. Follow the instructions below for a peak at these files.
 
+<details>
+<summary><h4>2010<h4></summary>
+
 <p>
 Let's first see what physics objects are contained in an AOD file.
 </p>
-
-<details>
-<summary><h4>2010<h4></summary>
 
 <p>
 Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the <code>cmsenv</code> command in your terminal to launch the CMS analysis environment.
@@ -577,148 +577,95 @@ The output gives the energy of muons in these events:
 </details>
 
 ## <a name="nice">"Nice! But how do I analyse these data?"</a>
-
 <p>
-In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria. 
+        You can perform analysis on the AOD dataset directly or on a reduced dataset that is derived from the AOD data. Analyzing on the original AOD dataset can be computationally heavy. Usually, it is recommended to use the reduced dataset, unless you need some information that is only contained in AOD data. 
+</p>
+<p>
+        In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria.
+</p>
+<p>
+        Below we provide examples of how to perfom selection and analysis on both the primary AOD data and the reduced data. Two common formats of reduced data are NanoAODRun1 tuples and PAT tuples. Examples of producing both data formats are provided. Using NanoAODRun1 format is favored, because it is available on Open Data Portal, and the example code is more up-to-date. Non-expert users do not need to produce NanoAODRun1 by themselves.
 </p>
 
 <p>
-Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
+        Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
 </p>
 
 <br>
 <details>
-<summary><h4>2010</h4></summary>
+<summary><h4>Analysing the primary AOD dataset</h4></summary>
 
-<p>
-Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule">these instructions in the CMSSW WorkBook</a>. Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
-</p>
+        <details>
+        <summary><h3>2010</h3></summary>
+        <br>
+        <p>
+                As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. <a href="/record/560">This CMS analysis example</a> takes you through the steps of analyzing the AOD files directly.
+        </p>
+        <p>
+                Take a look at the scripts to see how the selections are applied and how the information are extracted for analysis.
+        </p>
+        <p>
+                Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule">these instructions in the CMSSW WorkBook</a>. Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
+        </p>
+        <p>
+                You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the <code>cmsRun</code> executable. You can see how this is done in our analysis example.
+        </p>
+        <p>
+                <strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
+        </p><br>
+        </details>
 
-<p>
-You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the <code>cmsRun</code> executable. You can see how this is done in our analysis example.
-</p>
-
-<p>
-Depending on the nature of your analysis you can either run your analysis code directly on the AOD files themselves and perform the selections along the way (Option A), or run your analysis on a reduced dataset (Option B). Option A is resource-intensive and is done only for very specific cases.
-</p>
-
-<p>
-<strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
-</p>
-
-<details>
-<summary><h3> Analysing the primary AOD dataset </h3></summary>
-<br>
-As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in <a href="/record/560">this CMS analysis example</a>.
 </details>
 
 <details>
 <summary><h3> Analysing reduced dataset </h3></summary>
+        <details>
+        <head>
+                <h4>Option A: Reduce the AOD files to NanoAODRun1 tuples</h4>
+        </head>
+                <p>
+                        The NanoAODRun1 format is a NanoAOD-like Ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software, and containing the per-event information that is needed in most generic analyses. It is a reduced dataset made available for convenient access and physics analysis. The goal is that about 50% of all publishable Open Data analyses done by external users can use this simplified NanoAODRun1 data format without compromise on the quality of the scientific result.
+                </p>
+                <p>
+                        Note that NanoAODRun1 dfata format should not be confused with a NanoAOD-like educational <a href="/record/12353">reduced NanoAOD format</a>, which is sometimes also plainly referred to as "NanoAOD" in the Open Data context. Tha latter is a partially compatible but much more reduced content, aiming to be used in specific educational/pedagogical exercises rather than in general full physics analysis.
+                </p> 
+                <p>
+                        NanoAODRun1 ntuples for relevant Open Data and MC sets are being/will be produced and made available by the DPOA group, so normal users should not need to deal with the ntuple production code except for reference purposes. The <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">code</a> that produces them from AOD is provided for reference, but not meant to be pedagogical and not intended to be used by non-expert users. Users interested in pedagogical code at AOD level are referred to the <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">POET</a> setup (for CMSSW_5_3_32 and 7_6_7 only).
+                </p>
+                <p>
+                        A list of variables in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
+                </p>
+                <p>
+                        Users who need information beyond the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">list</a> should directly use the AOD data, following the example provided in the previous section. 
+                </p>
+                <p>
+                        Let's take a look at how to perform analysis using the NanoAODRun1 tuples.
+                </p>
 
-<head>
-        <h4>Option A: Reduce the AOD files to NanoAODRun1 tuples</h4>
-</head>
-<p>
-        The NanoAODRun1 format is a NanoAOD-like Ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software, and containing the per-event information that is needed in most generic analyses. It is a reduced dataset made available for convenient access and physics analysis. The goal is that about 50% of all publishable Open Data analyses done by external users can use this simplified NanoAODRun1 data format without compromise on the quality of the scientific result.
-</p>
-<p>
-        Note that NanoAODRun1 dfata format should not be confused with a NanoAOD-like educational <a href="/record/12353">reduced NanoAOD format</a>, which is sometimes also plainly referred to as "NanoAOD" in the Open Data context. Tha latter is a partially compatible but much more reduced content, aiming to be used in specific educational/pedagogical exercises rather than in general full physics analysis.
-</p> 
-<p>
-        NanoAODRun1 ntuples for relevant Open Data and MC sets are being/will be produced and made available by the DPOA group, so normal users should not need to deal with the ntuple production code except for reference purposes. The <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">code</a> that produces them from AOD is provided for reference, but not meant to be pedagogical and not intended to be used by non-expert users. Users interested in pedagogical code at AOD level are referred to the <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">POET</a> setup (for CMSSW_5_3_32 and 7_6_7 only).
-</p>
-<p>
-        A list of variables contained in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
-</p>
-<p>
-        Users who need information beyond the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">list</a> should directly use the AOD data, following the example provided in the previous section. 
-</p>
-
-<p>
-</p>
-
-<head>
-        <h4>Option B: Reduce the AOD files to PAT tuples</h4>
-</head>
-
-<p>
-We start by applying selection cuts via the configuration file and reduce the AOD files into a format known as PATtuple. You can find more information about this data format (which gets its name from the CMS Physics Analysis Toolkit, or PAT) on the <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookPAT">CMSSW PAT WorkBook</a>.
-</p>
-
-<strong>Important</strong>: Be aware that the instructions in the WorkBook are in use in CMS currently and have been updated for more recent CMSSW releases. With the 2010 data, you should always use the releases in the series of CMSSW_4_2 and not higher. Also note that more recent code does not work with older releases, so whenever you see <code>git cms-addpkg...</code> in the instruction, it is likely that the code package this command adds does not work with the release you need. However, the material under the pages gives you a good introduction to PAT.
-
-<p>
-Code as well as instructions for producing PATtuples from the CMS open data can be found in <a href="https://github.com/ayrodrig/pattuples2010">this GitHub repo</a>. However, since it took a dedicated computing cluster nine days (!!!) to run this step and reduce the several TB of AOD files to a few GB of PATtuples, we have provided you with the PATtuples in that GitHub repo, saving you quite a lot of time! So you can jump to the next step, below ("Performing your analysis…"). Although you do not need to run this step, it is worth looking at <a href="https://github.com/ayrodrig/pattuples2010/blob/master/PAT_data_repo.py">the configuration file</a>:
-</p>
-
-<p>
-You can see that the line <code>removeAllPATObjectsBut(process, ['Muons','Electrons'])</code> removes all "PATObjects" but muon and electrons, which will be needed in the final analysis step of this example.
-</p>
-
-<p>
-Note also how only the validated runs are selected on lines:
-
-```python
-import FWCore.ParameterSet.Config as cms
-import PhysicsTools.PythonAnalysis.LumiList as LumiList
-myLumis = LumiList.LumiList(filename='Cert_136033-149442_7TeV_Apr21ReReco_Collisions10_JSON_v2.txt').getCMSSWString().split(',')
-process.source.lumisToProcess = cms.untracked.VLuminosityBlockRange()
-process.source.lumisToProcess.extend(myLumis)
-```
-</p>
-
-<p>
-This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
-</p>
-
-<p>
-When using the "CMS-OpenData-1.1.2" VM, it is recommended reading the condition data as instructed in the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. Set the symbolic links to the condition database for 2010 data
-
-```
-ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A FT_R_42_V10A
-ln -sf /cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db FT_R_42_V10A.db
-```
-</p>
-
-<p>
-Then replace the Global Tag definition on lines 45–46 in the file <code>PAT_data_repo.py</code> with
-
-```
-#globaltag
-process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.cern.ch/FT_R_42_V10A.db')
-process.GlobalTag.globaltag = 'FT_R_42_V10A::All'
-```
-</p>
-
-<head>
-<h4>Step2: Perform your analysis on the PATtuples</h4>
-</head>
-
-<p>
-Now, as the intermediate PATtuple files have been produced for you, you can go directly to the next step, as described in <a href="https://github.com/ayrodrig/OutreachExercise2010">this second GitHub repo</a> and follow the instructions on that page.
-</p>
-
-<p>
-Note that even though these are derived datasets, running the analysis code over the full data can take several hours. So if you want just give it a try, you can limit the number events or read only part of the files. Bear in mind that running on a low number of files will not give you a meaningful plot.
-</p>
-
-<p>
-Your analysis job is defined in <code>OutreachExercise2010/DecaysToLeptons/run/run.py</code>. The analysis code is in the files located in the <code>OutreachExercise2010/DecaysToLeptons/python</code> directory.
-</p>
-
-<p>
-This example uses IPython, which gets configured and starts the job with the following command:
-
-```python
-ipython run.py
-```
-</p>
-
-<p>
-That's it! Follow the rest of the instructions on the README and you have performed an analysis using data from CMS. Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. To exit IPython, enter <code>exit()</code>.
-</p>
-<br>
-</details>
+                <details>
+                        <h5>2010</h5>
+                <br>
+                </details>
+                <details>
+                        <h5>2011-2012</h5>
+                <br>
+                </details>
+        <br>
+        </details>
+        
+        <details>
+        <head>
+                <h4>Option B: Reduce the AOD files to PAT tuples</h4>
+                <details>
+                        <h5>2010</h5>
+                <br>
+                </details>
+                <details>
+                        <h5>2011-2012</h5>
+                <br>
+        </head>
+        <br>
+        </details>
 </details>
 
 <details>
@@ -835,8 +782,6 @@ Let us take a peek, for example, at the muons, which are found in <code>mymuons<
 You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
 
 That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a> and have a look at the other example analysis workflows such as the <a href="/record/12340">tool to produce reduced "NanoAOD" format for outreach and education</a> and the example analyses on its output implemented in python for the <a href="/record/1234)">di-muon spectrum</a> or the <a href="/record/12350">Higgs boson decay to two tau leptons</a>, or the Higgs decay to four leptons implemented in <a href="/record/5500">C++</a> or using <a href="/record/12360">ROOT's RDataFrame</a>, or the <a href="/record/22350">di-muon spectrum analysis using Julia</a>.
-
-
 <br>
 </details>
 </details>
