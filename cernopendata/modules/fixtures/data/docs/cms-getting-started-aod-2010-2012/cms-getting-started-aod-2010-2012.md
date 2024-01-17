@@ -188,7 +188,7 @@ Let's see what physics objects are contained in an AOD file.
         As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment. Here we provide a simple example on how to use EDAnalyzer. 
         </p>
         <p>
-        In [CMS environment](#vm), do the following:
+        In CMS environment (after running <code>cmsenv</code> in <a href="#vm">the first section</a>), do the following:
         
         ```shell
         $ mkdir Demo
