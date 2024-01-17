@@ -86,495 +86,85 @@ If you do not want to work on a virtual machine, you can try to to analyse CMS d
 <br>
 </details>
 
-
-
 ## <a name="data"> "OK! What is in the CMS data?" </a>
 
 <p>
-The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="/docs/cms-physics-objects-2010">2010</a> and for <a href="/docs/cms-physics-objects-2011">2011</a>. The AOD files contains physics objects (C++ classes) rather than numbers that you can click on and read. Follow the instructions below for a peak at these files.
+The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="/docs/cms-physics-objects-2010">2010</a> and for <a href="/docs/cms-physics-objects-2011">2011</a>. The AOD files contains physics objects (C++ classes) rather than numbers that you can click on and read.
+</p>
+
+<p>
+Let's see what physics objects are contained in an AOD file.
+</p>
 
 <details>
 <summary><h4>2010<h4></summary>
 
-<p>
-Let's first see what physics objects are contained in an AOD file.
-</p>
-
-<p>
-Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the <code>cmsenv</code> command in your terminal to launch the CMS analysis environment.
-</p>
-
-<p>
-Select a dataset, for example, the <a href="/record/24404">Mu primary dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
-
-```shell
-$ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root
-```
-</p>
-
-<p>
-The ouput is a list of objects that the file contains, such as
+        <p>
+        Make sure that you are in the <b>CMSSW_4_2_8/src/</b> folder (and in the "CMS Shell" terminal, if using the "CMS-OpenData-1.1.2" VM). Also make sure that you have executed the <code>cmsenv</code> command in your terminal to launch the CMS analysis environment.
+        </p>
         
-```shell
-    Type                                  Module                      Label             Process
-    ----------------------------------------------------------------------------------------------
-    edm::TriggerResults                   "TriggerResults"            ""                "HLT"
-    trigger::TriggerEvent                 "hltTriggerSummaryAOD"      ""                "HLT"
-    [...]
-    vector<reco::GsfElectron>             "gsfElectrons"              ""                "RECO"
-    [...]
-    vector<reco::Muon>                    "muons"                     ""                "RECO"
-    [...]
-```
-</p>
-
-<p>
-Documentation of the objects of main interest to physics analysis is available in <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="https://github.com/cms-sw/cmssw">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html">namespace "reco"</a> and find the entry for <code>GsfElectron</code>. The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/">electrons</a>).
-</p>
-
-<p>
-The objects contained in the AOD files can be accessed through a software module, which can be built with Event Data Analyzer (EDAnalyzer). EDAnalyzer is a helper script available in the CMS open data environment. Do the following:
-
-```shell
-$ mkdir Demo
-$ cd Demo
-$ mkedanlzr DemoAnalyzer
-$ cd DemoAnalyzer
-```
-</p>
-
-<p>
-This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
-</p>
-
-<p>
-Compile the code with:
-
-```shell
-$ scram b
-```
-</p>
-
-<p>
-You can ignore the message
-
-```
-    ****WARNING: No need to export library once you have declared your library as plugin.
-            Please cleanup src/Demo/DemoAnalyzer/BuildFile by removing the <export></export> section.
-```
-
-or take action and remove the indicated section from <code>BuildFile.xml</code>.
-</p>
-
-<p>
-Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take, for example, the <a href="/record/14">Mu primary dataset</a> from Run2010B i.e. replace <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root</code>.
-</p>
-
-<p>
-Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>).
-</p>
-
-<p>
-Run the code with:
-
-```shell
-$ cmsRun demoanalyzer_cfg.py
-```
-</p>
-
-<p>
-You will get an output like (UPDATE OUTPUT):
-
-```
-    221119 18:53:23 1032 Xrd: XrdClientConn: Error resolving this host's domain name.
-    221119 18:53:23 1032 secgsi_InitProxy: cannot access private key file: /home/cmsusr/.globus/userkey.pem
-    221119 18:53:23 1032 Xrd: CheckErrorStatus: Server [eospublic.cern.ch] declared: (error code: 3005)
-    19-Nov-2022 18:53:23 CET  Initiating request to open file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-    19-Nov-2022 18:53:26 CET  Successfully opened file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-    Begin processing the 1st record. Run 206401, Event 240060474, LumiSection 178 at 19-Nov-2022 18:54:37.199 CET
-    Begin processing the 2nd record. Run 206401, Event 240069594, LumiSection 178 at 19-Nov-2022 18:54:37.227 CET
-    Begin processing the 3rd record. Run 206401, Event 240049754, LumiSection 178 at 19-Nov-2022 18:54:37.228 CET
-    Begin processing the 4th record. Run 206401, Event 240115594, LumiSection 178 at 19-Nov-2022 18:54:37.228 CET
-    Begin processing the 5th record. Run 206401, Event 240154770, LumiSection 178 at 19-Nov-2022 18:54:37.229 CET
-    Begin processing the 6th record. Run 206401, Event 240103386, LumiSection 178 at 19-Nov-2022 18:54:37.229 CET
-    Begin processing the 7th record. Run 206401, Event 240173338, LumiSection 178 at 19-Nov-2022 18:54:37.230 CET
-    Begin processing the 8th record. Run 206401, Event 240127898, LumiSection 178 at 19-Nov-2022 18:54:37.230 CET
-    Begin processing the 9th record. Run 206401, Event 240103970, LumiSection 178 at 19-Nov-2022 18:54:37.231 CET
-    Begin processing the 10th record. Run 206401, Event 240129066, LumiSection 178 at 19-Nov-2022 18:54:37.231 CET
-    19-Nov-2022 18:54:37 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-
-    =============================================
-
-    MessageLogger Summary
-
-    type     category        sev    module        subroutine        count    total
-    ---- -------------------- -- ---------------- ----------------  -----    -----
-        1 fileAction           -s file_close                             1        1
-        2 fileAction           -s file_open                              2        2
-
-    type    category    Examples: run/evt        run/evt          run/evt
-    ---- -------------------- ---------------- ---------------- ----------------
-        1 fileAction           PostEndRun
-        2 fileAction           pre-events       pre-events
-
-    Severity    # Occurrences   Total Occurrences
-    --------    -------------   -----------------
-    System                  3                   3
-```
-</p>
-
-<p>
-This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in <code>src/DemoAnalyzer.cc</code> (the lines before and after of the lines to be added are also shown):
+        <p>
+        Select a dataset, for example, the <a href="/record/24404">Mu primary dataset</a> from Run2010B. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
         
-(UPDATE THE CODE)
-
-```shell
-[...]
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-
-//classes to extract Muon information
-#include "DataFormats/MuonReco/interface/Muon.h"
-#include "DataFormats/MuonReco/interface/MuonFwd.h"
-#include<vector>
-//
-// class declaration
-[...]
-
-      // ----------member data ---------------------------
-      std::vector<float> muon_e; //energy values for muons in the event
-};
-[...]
-   using namespace edm;
-
-    //clean the container
-    muon_e.clear();
-
-    //define the handler and get by label
-    Handle<reco::MuonCollection> mymuons;
-    iEvent.getByLabel("muons", mymuons);
-
-    //if collection is valid, loop over muons in event
-    if(mymuons.isValid()){
-        for (reco::MuonCollection::const_iterator itmuon=mymuons->begin(); itmuon!=mymuons->end(); ++itmuon){
-            muon_e.push_back(itmuon->energy());
-        }
-    }
-
-    //print the vector
-    for(unsigned int i=0; i < muon_e.size(); i++){
-        std::cout <<"Muon # "<<i<<" with E = "<<muon_e.at(i)<<" GeV."<<std::endl;
-    }
-
-#ifdef THIS_IS_AN_EVENT_EXAMPLE
-[...]
-```
-
-Modify the <code>BuildFile.xml</code> to include <code>DataFormats/MuonReco</code> dependencies so that it becomes:
-
-```shell
-<use name="FWCore/Framework"/>
-<use name="FWCore/PluginManager"/>
-<use name="DataFormats/MuonReco"/>
-<use name="FWCore/ParameterSet"/>
-<flags EDM_PLUGIN="1"/>
-```
-</p>
-
-<p>
-Compile and run again with:
-
-```shell
-$ scram b
-$ cmsRun demoanalyzer_cfg.py
-```
-</p>
-
-<p>
-The output gives the energy of muons in these events:
-
-```
-    19-Nov-2022 19:53:08 CET  Initiating request to open file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-    19-Nov-2022 19:53:10 CET  Successfully opened file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-    Begin processing the 1st record. Run 206401, Event 240060474, LumiSection 178 at 19-Nov-2022 19:53:50.971 CET
-    Muon # 0 with E = 31.2151 GeV.
-    Begin processing the 2nd record. Run 206401, Event 240069594, LumiSection 178 at 19-Nov-2022 19:53:51.000 CET
-    Muon # 0 with E = 62.6309 GeV.
-    Begin processing the 3rd record. Run 206401, Event 240049754, LumiSection 178 at 19-Nov-2022 19:53:51.001 CET
-    Muon # 0 with E = 71.6465 GeV.
-    Muon # 1 with E = 3.99535 GeV.
-    Begin processing the 4th record. Run 206401, Event 240115594, LumiSection 178 at 19-Nov-2022 19:53:51.001 CET
-    Muon # 0 with E = 137.55 GeV.
-    Muon # 1 with E = 2.70864 GeV.
-    Muon # 2 with E = 4.33524 GeV.
-    Begin processing the 5th record. Run 206401, Event 240154770, LumiSection 178 at 19-Nov-2022 19:53:51.002 CET
-    Muon # 0 with E = 87.9848 GeV.
-    Muon # 1 with E = 4.34456 GeV.
-    Begin processing the 6th record. Run 206401, Event 240103386, LumiSection 178 at 19-Nov-2022 19:53:51.002 CET
-    Muon # 0 with E = 30.2197 GeV.
-    Muon # 1 with E = 11.064 GeV.
-    Muon # 2 with E = 10.8193 GeV.
-    Begin processing the 7th record. Run 206401, Event 240173338, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
-    Muon # 0 with E = 6.84971 GeV.
-    Muon # 1 with E = 12.0909 GeV.
-    Muon # 2 with E = 3.20224 GeV.
-    Muon # 3 with E = 7.04104 GeV.
-    Muon # 4 with E = 7.90646 GeV.
-    Muon # 5 with E = 6.20379 GeV.
-    Begin processing the 8th record. Run 206401, Event 240127898, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
-    Muon # 0 with E = 42.8793 GeV.
-    Muon # 1 with E = 3.31122 GeV.
-    Muon # 2 with E = 3.85927 GeV.
-    Muon # 3 with E = 3.0424 GeV.
-    Begin processing the 9th record. Run 206401, Event 240103970, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
-    Muon # 0 with E = 55.7221 GeV.
-    Muon # 1 with E = 2.80195 GeV.
-    Begin processing the 10th record. Run 206401, Event 240129066, LumiSection 178 at 19-Nov-2022 19:53:51.004 CET
-    Muon # 0 with E = 33.7197 GeV.
-    Muon # 1 with E = 4.90223 GeV.
-    Muon # 2 with E = 5.61441 GeV.
-    19-Nov-2022 19:53:51 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-```
-</p>
+        ```shell
+        $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root
+        ```
+        </p>
+        
+        <p>
+        The ouput is a list of objects that the file contains, such as
+                
+        ```shell
+            Type                                  Module                      Label             Process
+            ----------------------------------------------------------------------------------------------
+            edm::TriggerResults                   "TriggerResults"            ""                "HLT"
+            trigger::TriggerEvent                 "hltTriggerSummaryAOD"      ""                "HLT"
+            [...]
+            vector<reco::GsfElectron>             "gsfElectrons"              ""                "RECO"
+            [...]
+            vector<reco::Muon>                    "muons"                     ""                "RECO"
+            [...]
+        ```
+        </p>
+        <p>
+        Documentation of the objects of main interest to physics analysis is available in <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="https://github.com/cms-sw/cmssw">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d1/d57/namespacereco.html">namespace "reco"</a> and find the entry for <code>GsfElectron</code>. The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_4_2_8/doc/html/d0/d6d/classreco_1_1GsfElectron.html">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/">electrons</a>).
+        </p><br>
 </details>
-
 
 <details>
 <summary><h4>2011-2012</h4></summary>
-<p>
-Make sure that you are in the <b>CMSSW_5_3_32/src/</b> folder (and, in VM, you have executed the <code>cmsenv</code> command in your terminal).
-</p>
-<p>
-Select a dataset, for example, the <a href="/record/24404">ElectronHad dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
-
-```shell
-$ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2012A/ElectronHad/AOD/22Jan2013-v1/20000/FEE9E03A-F581-E211-8758-002618943901.root
-```
-</p>
-
-<p>
-The ouput is a list of objects that the file contains, such as
-
-```shell
-    Type                                  Module                      Label             Process
-    ----------------------------------------------------------------------------------------------
-    edm::TriggerResults                   "TriggerResults"            ""                "HLT"
-    trigger::TriggerEvent                 "hltTriggerSummaryAOD"      ""                "HLT"
-    [...]
-    vector<reco::GsfElectron>             "gsfElectrons"              ""                "RECO"
-    [...]
-    vector<reco::Muon>                    "muons"                     ""                "RECO"
-    [...]
-```
-</p>
-
-<p>
-Documentation of the objects of main interest to physics analysis is available in <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="https://github.com/cms-sw/cmssw">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d1/d57/namespacereco.html">namespace "reco"</a> and find the entry for <code>GsfElectron</code>. The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/">electrons</a>).
-</p>
-
-<p>
-The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script available in the CMS open data environment. Do the following:
-
-```shell
-$ mkdir Demo
-$ cd Demo
-$ mkedanlzr DemoAnalyzer
-$ cd DemoAnalyzer
-```
-</p>
-
-<p>
-This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
-</p>
-
-<p>
-Compile the code with:
-
-```shell
-$ scram b
-```
-</p>
-
-<p>
-You can ignore the message
-
-```
-    ****WARNING: No need to export library once you have declared your library as plugin.
-            Please cleanup src/Demo/DemoAnalyzer/BuildFile by removing the <export></export> section.
-```
-
-or take action and remove the indicated section from <code>BuildFile.xml</code>.
-</p>
-
-<p>
-Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take, for example, the <a href="/record/24460">SingleMu dataset</a> from Run2012D i.e. replace <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>.
-</p>
-<p>
-Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>).
-</p>
-
-<p>
-Run the code with:
-
-```shell
-$ cmsRun demoanalyzer_cfg.py
-```
-</p>
-
-<p>
-You will get an output like:
-
-```
-    221119 18:53:23 1032 Xrd: XrdClientConn: Error resolving this host's domain name.
-    221119 18:53:23 1032 secgsi_InitProxy: cannot access private key file: /home/cmsusr/.globus/userkey.pem
-    221119 18:53:23 1032 Xrd: CheckErrorStatus: Server [eospublic.cern.ch] declared: (error code: 3005)
-    19-Nov-2022 18:53:23 CET  Initiating request to open file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-    19-Nov-2022 18:53:26 CET  Successfully opened file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-    Begin processing the 1st record. Run 206401, Event 240060474, LumiSection 178 at 19-Nov-2022 18:54:37.199 CET
-    Begin processing the 2nd record. Run 206401, Event 240069594, LumiSection 178 at 19-Nov-2022 18:54:37.227 CET
-    Begin processing the 3rd record. Run 206401, Event 240049754, LumiSection 178 at 19-Nov-2022 18:54:37.228 CET
-    Begin processing the 4th record. Run 206401, Event 240115594, LumiSection 178 at 19-Nov-2022 18:54:37.228 CET
-    Begin processing the 5th record. Run 206401, Event 240154770, LumiSection 178 at 19-Nov-2022 18:54:37.229 CET
-    Begin processing the 6th record. Run 206401, Event 240103386, LumiSection 178 at 19-Nov-2022 18:54:37.229 CET
-    Begin processing the 7th record. Run 206401, Event 240173338, LumiSection 178 at 19-Nov-2022 18:54:37.230 CET
-    Begin processing the 8th record. Run 206401, Event 240127898, LumiSection 178 at 19-Nov-2022 18:54:37.230 CET
-    Begin processing the 9th record. Run 206401, Event 240103970, LumiSection 178 at 19-Nov-2022 18:54:37.231 CET
-    Begin processing the 10th record. Run 206401, Event 240129066, LumiSection 178 at 19-Nov-2022 18:54:37.231 CET
-    19-Nov-2022 18:54:37 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-
-    =============================================
-
-    MessageLogger Summary
-
-    type     category        sev    module        subroutine        count    total
-    ---- -------------------- -- ---------------- ----------------  -----    -----
-        1 fileAction           -s file_close                             1        1
-        2 fileAction           -s file_open                              2        2
-
-    type    category    Examples: run/evt        run/evt          run/evt
-    ---- -------------------- ---------------- ---------------- ----------------
-        1 fileAction           PostEndRun
-        2 fileAction           pre-events       pre-events
-
-    Severity    # Occurrences   Total Occurrences
-    --------    -------------   -----------------
-    System                  3                   3
-```
-</p>
-
-<p>
-This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in <code>src/DemoAnalyzer.cc</code> (the lines before and after of the lines to be added are also shown):
-
-```shell
-[...]
-#include "FWCore/ParameterSet/interface/ParameterSet.h"
-
-//classes to extract Muon information
-#include "DataFormats/MuonReco/interface/Muon.h"
-#include "DataFormats/MuonReco/interface/MuonFwd.h"
-#include<vector>
-//
-// class declaration
-[...]
-
-      // ----------member data ---------------------------
-      std::vector<float> muon_e; //energy values for muons in the event
-};
-[...]
-   using namespace edm;
-
-    //clean the container
-    muon_e.clear();
-
-    //define the handler and get by label
-    Handle<reco::MuonCollection> mymuons;
-    iEvent.getByLabel("muons", mymuons);
-
-    //if collection is valid, loop over muons in event
-    if(mymuons.isValid()){
-        for (reco::MuonCollection::const_iterator itmuon=mymuons->begin(); itmuon!=mymuons->end(); ++itmuon){
-            muon_e.push_back(itmuon->energy());
-        }
-    }
-
-    //print the vector
-    for(unsigned int i=0; i < muon_e.size(); i++){
-        std::cout <<"Muon # "<<i<<" with E = "<<muon_e.at(i)<<" GeV."<<std::endl;
-    }
-
-#ifdef THIS_IS_AN_EVENT_EXAMPLE
-[...]
-```
-</p>
-
-<p>
-Modify the <code>BuildFile.xml</code> to include <code>DataFormats/MuonReco</code> dependencies so that it becomes:
-
-```shell
-<use name="FWCore/Framework"/>
-<use name="FWCore/PluginManager"/>
-<use name="DataFormats/MuonReco"/>
-<use name="FWCore/ParameterSet"/>
-<flags EDM_PLUGIN="1"/>
-```
-</p>
-
-<p>
-Compile and run again with:
-
-```shell
-$ scram b
-$ cmsRun demoanalyzer_cfg.py
-```
-</p>
-
-<p>
-The output gives the energy of muons in these events:
-
-```
-    19-Nov-2022 19:53:08 CET  Initiating request to open file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-    19-Nov-2022 19:53:10 CET  Successfully opened file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-    Begin processing the 1st record. Run 206401, Event 240060474, LumiSection 178 at 19-Nov-2022 19:53:50.971 CET
-    Muon # 0 with E = 31.2151 GeV.
-    Begin processing the 2nd record. Run 206401, Event 240069594, LumiSection 178 at 19-Nov-2022 19:53:51.000 CET
-    Muon # 0 with E = 62.6309 GeV.
-    Begin processing the 3rd record. Run 206401, Event 240049754, LumiSection 178 at 19-Nov-2022 19:53:51.001 CET
-    Muon # 0 with E = 71.6465 GeV.
-    Muon # 1 with E = 3.99535 GeV.
-    Begin processing the 4th record. Run 206401, Event 240115594, LumiSection 178 at 19-Nov-2022 19:53:51.001 CET
-    Muon # 0 with E = 137.55 GeV.
-    Muon # 1 with E = 2.70864 GeV.
-    Muon # 2 with E = 4.33524 GeV.
-    Begin processing the 5th record. Run 206401, Event 240154770, LumiSection 178 at 19-Nov-2022 19:53:51.002 CET
-    Muon # 0 with E = 87.9848 GeV.
-    Muon # 1 with E = 4.34456 GeV.
-    Begin processing the 6th record. Run 206401, Event 240103386, LumiSection 178 at 19-Nov-2022 19:53:51.002 CET
-    Muon # 0 with E = 30.2197 GeV.
-    Muon # 1 with E = 11.064 GeV.
-    Muon # 2 with E = 10.8193 GeV.
-    Begin processing the 7th record. Run 206401, Event 240173338, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
-    Muon # 0 with E = 6.84971 GeV.
-    Muon # 1 with E = 12.0909 GeV.
-    Muon # 2 with E = 3.20224 GeV.
-    Muon # 3 with E = 7.04104 GeV.
-    Muon # 4 with E = 7.90646 GeV.
-    Muon # 5 with E = 6.20379 GeV.
-    Begin processing the 8th record. Run 206401, Event 240127898, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
-    Muon # 0 with E = 42.8793 GeV.
-    Muon # 1 with E = 3.31122 GeV.
-    Muon # 2 with E = 3.85927 GeV.
-    Muon # 3 with E = 3.0424 GeV.
-    Begin processing the 9th record. Run 206401, Event 240103970, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
-    Muon # 0 with E = 55.7221 GeV.
-    Muon # 1 with E = 2.80195 GeV.
-    Begin processing the 10th record. Run 206401, Event 240129066, LumiSection 178 at 19-Nov-2022 19:53:51.004 CET
-    Muon # 0 with E = 33.7197 GeV.
-    Muon # 1 with E = 4.90223 GeV.
-    Muon # 2 with E = 5.61441 GeV.
-    19-Nov-2022 19:53:51 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
-```
-</p>
-<br>
+        <p>
+        Make sure that you are in the <b>CMSSW_5_3_32/src/</b> folder (and, in VM, you have executed the <code>cmsenv</code> command in your terminal).
+        </p>
+        <p>
+        Select a dataset, for example, the <a href="/record/24404">ElectronHad dataset</a> from Run2012A. Click the "Download" tab at the bottom of the page to see a list of files contained in this dataset. You can select a file from the list and print out its contents with:
+        
+        ```shell
+        $ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2012A/ElectronHad/AOD/22Jan2013-v1/20000/FEE9E03A-F581-E211-8758-002618943901.root
+        ```
+        </p>
+        
+        <p>
+        The ouput is a list of objects that the file contains, such as
+        
+        ```shell
+            Type                                  Module                      Label             Process
+            ----------------------------------------------------------------------------------------------
+            edm::TriggerResults                   "TriggerResults"            ""                "HLT"
+            trigger::TriggerEvent                 "hltTriggerSummaryAOD"      ""                "HLT"
+            [...]
+            vector<reco::GsfElectron>             "gsfElectrons"              ""                "RECO"
+            [...]
+            vector<reco::Muon>                    "muons"                     ""                "RECO"
+            [...]
+        ```
+        </p>
+        
+        <p>
+        Documentation of the objects of main interest to physics analysis is available in <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/objects/">the CMS Open Data guide</a>. The objects are implemented as C++ classes in the CMS software package <a href="https://github.com/cms-sw/cmssw">CMSSW</a>, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to the <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d1/d57/namespacereco.html">namespace "reco"</a> and find the entry for <code>GsfElectron</code>. The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_5_3_30/doc/html/d0/d6d/classreco_1_1GsfElectron.html">reco::GsfElectron Class Reference</a> lists all member functions through which the different properties of a reconstructed electron can be accessed. Note that many of the basic properties are "inherited" from the parent classes and are listed separately under "Public Member Functions inherited from ... ". You can find more information about each object in the CMS Open Data guide (e.g. <a href="https://cms-opendata-guide.web.cern.ch/analysis/selection/objects/electrons/">electrons</a>).
+        </p><br>
 </details>
+
 
 ## <a name="nice">"Nice! But how do I analyse these data?"</a>
 <p>
@@ -593,26 +183,224 @@ The output gives the energy of muons in these events:
 
 <br>
 <details>
-<summary><h4>Analysing the primary AOD dataset</h4></summary>
+<summary><h3>Analysing the primary AOD dataset using EDAnalyzer</h4></summary>
+        <p>
+        As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment. Here we provide a simple example on how to use EDAnalyzer. 
+        </p>
+        <p>
+        In [CMS environment](#vm), do the following:
+        
+        ```shell
+        $ mkdir Demo
+        $ cd Demo
+        $ mkedanlzr DemoAnalyzer
+        $ cd DemoAnalyzer
+        ```
+        </p>
+        <p>
+        This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
+        </p>
+        <p>
+        Compile the code with:
+        
+        ```shell
+        $ scram b
+        ```
+        </p>
+        <p>
+        You can ignore the message
+        
+        ```
+            ****WARNING: No need to export library once you have declared your library as plugin.
+                    Please cleanup src/Demo/DemoAnalyzer/BuildFile by removing the <export></export> section.
+        ```
+        
+        or take action and remove the indicated section from <code>BuildFile.xml</code>.
+        </p>
+        <p>
+        Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take the <a href="/record/14">Mu primary dataset</a> from Run2010B (<a href="/record/24460">SingleMu dataset</a> from Run2012D) as an example. Replace <code>file:myfile.root</code> with <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root</code (<code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>). 
+        </p>
+        <p>
+        Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>).
+        </p>
+        <p>
+        Run the code with:
+        
+        ```shell
+        $ cmsRun demoanalyzer_cfg.py
+        ```
+        </p>
+        
+        <p>
+        You will get an output like:
+        
+        ```
+            221119 18:53:23 1032 Xrd: XrdClientConn: Error resolving this host's domain name.
+            221119 18:53:23 1032 secgsi_InitProxy: cannot access private key file: /home/cmsusr/.globus/userkey.pem
+            221119 18:53:23 1032 Xrd: CheckErrorStatus: Server [eospublic.cern.ch] declared: (error code: 3005)
+            19-Nov-2022 18:53:23 CET  Initiating request to open file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
+            19-Nov-2022 18:53:26 CET  Successfully opened file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
+            Begin processing the 1st record. Run 206401, Event 240060474, LumiSection 178 at 19-Nov-2022 18:54:37.199 CET
+            Begin processing the 2nd record. Run 206401, Event 240069594, LumiSection 178 at 19-Nov-2022 18:54:37.227 CET
+            Begin processing the 3rd record. Run 206401, Event 240049754, LumiSection 178 at 19-Nov-2022 18:54:37.228 CET
+            Begin processing the 4th record. Run 206401, Event 240115594, LumiSection 178 at 19-Nov-2022 18:54:37.228 CET
+            Begin processing the 5th record. Run 206401, Event 240154770, LumiSection 178 at 19-Nov-2022 18:54:37.229 CET
+            Begin processing the 6th record. Run 206401, Event 240103386, LumiSection 178 at 19-Nov-2022 18:54:37.229 CET
+            Begin processing the 7th record. Run 206401, Event 240173338, LumiSection 178 at 19-Nov-2022 18:54:37.230 CET
+            Begin processing the 8th record. Run 206401, Event 240127898, LumiSection 178 at 19-Nov-2022 18:54:37.230 CET
+            Begin processing the 9th record. Run 206401, Event 240103970, LumiSection 178 at 19-Nov-2022 18:54:37.231 CET
+            Begin processing the 10th record. Run 206401, Event 240129066, LumiSection 178 at 19-Nov-2022 18:54:37.231 CET
+            19-Nov-2022 18:54:37 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
+        
+            =============================================
+        
+            MessageLogger Summary
+        
+            type     category        sev    module        subroutine        count    total
+            ---- -------------------- -- ---------------- ----------------  -----    -----
+                1 fileAction           -s file_close                             1        1
+                2 fileAction           -s file_open                              2        2
+        
+            type    category    Examples: run/evt        run/evt          run/evt
+            ---- -------------------- ---------------- ---------------- ----------------
+                1 fileAction           PostEndRun
+                2 fileAction           pre-events       pre-events
+        
+            Severity    # Occurrences   Total Occurrences
+            --------    -------------   -----------------
+            System                  3                   3
+        ```
+        </p>
+        
+        <p>
+        This is a simple loop over the first 10 events in the file. To access the physics object information, for example, of muons, add the following lines in <code>src/DemoAnalyzer.cc</code> (the lines before and after of the lines to be added are also shown):
+        
+        ```shell
+        [...]
+        #include "FWCore/ParameterSet/interface/ParameterSet.h"
+        
+        //classes to extract Muon information
+        #include "DataFormats/MuonReco/interface/Muon.h"
+        #include "DataFormats/MuonReco/interface/MuonFwd.h"
+        #include<vector>
+        //
+        // class declaration
+        [...]
+        
+              // ----------member data ---------------------------
+              std::vector<float> muon_e; //energy values for muons in the event
+        };
+        [...]
+           using namespace edm;
+        
+            //clean the container
+            muon_e.clear();
+        
+            //define the handler and get by label
+            Handle<reco::MuonCollection> mymuons;
+            iEvent.getByLabel("muons", mymuons);
+        
+            //if collection is valid, loop over muons in event
+            if(mymuons.isValid()){
+                for (reco::MuonCollection::const_iterator itmuon=mymuons->begin(); itmuon!=mymuons->end(); ++itmuon){
+                    muon_e.push_back(itmuon->energy());
+                }
+            }
+        
+            //print the vector
+            for(unsigned int i=0; i < muon_e.size(); i++){
+                std::cout <<"Muon # "<<i<<" with E = "<<muon_e.at(i)<<" GeV."<<std::endl;
+            }
+        
+        #ifdef THIS_IS_AN_EVENT_EXAMPLE
+        [...]
+        ```
+        </p>
+        
+        <p>
+        Modify the <code>BuildFile.xml</code> to include <code>DataFormats/MuonReco</code> dependencies so that it becomes:
+        
+        ```shell
+        <use name="FWCore/Framework"/>
+        <use name="FWCore/PluginManager"/>
+        <use name="DataFormats/MuonReco"/>
+        <use name="FWCore/ParameterSet"/>
+        <flags EDM_PLUGIN="1"/>
+        ```
+        </p>
+        
+        <p>
+        Compile and run again with:
+        
+        ```shell
+        $ scram b
+        $ cmsRun demoanalyzer_cfg.py
+        ```
+        </p>
+        
+        <p>
+        The output gives the energy of muons in these events:
+        
+        ```
+            19-Nov-2022 19:53:08 CET  Initiating request to open file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
+            19-Nov-2022 19:53:10 CET  Successfully opened file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
+            Begin processing the 1st record. Run 206401, Event 240060474, LumiSection 178 at 19-Nov-2022 19:53:50.971 CET
+            Muon # 0 with E = 31.2151 GeV.
+            Begin processing the 2nd record. Run 206401, Event 240069594, LumiSection 178 at 19-Nov-2022 19:53:51.000 CET
+            Muon # 0 with E = 62.6309 GeV.
+            Begin processing the 3rd record. Run 206401, Event 240049754, LumiSection 178 at 19-Nov-2022 19:53:51.001 CET
+            Muon # 0 with E = 71.6465 GeV.
+            Muon # 1 with E = 3.99535 GeV.
+            Begin processing the 4th record. Run 206401, Event 240115594, LumiSection 178 at 19-Nov-2022 19:53:51.001 CET
+            Muon # 0 with E = 137.55 GeV.
+            Muon # 1 with E = 2.70864 GeV.
+            Muon # 2 with E = 4.33524 GeV.
+            Begin processing the 5th record. Run 206401, Event 240154770, LumiSection 178 at 19-Nov-2022 19:53:51.002 CET
+            Muon # 0 with E = 87.9848 GeV.
+            Muon # 1 with E = 4.34456 GeV.
+            Begin processing the 6th record. Run 206401, Event 240103386, LumiSection 178 at 19-Nov-2022 19:53:51.002 CET
+            Muon # 0 with E = 30.2197 GeV.
+            Muon # 1 with E = 11.064 GeV.
+            Muon # 2 with E = 10.8193 GeV.
+            Begin processing the 7th record. Run 206401, Event 240173338, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
+            Muon # 0 with E = 6.84971 GeV.
+            Muon # 1 with E = 12.0909 GeV.
+            Muon # 2 with E = 3.20224 GeV.
+            Muon # 3 with E = 7.04104 GeV.
+            Muon # 4 with E = 7.90646 GeV.
+            Muon # 5 with E = 6.20379 GeV.
+            Begin processing the 8th record. Run 206401, Event 240127898, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
+            Muon # 0 with E = 42.8793 GeV.
+            Muon # 1 with E = 3.31122 GeV.
+            Muon # 2 with E = 3.85927 GeV.
+            Muon # 3 with E = 3.0424 GeV.
+            Begin processing the 9th record. Run 206401, Event 240103970, LumiSection 178 at 19-Nov-2022 19:53:51.003 CET
+            Muon # 0 with E = 55.7221 GeV.
+            Muon # 1 with E = 2.80195 GeV.
+            Begin processing the 10th record. Run 206401, Event 240129066, LumiSection 178 at 19-Nov-2022 19:53:51.004 CET
+            Muon # 0 with E = 33.7197 GeV.
+            Muon # 1 with E = 4.90223 GeV.
+            Muon # 2 with E = 5.61441 GeV.
+            19-Nov-2022 19:53:51 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
+        ```
+        </p>
+        
+        <p>
+        <strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. For simpler analyses, like the example above, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database.
+        </p>
+        
+        <p>
+        For detailed examples on applying selections and analyzing the full event content of AOD files through EDAnalyzer, refer to <a href="/record/560">this CMS analysis example for 2010 data</a> and <a href="/record/5500">this CMS analysis example for 2011-2012 data</a>. Take a look at the scripts to learn how selections and extractions are done. 
+        </p><br>
 
         <details>
-        <summary><h3>2010</h3></summary>
-        <br>
-        <p>
-                As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. <a href="/record/560">This CMS analysis example</a> takes you through the steps of analyzing the AOD files directly.
-        </p>
-        <p>
-                Take a look at the scripts to see how the selections are applied and how the information are extracted for analysis.
-        </p>
-        <p>
-                Your final analysis is done using a software module called an "analyzer". If you followed the validation step for the virtual machine setup, you have already produced and run a simple analyzer. You can specify your initial selection criteria within the analyzer to perform your analysis directly on the AOD files, or further elaborate the selections and other operations needed for analysing the reduced dataset. To learn more about configuring analyzers, follow <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule">these instructions in the CMSSW WorkBook</a>. Make sure, though, that you replace the release version (CMSSW_nnn) with the release that you are using, i.e. one that is compatible with the CMS open data.
-        </p>
-        <p>
-                You can also pass the selection criteria through the configuration file. This file activates existing tools within CMSSW in order to perform the desired selections. If you have followed the validation step for the virtual machine setup, you have already seen a configuration file, which is used to give the parameters to the <code>cmsRun</code> executable. You can see how this is done in our analysis example.
-        </p>
-        <p>
-                <strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. For simpler analyses, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database. This is the case for the examples for analysing the primary datasets below.
-        </p><br>
+        <summary><h3>2010</h4></summary>
+        
+        </details>
+
+        <details>
+        <summary><h3>2011-2012</h4></summary>
+        
         </details>
 
 </details>
