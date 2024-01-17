@@ -189,6 +189,7 @@ Let's see what physics objects are contained in an AOD file.
         </p>
         <p>
         In CMS environment (after running <code>cmsenv</code> in <a href="#vm">the first section</a>), do the following:
+        </p>
         
         ```shell
         $ mkdir Demo
@@ -196,18 +197,17 @@ Let's see what physics objects are contained in an AOD file.
         $ mkedanlzr DemoAnalyzer
         $ cd DemoAnalyzer
         ```
-        </p>
+        
         <p>
         This will create several template files in the new DemoAnalyzer directory. For more information about CMSSW analyzer modules, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
         </p>
-        <p>
+        
         Compile the code with:
         
         ```shell
         $ scram b
         ```
-        </p>
-        <p>
+
         You can ignore the message
         
         ```
@@ -216,22 +216,23 @@ Let's see what physics objects are contained in an AOD file.
         ```
         
         or take action and remove the indicated section from <code>BuildFile.xml</code>.
-        </p>
+
         <p>
         Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take the <a href="/record/14">Mu primary dataset</a> from Run2010B (<a href="/record/24460">SingleMu dataset</a> from Run2012D) as an example. Replace <code>file:myfile.root</code> with <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root</code (<code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>). 
         </p>
+        
         <p>
         Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>).
         </p>
-        <p>
+        
+
         Run the code with:
         
         ```shell
         $ cmsRun demoanalyzer_cfg.py
         ```
-        </p>
+
         
-        <p>
         You will get an output like:
         
         ```
@@ -315,9 +316,8 @@ Let's see what physics objects are contained in an AOD file.
         #ifdef THIS_IS_AN_EVENT_EXAMPLE
         [...]
         ```
-        </p>
         
-        <p>
+
         Modify the <code>BuildFile.xml</code> to include <code>DataFormats/MuonReco</code> dependencies so that it becomes:
         
         ```shell
@@ -383,7 +383,6 @@ Let's see what physics objects are contained in an AOD file.
             Muon # 2 with E = 5.61441 GeV.
             19-Nov-2022 19:53:51 CET  Closed file root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root
         ```
-        </p>
         
         <p>
         <strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. For simpler analyses, like the example above, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database.
