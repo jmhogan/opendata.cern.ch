@@ -191,7 +191,7 @@ Let's see what physics objects are contained in an AOD file.
         </p>
         
         <p>
-        In CMS environment (after running <code>cmsenv</code> in <a href="#vm">the first section</a>), do the following:
+        In CMS environment, do the following:
         
         ```shell
         $ mkdir Demo
