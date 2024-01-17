@@ -406,7 +406,21 @@ For detailed examples on applying selections and analyzing the full event conten
 
 <details>
 <summary><h3> Analysing reduced dataset </h3></summary>
-d
+  
+  <details>
+    <head>
+      <h4>Reduce the AOD files to NanoAODRun1 tuples</h4>
+    </head>
+    d
+  </details>
+
+    <details>
+    <head>
+      <h4>Analyze NanoAODRun1 tuples</h4>
+    </head>
+    d
+  </details>
+  
 </details>
 
         
