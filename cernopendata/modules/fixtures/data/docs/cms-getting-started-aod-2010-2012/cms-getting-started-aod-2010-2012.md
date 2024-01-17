@@ -608,16 +608,38 @@ Depending on the nature of your analysis you can either run your analysis code d
 </p>
 
 <details>
-<summary><h3>Option A: Analysing the primary dataset</h3></summary>
+<summary><h3> Analysing the primary AOD dataset </h3></summary>
 <br>
 As mentioned above, you do not typically perform an analysis directly on the AOD files. However, there may be cases when you want to do so. Therefore, we have provided an example analysis to take you through the steps that you may need on the occassions that you want to analyse the AOD files directly. You can find the files and instructions in <a href="/record/560">this CMS analysis example</a>.
 </details>
 
 <details>
-<summary><h3>Option B: Analysing reduced datasets</h3></summary>
+<summary><h3> Analysing reduced dataset </h3></summary>
 
 <head>
-<h4>Step1: Reduce the AOD files to PATtuples</h4>
+        <h4>Option A: Reduce the AOD files to NanoAODRun1 tuples</h4>
+</head>
+<p>
+        The NanoAODRun1 format is a NanoAOD-like Ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software, and containing the per-event information that is needed in most generic analyses. It is a reduced dataset made available for convenient access and physics analysis. The goal is that about 50% of all publishable Open Data analyses done by external users can use this simplified NanoAODRun1 data format without compromise on the quality of the scientific result.
+</p>
+<p>
+        Note that NanoAODRun1 dfata format should not be confused with a NanoAOD-like educational <a href="/record/12353">reduced NanoAOD format</a>, which is sometimes also plainly referred to as "NanoAOD" in the Open Data context. Tha latter is a partially compatible but much more reduced content, aiming to be used in specific educational/pedagogical exercises rather than in general full physics analysis.
+</p> 
+<p>
+        NanoAODRun1 ntuples for relevant Open Data and MC sets are being/will be produced and made available by the DPOA group, so normal users should not need to deal with the ntuple production code except for reference purposes. The <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">code</a> that produces them from AOD is provided for reference, but not meant to be pedagogical and not intended to be used by non-expert users. Users interested in pedagogical code at AOD level are referred to the <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">POET</a> setup (for CMSSW_5_3_32 and 7_6_7 only).
+</p>
+<p>
+        A list of variables contained in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
+</p>
+<p>
+        Users who need information beyond the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">list</a> should directly use the AOD data, following the example provided in the previous section. 
+</p>
+
+<p>
+</p>
+
+<head>
+        <h4>Option B: Reduce the AOD files to PAT tuples</h4>
 </head>
 
 <p>
