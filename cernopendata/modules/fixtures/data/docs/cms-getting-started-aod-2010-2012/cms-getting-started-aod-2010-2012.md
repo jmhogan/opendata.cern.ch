@@ -586,36 +586,18 @@ For detailed examples on applying selections and analyzing the full event conten
 
   <details>
   <summary><b>Plot histogram with interactive CINT/Cling and/or RDataFrame</b></summary>
-
-  <p>
+    <p>
   In this example, we will reproduce simultaneously one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
-  </p>
+    </p>
 
-  <details>
+    <details>
     <summary><h5>CINT/Cling</h5></summary>
-
-    <p>
-    CINT/Cling is the ROOT interactive C++ interpreter, which can be run as a script as well as be run line by line on the command line of an interactive Root session. One does not normally use CINT/Cling for advanced analyses, but it is worthwhile to try out this interactive option before converging to a final analysis strategy. This is the setup that was used for the original development of this example to find the relevant cuts.
-    </p>
-
-    <p>
-    With NanoAODRun1, the workflow is always the same -- writing an analysis script and execute it in ROOT, regardless of which interface we use it with.
-    </p>
-
-    <p>
-    Create
-    </p>
-
-  </details>
-
-  <details>
-    <summary><h5>RDataFrame</h5></summary>
-
-    <p>
-     RDataFrame is a powerful interface for data analysis in ROOT. It reads columnar data from a data source and allows easy skimmming  and manipulation of the data in a simple and straightforward way. It also allows multi-threading and other low-level optimizations that may help to speed up the processing. RDataFrame makes a good choice for analyses with a relatively straightforward cut and analysis flow. 
-    </p>
-
-  </details>
+    </details>
+  
+    <details>
+      <summary><h5>RDataFrame</h5></summary>
+    </details>
+  
   </details>
     
   </details>
