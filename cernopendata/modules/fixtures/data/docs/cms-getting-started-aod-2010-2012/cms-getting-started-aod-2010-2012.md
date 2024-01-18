@@ -169,23 +169,15 @@ Let's see what physics objects are contained in an AOD file.
 ## <a name="nice">"Nice! But how do I analyse these data?"</a>
 
 <p>
-        You can perform analysis on the AOD dataset directly or on a reduced dataset that is derived from the AOD data. Analyzing on the original AOD dataset can be computationally heavy. Usually, it is recommended to use the reduced dataset, unless you need some information that is only contained in AOD data. 
+        You can perform analysis on the AOD dataset directly or on a reduced dataset that is derived from the AOD data. Analyzing on the original AOD dataset can be computationally heavy. Thus, it is recommended to use the reduced dataset, unless you need some information that is only contained in AOD data. 
 </p>
 
 <p>
-        In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the electron collection / muon collection that you printed out are not guaranteed to be from validated data. In order to analyse only the "good quality" data, you must apply some selection criteria.
+        Below we provide examples of how to perfom analysis on both the primary AOD data and the reduced data. 
 </p>
-
-<p>
-        Below we provide examples of how to perfom selection and analysis on both the primary AOD data and the reduced data. Two common formats of reduced data are NanoAODRun1 tuples and PAT tuples. Examples of producing both data formats are provided. Using NanoAODRun1 format is favored, because it is available on Open Data Portal, and the example code is more up-to-date. Non-expert users do not need to produce NanoAODRun1 by themselves.
-</p>
-
-<p>
-        Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
-</p><br>
 
 <details>
-<summary><h3>Analysing the primary AOD dataset using EDAnalyzer</h3></summary>
+<summary><a name="EDAnalyzer">"<h3>Analysing the primary AOD dataset using EDAnalyzer</h3></a></summary>
 
 <p>
 As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment. Here we provide a simple example on how to use EDAnalyzer. 
@@ -404,8 +396,15 @@ For detailed examples on applying selections and analyzing the full event conten
 
 </details>
 
+
+<p>
+        Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
+</p><br>
+
 <details>
 <summary><h3> Analysing reduced dataset </h3></summary>
+
+  AOD data can be reduced to NanoAOD-like data formats, which hold tuples instead of C++ class and thus can be read directly through ROOT. One useful otpion of analyzing the reduced dataset is using NanoAODRun1 data, which is available for all Run1 data (2010-2012) on Open Data Portal. The production code is available but not intended to be used by non-expert users. Another option is using Physics Object Extractor Tool (POET), which extracts information of different physics objects into a ROOT file and produces NanoAOD-like tuples from AOD files. It is in essence a collection of EDAnalyzer that we saw in the <a href="#EDAnalyzer">previous subsection</a>.
   
   <details>
       <summary><h4>Reduce the AOD files to NanoAODRun1 tuples</h4></summary>
