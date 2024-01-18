@@ -424,7 +424,7 @@ For detailed examples on applying selections and analyzing the full event conten
   </p>
 
   <details>
-  <summary><h5>Plot histogram with standard C++</h5></summary>
+  <summary><h5>Plot histogram with standard ROOT macro in C++</h5></summary>
 
   In this example, we are rerpoducing the plot of invariant mass spectrum of dimuons in a <a href="https://inspirehep.net/literature/1118729">CMS paper</a> that uses the 2010 muon data. 
 
@@ -586,6 +586,19 @@ For detailed examples on applying selections and analyzing the full event conten
 
   <details>
   <summary><h5>Plot histogram with interactive CINT/Cling and/or RDataFrame</h5></summary>
+
+  <p>
+  In this example, we will reproduce simultaneously one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
+  </p>
+
+  <details>
+    <summary><b>CINT/Cling</b></summary>
+    
+  </details>
+
+  <details>
+    <summary><b>RDataFrame</b></summary>
+  </details>
   
   </details>
     
