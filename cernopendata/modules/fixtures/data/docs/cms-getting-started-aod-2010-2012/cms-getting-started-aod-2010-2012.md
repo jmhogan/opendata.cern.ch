@@ -443,7 +443,7 @@ For detailed examples on applying selections and analyzing the full event conten
   root -l MuHistos_eospublic.cxx++
   ```
 
-  <b>Troubleshoot</b>: Make sure you have access to ROOT. It is automatically available if you are in <a href="#vm">CMS environment</a>. You may also install ROOT locally, following <a href="https://root.cern/install/">the instructions here</a>. To test if you have access to ROOT, execute <code>root -l</code>. This command should start a ROOT session for you, if it is installed.
+  <b>Troubleshoot</b>: Make sure you have access to ROOT. It is automatically available if you are in <a href="#vm">CMS environment</a>. To test if you have access to ROOT, execute <code>root -l</code>. This command should start a ROOT session for you, if it is available. If you the job finishes very fast and you get the the output <code>entries = 0</code> (failure of xrootd access, no data read) you might have to source the script described in the FAQ for the next example. 
 
   The output plot looks like this:
   
@@ -490,6 +490,40 @@ For detailed examples on applying selections and analyzing the full event conten
   <p>
   RDataFrame is a powerful interface for data analysis in ROOT. It reads columnar data from a data source and allows easy skimmming  and manipulation of the data in a simple and straightforward way. It also allows multi-threading and other low-level optimizations that may help to speed up the processing. RDataFrame makes a good choice for analyses with a relatively straightforward cut and analysis flow. 
   </p>
+
+  Create a C++ script with the name "MuHistos_eospublic.cxx":
+  ```shell
+  touch Dimuon2011_eospublic_RDF.C
+  ```
+
+  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF.C">code</a> to the script.
+
+  Execute it with 
+  
+  ```shell
+  root -l Dimuon2011_eospublic_RDF.C
+  ```
+
+  If you would like to speed up the processing time through multithreading, try <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF2.C">this script</a>.
+  
+  If you prefer to download the data (50+80GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_local_RDF.C">this script</a>.
+
+  Exit the ROOT session with <code>.q</code> in the command line, if the session does not automatically end after the execution.
+
+  <b>Troubleshoot:</b> If you get the error <code>fatal error: 'Math/Vector4Dfwd.h' file not found</code> with your default ROOT setup, execute
+
+  on Centos7:
+  
+  ```shell
+    source /cvmfs/sft.cern.ch/lcg/views/LCG_98/x86_64-centos7-gcc8-opt/setup.sh
+  ```
+
+  on slc6:
+  
+  ```shell
+  source /cvmfs/sft.cern.ch/lcg/views/LCG_95/x86_64-slc6-gcc8-opt/setup.sh
+  ```
+
   </details>
   
   </details>
