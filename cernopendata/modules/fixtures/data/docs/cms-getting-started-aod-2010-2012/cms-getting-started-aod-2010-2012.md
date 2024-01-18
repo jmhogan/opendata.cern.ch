@@ -177,7 +177,7 @@ Let's see what physics objects are contained in an AOD file.
 </p>
 
 <details>
-<summary><a name="EDAnalyzer">"<h3>Analysing the primary AOD dataset using EDAnalyzer</h3></a></summary>
+<summary><a name="EDAnalyzer"><h3>Analysing the primary AOD dataset using EDAnalyzer</h3></a></summary>
 
 <p>
 As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment. Here we provide a simple example on how to use EDAnalyzer. 
@@ -411,7 +411,7 @@ For detailed examples on applying selections and analyzing the full event conten
   </details>
 
   <details>
-      <summary><h4>Analyze NanoAODRun1 tuples</h4></summary>
+      <summary><h4>Reduce the AOD files using POET</h4></summary>
   </details>
   
 </details>
