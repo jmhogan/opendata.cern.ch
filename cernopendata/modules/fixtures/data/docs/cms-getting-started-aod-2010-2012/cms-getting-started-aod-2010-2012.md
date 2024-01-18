@@ -403,11 +403,23 @@ For detailed examples on applying selections and analyzing the full event conten
 
 <details>
 <summary><h3> Analysing reduced dataset </h3></summary>
-
-  AOD data can be reduced to NanoAOD-like data formats, which hold tuples instead of C++ class and thus can be read directly through ROOT. One useful otpion of analyzing the reduced dataset is using NanoAODRun1 data, which is available for all Run1 data (2010-2012) on Open Data Portal. The production code is available but not intended to be used by non-expert users. Another option is using Physics Object Extractor Tool (POET), which extracts information of different physics objects into a ROOT file and produces NanoAOD-like tuples from AOD files. It is in essence a collection of EDAnalyzer that we saw in the <a href="#EDAnalyzer">previous subsection</a>.
+  
+  <p>
+  AOD data can be reduced to NanoAOD-like data formats, which hold tuples instead of C++ class and thus can be read directly through ROOT. One useful otpion of analyzing the reduced dataset is using <b>NanoAODRun1</b> data, which is available for all Run1 data (2010-2012) on Open Data Portal. The <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">production code</a> is available but not intended to be used by non-expert users. Users who wish to produce reduced dataset by themselves should refer to the other option -- <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool"><b>Physics Object Extractor Tool (POET)</b></a>, which extracts information of different physics objects into a ROOT file and produces NanoAOD-like tuples from AOD files. It is in essence a collection of EDAnalyzer that we saw in the <a href="#EDAnalyzer">previous subsection</a>. Note that POET is only avaialble for 2011 and 2012 data. Users should refer back to the <a href="#EDAnalyzer">EDAnalyzer</a>, if they need more information from the 2010 data than what is already in NanoAODRun1. Examples on how to use NanoAODRun1 and POET are provided respectively. 
+  </p><br>
   
   <details>
-      <summary><h4>Reduce the AOD files to NanoAODRun1 tuples</h4></summary>
+  <summary><h4>Reduce the AOD files to NanoAODRun1 tuples</h4></summary>
+    
+  <p>
+  The NanoAODRun1 format is a NanoAOD-like ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software, and containing the per-event information that is needed in most generic analyses. It is a reduced dataset made available for convenient access and physics analysis. The goal is that about 50% of all publishable Open Data analyses done by external users can use this simplified NanoAODRun1 data format without compromise on the quality of the scientific result.
+  </p>
+
+  <p>
+  Note that NanoAODRun1 dfata format should not be confused with a NanoAOD-like educational <a href="/record/12353">reduced NanoAOD format</a>, which is sometimes also plainly referred to as "NanoAOD" in the Open Data context. Tha latter is a partially compatible but much more reduced content, aiming to be used in specific educational/pedagogical exercises rather than in general full physics analysis.
+  </p>
+
+      
   </details>
 
   <details>
