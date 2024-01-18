@@ -416,6 +416,10 @@ For detailed examples on applying selections and analyzing the full event conten
   </p>
 
   <p>
+   A list of variables in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
+  </p>
+  
+  <p>
   Note that NanoAODRun1 dfata format should not be confused with another NanoAOD-like <a href="/record/12353">reduced format created for educational purposes rather than for analysis purposes</a>, which is sometimes also referred to as "NanoAOD" in the Open Data context.
   </p>
   
