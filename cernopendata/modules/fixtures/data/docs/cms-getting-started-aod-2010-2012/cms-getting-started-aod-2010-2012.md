@@ -419,15 +419,16 @@ For detailed examples on applying selections and analyzing the full event conten
   Note that NanoAODRun1 dfata format should not be confused with a NanoAOD-like educational <a href="/record/12353">reduced NanoAOD format</a>, which is sometimes also plainly referred to as "NanoAOD" in the Open Data context. Tha latter is a partially compatible but much more reduced content, aiming to be used in specific educational/pedagogical exercises rather than in general full physics analysis.
   </p><br>
 
-    <details>
-    <summary><h5>2010</h5></summary>
-    D
-    </details>
+  <details>
+  <summary><h5>2010</h5></summary>
+  D
+  </details>
     
   </details>
 
   <details>
   <summary><h4>Reduce the AOD files using POET</h4></summary>
+    D
   </details>
   
 </details>
