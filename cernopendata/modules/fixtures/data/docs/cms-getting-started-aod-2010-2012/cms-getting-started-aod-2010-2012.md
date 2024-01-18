@@ -536,7 +536,12 @@ For detailed examples on applying selections and analyzing the full event conten
 
   <details>
   <summary><h4>Reduce the AOD files using POET</h4></summary>
-    D
+  <p>
+  In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the muon collection that you printed out in the <a href="#EDAnalyzer">EDAnalyzer example</a> is not guaranteed to be from validated data. In order to analyze only the "good quality" data, you must apply some selection criteria.
+  </p>
+  <p>
+  Physics Object Extractor Tool (POET) allows you to filter for validated data, apply selection criteria to select useful events and write out physics objects and their properties to a reduced dataset. For a quick start, check <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">this repository</a>. Similar to the NanoAODRun1 examples, you can use <a href="http://root.cern.ch">ROOT</a> to inspect reconstructed particles and the distributions of their properties.
+  </p>
   </details>
   
 </details>
