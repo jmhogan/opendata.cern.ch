@@ -539,9 +539,29 @@ For detailed examples on applying selections and analyzing the full event conten
   <p>
   In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the muon collection that you printed out in the <a href="#EDAnalyzer">EDAnalyzer example</a> is not guaranteed to be from validated data. In order to analyze only the "good quality" data, you must apply some selection criteria.
   </p>
+    
   <p>
   Physics Object Extractor Tool (POET) allows you to filter for validated data, apply selection criteria to select useful events and write out physics objects and their properties to a reduced dataset. For a quick start, check <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">this repository</a>. Similar to the NanoAODRun1 examples, you can use <a href="http://root.cern.ch">ROOT</a> to inspect reconstructed particles and the distributions of their properties.
   </p>
+
+  <p>
+  Start by getting the code and compiling it. Note that POET does not work for the 2010 data, which requires an older version of CMSSW. Make sure that you are back in the <b>CMSSW_5_3_32/src/</b> folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with <code>cd ~/CMSSW_5_3_32/src</code>. In the container, keep using the normal container shell and go to the right folder with <code>cd $CMSSW_BASE/src</code>.
+
+  ```shell
+  $ git clone https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
+  ```
+  </p>
+
+  <p>
+  If you are using the VM, change now back to the "CMS shell" terminal. Get the 2012 "branch" of the repository and, always in the **CMSSW_5_3_32/src/** folder, compile the code with:
+  
+  ```shell
+  $ cd PhysObjectExtractorTool
+  $ git checkout 2012
+  $ scram b
+  ```
+  </p>
+
   </details>
   
 </details>
