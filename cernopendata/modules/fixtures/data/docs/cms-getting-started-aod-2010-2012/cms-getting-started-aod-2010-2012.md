@@ -418,11 +418,39 @@ For detailed examples on applying selections and analyzing the full event conten
   <p>
   Note that NanoAODRun1 dfata format should not be confused with a NanoAOD-like educational <a href="/record/12353">reduced NanoAOD format</a>, which is sometimes also plainly referred to as "NanoAOD" in the Open Data context. Tha latter is a partially compatible but much more reduced content, aiming to be used in specific educational/pedagogical exercises rather than in general full physics analysis.
   </p>
+
+    <details>
+    <summary><h5>2010</h5></summary>
+    
+    </details>
       
   </details>
 
   <details>
-      <summary><h4>Reduce the AOD files using POET</h4></summary>
+  <summary><h4>Reduce the AOD files using POET</h4></summary>
   </details>
   
 </details>
+
+<!-- Tab links -->
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+</div>
+
+<!-- Tab content -->
+<div id="London" class="tabcontent">
+  <h3>London</h3>
+  <p>London is the capital city of England.</p>
+</div>
+
+<div id="Paris" class="tabcontent">
+  <h3>Paris</h3>
+  <p>Paris is the capital of France.</p> 
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Tokyo</h3>
+  <p>Tokyo is the capital of Japan.</p>
+</div>
