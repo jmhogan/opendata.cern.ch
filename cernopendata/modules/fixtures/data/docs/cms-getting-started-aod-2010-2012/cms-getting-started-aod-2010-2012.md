@@ -593,7 +593,11 @@ For detailed examples on applying selections and analyzing the full event conten
 
   <details>
     <summary><h5>CINT/Cling</h5></summary>
-    
+
+    <p>
+    CINT/Cling is the ROOT interactive C++ interpreter, which can be run as a script as well as be run line by line on the command line of an interactive Root session. One does not normally use CINT/Cling for advanced analyses, but it is worthwhile to try out this interactive option before converging to a final analysis strategy. This is the setup that was used for the original development of this example to find the relevant cuts.
+    </p>
+
   </details>
 
   <details>
