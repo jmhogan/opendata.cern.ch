@@ -426,7 +426,7 @@ For detailed examples on applying selections and analyzing the full event conten
   <details>
   <summary><h5>Plot histogram with standard C++</h5></summary>
 
-  In this example, we are rerpoducing a plot in a <a href="https://inspirehep.net/literature/1118729">CMS paper</a> using 2010 muon data. 
+  In this example, we are rerpoducing the plot of invariant mass spectrum of dimuons in a <a href="https://inspirehep.net/literature/1118729">CMS paper</a> that uses the 2010 muon data. 
 
   The only thing we need to do is to write a C++ script and run it with ROOT.
 
@@ -576,11 +576,16 @@ For detailed examples on applying selections and analyzing the full event conten
   ```
 
   <b>Troubleshoot</b>: Make sure you have access to ROOT. It is automatically available if you are in <a href="#vm">CMS environment</a>. You may also install ROOT locally, following <a href="https://root.cern/install/">the instructions here</a>. To test if you have access to ROOT, execute <code>root -l</code>. This command should start a ROOT session for you, if it is installed.
+
+  The output plot looks like this:
   
+  <img src="/static/docs/cms-getting-started-aod-2010-2012/MuHistos_eospublic_mass.png" width="70%">
+
+  <br>
   </details>
 
   <details>
-  <summary><h5>2011-2012</h5></summary>
+  <summary><h5>Plot histogram with interactive CINT/Cling and/or RDataFrame</h5></summary>
   
   </details>
     
