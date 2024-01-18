@@ -553,7 +553,7 @@ For detailed examples on applying selections and analyzing the full event conten
   </p>
 
   <p>
-  If you are using the VM, change now back to the "CMS shell" terminal. Get the 2012 "branch" of the repository and, always in the **CMSSW_5_3_32/src/** folder, compile the code with:
+  If you are using the VM, change now back to the "CMS shell" terminal. Get the 2012 (2011) "branch" of the repository for 2012 (2011) data. In the following example, we use the 2012 data, so we checkout the 2012 branch. Make sure that you are always in the <b>CMSSW_5_3_32/src/</b> folder. Checkout the branch and compile the code with:
   
   ```shell
   $ cd PhysObjectExtractorTool
@@ -562,9 +562,83 @@ For detailed examples on applying selections and analyzing the full event conten
   ```
   </p>
 
+  <p>
+  Note how only the validated runs are selected in the configuration file. The relevant lines are:
+  
+  ```python
+    import FWCore.ParameterSet.Config as cms
+    import FWCore.PythonUtilities.LumiList as LumiList
+
+    [...]
+  
+  	goodJSON = "data/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.txt"
+  	myLumis = LumiList.LumiList(filename=goodJSON).getCMSSWString().split(",")
+  	process.source.lumisToProcess = CfgTypes.untracked(
+  	    	CfgTypes.VLuminosityBlockRange())
+  	process.source.lumisToProcess.extend(myLumis)
+  ```
+  </p>
+
+  <p>
+  This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
+  </p>
+
+  <p>
+  To produce a root file with selected objects, do the following:
+  
+  ```shell
+  $ cd PhysObjectExtractor
+  $ cmsRun python/poet_cfg.py
+  ```
+  </p>
+
+  <p>
+  The configuration file sets it to run over 1000 events in a simulated dataset. The script runs over all the events when the number is set to -1.
+  </p>
+
+  We can check the content of the output ROOT file through command lines or C++ scripts as we did in the previous examples. We can also check the content and make plots through an interactive Graphical User Interface (GUI). We use this example to show how to do so with ROOT GUI.
+  
+  If you are using the CMS open data container with the VNC application installed (see the <a href="/docs/cms-guide-docker#vnc">container guide page</a>), for opening the graphical user interface, start the VNC application in the container by typing
+
+  ```shell
+  $ start_vnc
+  ```
+
+  Then start a VNC viewer on your local computer using the password <code>cms.cern</code>. The http option for a GUI in the browser is not guaranteed to work in the container with this CMSSW version.
+
+
+  You can now open the POET output file in ROOT:
+
+  ```shell
+  $ root myoutput.root
+  ```
+  
+  You will see the ROOT logo appear on screen. You can now open the ROOT GUI by entering:
+  
+  ```shell
+  TBrowser t
+  ```
+
+  You will see the ROOT browser window:
+  
+  <img src="/static/docs/cms-getting-started-aod-2010-2012/getting_started_with_cms_2011_2012_data_1.png" width="70%">
+
+  Now, let us take a closer look at some collections of the physics objects.
+
+  On the left window of ROOT, double-click on the file name (<code>myoutput.root</code>). You should see a list of names, each corresponding to a collection of reconstructed data.
+
+  Let us take a peek, for example, at the muons, which are found in <code>mymuons</code>. Look in there by double-clicking on that line and then double-clicking on <code>Events</code>. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: <code>muon_pt</code>. Double-click on it to draw the distribution.
+
+  <img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%">
+
+  You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
+
   </details>
   
 </details>
+
+That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>.
+
 
 <!-- Tab links -->
 <div class="tab">
