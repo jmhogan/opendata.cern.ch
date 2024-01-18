@@ -592,12 +592,17 @@ For detailed examples on applying selections and analyzing the full event conten
   </p>
 
   <details>
-    <summary><h5>CINT/Cling</h5></summary>
+  <summary><h5>CINT/Cling</h5></summary>
+  <p>
+  CINT/Cling is the ROOT interactive C++ interpreter, which can be run as a script as well as be run line by line on the command line of an interactive Root session. One does not normally use CINT/Cling for advanced analyses, but it is worthwhile to try out this interactive option before converging to a final analysis strategy. This is the setup that was used for the original development of this example to find the relevant cuts.
+  </p>
   </details>
 
   <details>
   <summary><h5>RDataFrame</h5></summary>
-  d
+  <p>
+  RDataFrame is a powerful interface for data analysis in ROOT. It reads columnar data from a data source and allows easy skimmming  and manipulation of the data in a simple and straightforward way. It also allows multi-threading and other low-level optimizations that may help to speed up the processing. RDataFrame makes a good choice for analyses with a relatively straightforward cut and analysis flow. 
+  </p>
   </details>
   
   </details>
