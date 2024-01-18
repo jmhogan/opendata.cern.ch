@@ -590,7 +590,16 @@ For detailed examples on applying selections and analyzing the full event conten
   <p>
   In this example, we will reproduce simultaneously one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
   </p>
-    
+
+  <details>
+    <summary><h5>CINT/Cling</h5></summary>
+  </details>
+
+  <details>
+  <summary><h5>RDataFrame</h5></summary>
+  d
+  </details>
+  
   </details>
     
   </details>
