@@ -560,13 +560,24 @@ For detailed examples on applying selections and analyzing the full event conten
   ```shell
   python dimuonSpectrum2012_eospublic.py
   ```
-  </details>
 
   The output plot looks like this:
   
   <img src="/static/docs/cms-getting-started-aod-2010-2012/dimuonSpectrum2012.png" width="70%">
 
   If you prefer to download the data (80+110GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_local.py.txt">this script</a>.
+
+  To get a simple demonstration from you web browser without installing ROOT, you can also plug NanoAODRun1 samples into the <a href="/record/12342">original Outreach Jupyter notebook example</a>:
+  
+  Start the notebook and execute all steps in the order indicated (click on each block and type control enter)
+
+  In step [3], replace the input file by e.g. root://eospublic.cern.ch//eos/opendata/cms/upload/NanoAODRun1/01-Jul-22/Run2012B_DoubleMuParked/01-Jul-22Run2012B_DoubleMuParked/03C5684F-8BAF-4312-8235-2B0039F2FB93.root (for pasting, use control V).
+
+  In step [12], change %jsroot on to %jsroot off .
+  
+  The (low statistics) result (just one file) should pop on on your screen. Note that the notebook might not work on the large merged samples for internal size and memory reasons. Making the usage of Jupyter notebooks possible realistically also for larger samples is currently under investigation.
+
+  </details>
   
   </details>
 
