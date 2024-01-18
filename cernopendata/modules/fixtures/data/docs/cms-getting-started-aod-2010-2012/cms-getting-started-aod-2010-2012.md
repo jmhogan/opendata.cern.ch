@@ -457,10 +457,10 @@ For detailed examples on applying selections and analyzing the full event conten
   </details>
 
   <details>
-  <summary><b>Plot histogram with interactive CINT/Cling and/or RDataFrame</b></summary>
+  <summary><b>Plot histogram with interactive CINT/Cling and/or RDataFrame in C++</b></summary>
   
   <p>
-  In this example, we will reproduce simultaneously one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
+  In this example, we will reproduce one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
   </p>
 
   <details>
@@ -492,7 +492,7 @@ For detailed examples on applying selections and analyzing the full event conten
   <details>
   <summary><h5>RDataFrame</h5></summary>
   <p>
-  RDataFrame is a powerful interface for data analysis in ROOT. It reads columnar data from a data source and allows easy skimmming  and manipulation of the data in a simple and straightforward way. It also allows multi-threading and other low-level optimizations that may help to speed up the processing. RDataFrame makes a good choice for analyses with a relatively straightforward cut and analysis flow. 
+  RDataFrame is a powerful interface for data analysis in ROOT. It reads columnar data from a data source and allows easy skimmming  and manipulation of the data in a simple and straightforward way. It also allows multi-threading and other low-level optimizations that may help to speed up the processing time. RDataFrame makes a good choice for analyses with a relatively straightforward cut and analysis flow. 
   </p>
 
   Create a C++ script with the name "MuHistos_eospublic.cxx":
@@ -500,7 +500,7 @@ For detailed examples on applying selections and analyzing the full event conten
   touch Dimuon2011_eospublic_RDF.C
   ```
 
-  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF.C">code</a> to the script.
+  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF.C">code</a> to the script. This script plots the dimuon mass spectrum for different trigger paths.
 
   Execute it with 
   
@@ -508,9 +508,21 @@ For detailed examples on applying selections and analyzing the full event conten
   root -l Dimuon2011_eospublic_RDF.C
   ```
 
-  If you would like to speed up the processing time through multithreading, try <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF2.C">this script</a>.
-  
   If you prefer to download the data (50+80GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_local_RDF.C">this script</a>.
+  
+  The output plot looks like this:
+  
+  <img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF.png" width="70%">
+
+  
+  If you would like to speed up the processing time through multithreading, try <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF2.C">this script</a>.
+
+  The output plot looks like this:
+  
+  <img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF2.png" width="70%">
+  
+  <br>
+  </details>
 
   Exit the ROOT session with <code>.q</code> in the command line, if the session does not automatically end after the execution.
 
@@ -529,9 +541,27 @@ For detailed examples on applying selections and analyzing the full event conten
   ```
 
   </details>
-  
-  </details>
+
+  <details>
+  <summary><b>Plot histogram with interactive CINT/Cling and/or RDataFrame in python</b></summary>
+  <p>
+  In this example, we will reproduce simultaneously one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
+  </p>
     
+  Create a C++ script with the name "MuHistos_eospublic.cxx":
+  ```shell
+  touch Dimuon2011_eospublic_RDF.C
+  ```
+
+  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF.C">code</a> to the script.
+
+  Execute it with 
+  
+  ```shell
+  root -l Dimuon2011_eospublic_RDF.C
+  ```
+  </details>
+  
   </details>
 
   <details>
@@ -636,7 +666,7 @@ For detailed examples on applying selections and analyzing the full event conten
   </details>
   
 </details>
-
+<br>
 That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>.
 
 
