@@ -512,7 +512,7 @@ For detailed examples on applying selections and analyzing the full event conten
   
   The output plot looks like this:
   
-  <img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF.png" width="70%">
+  <img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF.png" width="70%"><br>
 
   
   If you would like to speed up the processing time through multithreading, try <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF2.C">this script</a>.
@@ -563,7 +563,7 @@ For detailed examples on applying selections and analyzing the full event conten
 
   The output plot looks like this:
   
-  <img src="/static/docs/cms-getting-started-aod-2010-2012/dimuonSpectrum2012.png" width="70%">
+  <img src="/static/docs/cms-getting-started-aod-2010-2012/dimuonSpectrum2012.png" width="70%"><br>
 
   If you prefer to download the data (80+110GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_local.py.txt">this script</a>.
 
@@ -668,7 +668,7 @@ For detailed examples on applying selections and analyzing the full event conten
 
   You will see the ROOT browser window:
   
-  <img src="/static/docs/cms-getting-started-aod-2010-2012/getting_started_with_cms_2011_2012_data_1.png" width="70%">
+  <img src="/static/docs/cms-getting-started-aod-2010-2012/getting_started_with_cms_2011_2012_data_1.png" width="70%"><br>
 
   Now, let us take a closer look at some collections of the physics objects.
 
@@ -676,7 +676,7 @@ For detailed examples on applying selections and analyzing the full event conten
 
   Let us take a peek, for example, at the muons, which are found in <code>mymuons</code>. Look in there by double-clicking on that line and then double-clicking on <code>Events</code>. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: <code>muon_pt</code>. Double-click on it to draw the distribution.
 
-  <img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%">
+  <img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%"><br>
 
   You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
 
