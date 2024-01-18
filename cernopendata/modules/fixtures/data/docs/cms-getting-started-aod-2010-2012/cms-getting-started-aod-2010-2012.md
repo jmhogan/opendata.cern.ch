@@ -543,24 +543,30 @@ For detailed examples on applying selections and analyzing the full event conten
   </details>
 
   <details>
-  <summary><b>Plot histogram with interactive CINT/Cling and/or RDataFrame in python</b></summary>
+  <summary><b>Plot histogram with RDataFrame in python</b></summary>
   <p>
-  In this example, we will reproduce simultaneously one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
+  In this example, we will reproduce the dimuon spectrum in the <a href="/record/12342">2012 DoubleMuParked outreach example</a>. A much smaller reduced NanoAOD-like ntuples was provided in the outreach example for educational purposes. The analysis scripts from this outreach example can also be used on the larger NanoAODRun1 ntuples. The original <a href="/record/12342">example</a> uses RDataFrame and is available in C++, python and Jupyter notebook. Here we only provide examples in python and Jupyter notebook. For using RDataFrame in C++, please refer to the previous subsection.
   </p>
     
-  Create a C++ script with the name "MuHistos_eospublic.cxx":
+  Create a C++ script with the name "dimuonSpectrum2012_eospublic.py":
   ```shell
-  touch Dimuon2011_eospublic_RDF.C
+  touch dimuonSpectrum2012_eospublic.py
   ```
 
-  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF.C">code</a> to the script.
+  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_eospublic.py.txt">code</a> to the script.
 
   Execute it with 
   
   ```shell
-  root -l Dimuon2011_eospublic_RDF.C
+  python dimuonSpectrum2012_eospublic.py
   ```
   </details>
+
+  The output plot looks like this:
+  
+  <img src="/static/docs/cms-getting-started-aod-2010-2012/dimuonSpectrum2012.png" width="70%">
+
+  If you prefer to download the data (80+110GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_local.py.txt">this script</a>.
   
   </details>
 
