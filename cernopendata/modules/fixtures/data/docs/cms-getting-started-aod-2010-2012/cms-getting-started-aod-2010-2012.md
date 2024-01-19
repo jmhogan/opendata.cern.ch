@@ -4,7 +4,7 @@
 
 The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyse CMS data in this format for each year.
 
-## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a>{.tabset}
+## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a> {.tabset}
 ### 2010
 ### 2011
 
