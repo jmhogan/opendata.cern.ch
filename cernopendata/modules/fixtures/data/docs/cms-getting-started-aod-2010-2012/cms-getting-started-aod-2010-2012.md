@@ -693,15 +693,15 @@ That's it! Hope you enjoyed the exercises. Feel free to play around with the res
 </ul>
 
 <div class="tab-content">
-  <div id="home" class="tab-pane fade in active">
+  <div id="home" class="tab-pane active">
     <h3>HOME</h3>
     <p>Some content.</p>
   </div>
-  <div id="menu1" class="tab-pane fade">
+  <div id="menu1" class="tab-pane">
     <h3>Menu 1</h3>
     <p>Some content in menu 1.</p>
   </div>
-  <div id="menu2" class="tab-pane fade">
+  <div id="menu2" class="tab-pane">
     <h3>Menu 2</h3>
     <p>Some content in menu 2.</p>
   </div>
