@@ -4,28 +4,7 @@
 
 The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyse CMS data in this format for each year.
 
-<ul>
-  <li>
-    <a href="data:text/html,<h1>TAB 1</h1>" target="tabcontent">Tab 1</a>
-  </li>
-  
-  <li>
-    <a href="data:text/html,<h1>TAB 2</h1>" target="tabcontent">Tab 2</a>
-  </li>
-  
-  <li>
-    <a href="data:text/html,<h1>TAB 3</h1>" target="tabcontent">Tab 3</a>
-  </li>
-</ul>
-
-<iframe src="data:text/html,<h1>HELLO</h1>" name="tabcontent"></iframe>
-
-## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"{.tabset}</a>
-
-### 2010
-ddd
-### 2011
-ddd
+## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a>
 
 To analyse CMS data collected in different years, you need different versions of CMSSW (an event processing model). The recommened version for the 2010 data is <b>version 4.2.8</b>, supported only on <b>Scientific Linux 5</b>. The recommended version for the 2011 and 2012 data is <b>version 5.3.32</b>, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a> or <a href="https://swcarpentry.github.io/shell-novice/">tutorial</a>.
 
@@ -708,25 +687,99 @@ For detailed examples on applying selections and analyzing the full event conten
 That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>.
 
 
-<!-- Tab links -->
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-</div>
+<div class="container"><h1>Bootstrap  tab panel example (using nav-pills)  </h1></div>
+<div id="exTab1" class="container">	
+<ul  class="nav nav-pills">
+			<li class="active">
+        <a  href="#1a" data-toggle="tab">Overview</a>
+			</li>
+			<li><a href="#2a" data-toggle="tab">Using nav-pills</a>
+			</li>
+			<li><a href="#3a" data-toggle="tab">Applying clearfix</a>
+			</li>
+  		<li><a href="#4a" data-toggle="tab">Background color</a>
+			</li>
+		</ul>
 
-<!-- Tab content -->
-<div id="London" class="tabcontent">
-  <h3>London</h3>
-  <p>London is the capital city of England.</p>
-</div>
+			<div class="tab-content clearfix">
+			  <div class="tab-pane active" id="1a">
+          <h3>Content's background color is the same for the tab</h3>
+				</div>
+				<div class="tab-pane" id="2a">
+          <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+				</div>
+        <div class="tab-pane" id="3a">
+          <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+				</div>
+          <div class="tab-pane" id="4a">
+          <h3>We use css to change the background color of the content to be equal to the tab</h3>
+				</div>
+			</div>
+  </div>
 
-<div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
 
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
+<hr></hr>
+<div class="container"><h2>Example tab 2 (using standard nav-tabs)</h2></div>
+
+<div id="exTab2" class="container">	
+<ul class="nav nav-tabs">
+			<li class="active">
+        <a  href="#1" data-toggle="tab">Overview</a>
+			</li>
+			<li><a href="#2" data-toggle="tab">Without clearfix</a>
+			</li>
+			<li><a href="#3" data-toggle="tab">Solution</a>
+			</li>
+		</ul>
+
+			<div class="tab-content ">
+			  <div class="tab-pane active" id="1">
+          <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
+				</div>
+				<div class="tab-pane" id="2">
+          <h3>Notice the gap between the content and tab after applying a background color</h3>
+				</div>
+        <div class="tab-pane" id="3">
+          <h3>add clearfix to tab-content (see the css)</h3>
+				</div>
+			</div>
+  </div>
+
+<hr></hr>
+
+<div class="container"><h2>Example 3 </h2></div>
+<div id="exTab3" class="container">	
+<ul  class="nav nav-pills">
+			<li class="active">
+        <a  href="#1b" data-toggle="tab">Overview</a>
+			</li>
+			<li><a href="#2b" data-toggle="tab">Using nav-pills</a>
+			</li>
+			<li><a href="#3b" data-toggle="tab">Applying clearfix</a>
+			</li>
+  		<li><a href="#4a" data-toggle="tab">Background color</a>
+			</li>
+		</ul>
+
+			<div class="tab-content clearfix">
+			  <div class="tab-pane active" id="1b">
+          <h3>Same as example 1 but we have now styled the tab's corner</h3>
+				</div>
+				<div class="tab-pane" id="2b">
+          <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
+				</div>
+        <div class="tab-pane" id="3b">
+          <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
+				</div>
+          <div class="tab-pane" id="4b">
+          <h3>We use css to change the background color of the content to be equal to the tab</h3>
+				</div>
+			</div>
+  </div>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
