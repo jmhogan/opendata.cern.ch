@@ -675,4 +675,4 @@ You can exit the ROOT browser through the GUI by clicking on <code>Browser</code
 
 <br>
 
-That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>.
+That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>. Many tutorial lessons can be found in the <a href="https://cms-opendata-guide.web.cern.ch/cmsOpenData/workshops/">CMS Open Data Workshops</a>, particularly from 2020-2021 for AOD data
