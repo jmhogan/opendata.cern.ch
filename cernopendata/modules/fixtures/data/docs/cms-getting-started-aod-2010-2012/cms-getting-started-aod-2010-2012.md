@@ -4,7 +4,7 @@
 
 The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyze CMS data in this format for each year.
 
-## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a>
+# <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a>
 
 To analyze CMS data collected in different years, you need different versions of CMSSW (an event processing model). The recommened version for the 2010 data is <b>version 4.2.8</b>, supported only on <b>Scientific Linux 5</b>. The recommended version for the 2011 and 2012 data is <b>version 5.3.32</b>, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a> or <a href="https://swcarpentry.github.io/shell-novice/">tutorial</a>.
 
@@ -86,7 +86,7 @@ If you do not want to work on a virtual machine, you can try to to analyze CMS d
 <br>
 </details>
 
-## <a name="data"> "OK! What is in the CMS data?" </a>
+# <a name="data"> "OK! What is in the CMS data?" </a>
 
 <p>
 The primary CMS data for 2010 to 2012 on the CERN Open Data Portal are in the format of Analysis Object Data (AOD). The AOD files contain all the information that is needed for physics analysis. These files are prepared by piecing raw data collected by various sub-detectors of CMS. A list of the physics objects contained in the AOD files can be found through the links for <a href="/docs/cms-physics-objects-2010">2010</a> and for <a href="/docs/cms-physics-objects-2011">2011</a>. The AOD files contains physics objects (C++ classes) rather than numbers that you can click on and read.
@@ -166,7 +166,7 @@ Documentation of the objects of main interest to physics analysis is available i
 </details>
 
 
-## <a name="nice">"Nice! But how do I analyze these data?"</a>
+# <a name="nice">"Nice! But how do I analyze these data?"</a>
 
 <p>
         You can perform analysis on the AOD dataset directly or on a reduced dataset that is derived from the AOD data. Analyzing on the original AOD dataset can be computationally heavy. Thus, it is recommended to use the reduced dataset, unless you need some information that is only contained in AOD data. 
@@ -176,7 +176,7 @@ Documentation of the objects of main interest to physics analysis is available i
   Let's first see how to perform analysis on the primary AOD dataset. 
 </p>
 
-<h3>analyzing the primary AOD dataset using EDAnalyzer</h3>
+## analyzing the primary AOD dataset using EDAnalyzer
 
 <p>
 As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment.
@@ -395,7 +395,7 @@ For detailed examples on applying selections and analyzing the full event conten
 
 Next, let's see how to analyze the reduced datasets.
 
-<h3> analyzing reduced dataset </h3>
+## analyzing reduced dataset
 
 <p>
 AOD data can be reduced to simpler formats that hold tuples instead of C++ class and thus can be read directly through ROOT. Within CMS, this type of data is called NanoAOD. For Open Data analyses, we can reduce the AOD data to some NanoAOD-like formats, using one of the two available production tools -- <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">NanoAODRun1 Producer</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">POET</a>. One useful otpion of analyzing the reduced dataset is using <b>NanoAODRun1</b> data, which is available for all Run1 data (2010-2012) on Open Data Portal. For 2010 - 2012 data, the NanoAODRun1 Producer can be used to produce NanoAOD files. For 2011 - 2012 data, the Physics Object Extractor Tool (POET) can be used to produce similar files, and is set up so that users could configure the types of physics objects or selected events to include in the files.
@@ -405,7 +405,7 @@ AOD data can be reduced to simpler formats that hold tuples instead of C++ class
 </p><br>
 
 
-<h4>Reduce the AOD files to NanoAODRun1 tuples</h4>
+### Reduce the AOD files to NanoAODRun1 tuples
 
 <p>
 The NanoAODRun1 format is a NanoAOD-like ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software. It contains the per-event information that is needed in most generic analyses. The goal is that about 50% of all publishable Open Data analyses can be performed using this simplified and easy-to-access data format without compromise of the quality of the scientific result. A list of variables in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
@@ -575,7 +575,7 @@ The (low statistics) result (just one file) should pop on on your screen. Note t
 
 </details>
 
-<h4>Reduce the AOD files using POET</h4>
+### Reduce the AOD files using POET
 <p>
 In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the muon collection that you printed out in the <a href="#EDAnalyzer">EDAnalyzer example</a> is not guaranteed to be from validated data. In order to analyze only the "good quality" data, you must apply some selection criteria.
 </p>
