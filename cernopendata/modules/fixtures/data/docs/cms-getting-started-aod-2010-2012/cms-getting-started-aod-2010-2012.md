@@ -416,7 +416,11 @@ Note that NanoAODRun1 data format should not be confused with another NanoAOD-li
 </p>
 
 <p>
-Some datasets have already been processed as NanoAODRun1 files (link coming soon), and new datasets can be processed by following the <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">instructions</a>. <b>Note</b>: user customization is not supported for NanoAODRun1, but files can be produced according to this code. 
+Some datasets have already been processed as NanoAODRun1 files (link coming soon), and new datasets can be processed by following the <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">instructions</a>.
+</p>
+
+<p>
+<b>Note</b>: User customization is not supported for NanoAODRun1, but files can be produced according to this code. 
 </p>
 
 <p>
