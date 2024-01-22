@@ -176,7 +176,7 @@ Documentation of the objects of main interest to physics analysis is available i
   Let's first see how to perform analysis on the primary AOD dataset. 
 </p>
 
-## analyzing the primary AOD dataset using EDAnalyzer
+## Analyzing the primary AOD dataset using EDAnalyzer
 
 <p>
 As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment.
