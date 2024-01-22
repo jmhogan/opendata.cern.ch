@@ -395,7 +395,7 @@ For detailed examples on applying selections and analyzing the full event conten
 
 Next, let's see how to analyze the reduced datasets.
 
-## analyzing reduced dataset
+## Analyzing reduced dataset
 
 <p>
 AOD data can be reduced to simpler formats that hold tuples instead of C++ class and thus can be read directly through ROOT. Within CMS, this type of data is called NanoAOD. For Open Data analyses, we can reduce the AOD data to some NanoAOD-like formats, using one of the two available production tools -- <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">NanoAODRun1 Producer</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">POET</a>. One useful otpion of analyzing the reduced dataset is using <b>NanoAODRun1</b> data, which is available for all Run1 data (2010-2012) on Open Data Portal. For 2010 - 2012 data, the NanoAODRun1 Producer can be used to produce NanoAOD files. For 2011 - 2012 data, the Physics Object Extractor Tool (POET) can be used to produce similar files, and is set up so that users could configure the types of physics objects or selected events to include in the files.
