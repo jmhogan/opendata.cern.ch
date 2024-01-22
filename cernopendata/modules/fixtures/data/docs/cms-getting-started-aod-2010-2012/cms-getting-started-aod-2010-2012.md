@@ -176,8 +176,7 @@ Let's see what physics objects are contained in an AOD file.
         Below we provide examples of how to perfom analysis on both the primary AOD data and the reduced data. 
 </p>
 
-<details>
-<summary><a name="EDAnalyzer"><h3>Analysing the primary AOD dataset using EDAnalyzer</h3></a></summary>
+<h3>Analysing the primary AOD dataset using EDAnalyzer</h3>
 
 <p>
 As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment. Here we provide a simple example on how to use EDAnalyzer. 
@@ -394,294 +393,290 @@ The output gives the energy of muons in these events:
 For detailed examples on applying selections and analyzing the full event content of AOD files through EDAnalyzer, refer to <a href="/record/560">this CMS analysis example for 2010 data</a> and <a href="/record/5500">this CMS analysis example for 2011-2012 data</a>. Take a look at the scripts to learn how selections and extractions are done. 
 </p><br>
 
-</details>
 
+<h3> Analysing reduced dataset </h3>
+  
+<p>
+AOD data can be reduced to NanoAOD-like data formats, which hold tuples instead of C++ class and thus can be read directly through ROOT. One useful otpion of analyzing the reduced dataset is using <b>NanoAODRun1</b> data, which is available for all Run1 data (2010-2012) on Open Data Portal. The <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">production code</a> is available but not intended to be used by non-expert users. Users who wish to produce reduced dataset by themselves should refer to the other option -- <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool"><b>Physics Object Extractor Tool (POET)</b></a>, which extracts information of different physics objects into a ROOT file and produces NanoAOD-like tuples from AOD files. It is in essence a collection of EDAnalyzer that we saw in the <a href="#EDAnalyzer">previous subsection</a>. Note that POET is only avaialble for 2011 and 2012 data. Users should refer back to the <a href="#EDAnalyzer">EDAnalyzer</a>, if they need more information from the 2010 data than what is already in NanoAODRun1. Examples on how to use NanoAODRun1 and POET are provided respectively. 
+</p><br>
 
 <p>
         Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
 </p><br>
 
 <details>
-<summary><h3> Analysing reduced dataset </h3></summary>
+<summary><h4>Reduce the AOD files to NanoAODRun1 tuples</h4></summary>
   
-  <p>
-  AOD data can be reduced to NanoAOD-like data formats, which hold tuples instead of C++ class and thus can be read directly through ROOT. One useful otpion of analyzing the reduced dataset is using <b>NanoAODRun1</b> data, which is available for all Run1 data (2010-2012) on Open Data Portal. The <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">production code</a> is available but not intended to be used by non-expert users. Users who wish to produce reduced dataset by themselves should refer to the other option -- <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool"><b>Physics Object Extractor Tool (POET)</b></a>, which extracts information of different physics objects into a ROOT file and produces NanoAOD-like tuples from AOD files. It is in essence a collection of EDAnalyzer that we saw in the <a href="#EDAnalyzer">previous subsection</a>. Note that POET is only avaialble for 2011 and 2012 data. Users should refer back to the <a href="#EDAnalyzer">EDAnalyzer</a>, if they need more information from the 2010 data than what is already in NanoAODRun1. Examples on how to use NanoAODRun1 and POET are provided respectively. 
-  </p><br>
+<p>
+The NanoAODRun1 format is a NanoAOD-like ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software. It contains the per-event information that is needed in most generic analyses. The goal is that about 50% of all publishable Open Data analyses can be performed using this simplified and easy-to-access data format without compromise of the quality of the scientific result. 
+</p>
+
+<p>
+ A list of variables in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
+</p>
+
+<p>
+Note that NanoAODRun1 dfata format should not be confused with another NanoAOD-like <a href="/record/12353">reduced format created for educational purposes rather than for analysis purposes</a>, which is sometimes also referred to as "NanoAOD" in the Open Data context.
+</p>
+
+<p>
+  Here we provide examples on how to use NanoAODRun1 data to reproduce published results. The setup and usage of NanoAODRun1 are the same for all years (2010-2012).
+</p>
+
+<details>
+<summary><b>Plot histogram with standard ROOT macro in C++</b></summary>
+
+In this example, we are rerpoducing the plot of invariant mass spectrum of dimuons in a <a href="https://inspirehep.net/literature/1118729">CMS paper</a> that uses the 2010 muon data. 
+
+The only thing we need to do is to write a C++ script and run it with ROOT.
+
+Create a C++ script with the name "MuHistos_eospublic.cxx":
+```shell
+touch MuHistos_eospublic.cxx
+```
+
+Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/MuHistos_eospublic.cxx">code</a> to the script.
+
+Execute it with 
+
+```shell
+root -l MuHistos_eospublic.cxx++
+```
+
+<b>Troubleshoot</b>: Make sure you have access to ROOT. It is automatically available if you are in <a href="#vm">CMS environment</a>. To test if you have access to ROOT, execute <code>root -l</code>. This command should start a ROOT session for you, if it is available. If you the job finishes very fast and you get the the output <code>entries = 0</code> (failure of xrootd access, no data read) you might have to source the script described in the FAQ for the next example. 
+
+The output plot looks like this:
+
+<img src="/static/docs/cms-getting-started-aod-2010-2012/MuHistos_eospublic_mass.png" width="70%">
+
+<br>
+</details>
+
+<details>
+<summary><b>Plot histogram with interactive CINT/Cling and/or RDataFrame in C++</b></summary>
+
+<p>
+In this example, we will reproduce one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
+</p>
+
+<details>
+<summary><h5>CINT/Cling</h5></summary>
+<p>
+CINT/Cling is the ROOT interactive C++ interpreter, which can be run as a script as well as be run line by line on the command line of an interactive Root session. One does not normally use CINT/Cling for advanced analyses, but it is worthwhile to try out this interactive option before converging to a final analysis strategy. This is the setup that was used for the original development of this example to find the relevant cuts.
+</p>
+<p>
+With NanoAODRun1, the workflow is always the same -- writing an analysis script and execute it in ROOT, regardless of which interface we use it with.
+</p>
+
+Create a C++ script with the name "MuHistos_eospublic.cxx":
+```shell
+touch Dimuon2011_eospublic.C
+```
+
+Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic.C">code</a> to the script.
+
+Execute it with 
+
+```shell
+root -l Dimuon2011_eospublic.C
+```
+
+It takes at least 30 minutes to run. It might take longer because of your network, because it accesses data remotely from the CERN eospublic disks. If you prefer to download the data to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_local.C">this script</a>. 
+
+</details>
+
+<details>
+<summary><h5>RDataFrame</h5></summary>
+<p>
+RDataFrame is a powerful interface for data analysis in ROOT. It reads columnar data from a data source and allows easy skimmming  and manipulation of the data in a simple and straightforward way. It also allows multi-threading and other low-level optimizations that may help to speed up the processing time. RDataFrame makes a good choice for analyses with a relatively straightforward cut and analysis flow. 
+</p>
+
+Create a C++ script with the name "MuHistos_eospublic.cxx":
+```shell
+touch Dimuon2011_eospublic_RDF.C
+```
+
+Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF.C">code</a> to the script. This script plots the dimuon mass spectrum for different trigger paths.
+
+Execute it with 
+
+```shell
+root -l Dimuon2011_eospublic_RDF.C
+```
+
+If you prefer to download the data (50+80GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_local_RDF.C">this script</a>.
+
+The output plot looks like this:
+
+<img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF.png" width="70%"><br>
+
+
+If you would like to speed up the processing time through multithreading, try <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF2.C">this script</a>.
+
+The output plot looks like this:
+
+<img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF2.png" width="70%">
+
+<br>
+</details>
+
+Exit the ROOT session with <code>.q</code> in the command line, if the session does not automatically end after the execution.
+
+<b>Troubleshoot:</b> If you get the error <code>fatal error: 'Math/Vector4Dfwd.h' file not found</code> with your default ROOT setup, execute
+
+on Centos7:
+
+```shell
+  source /cvmfs/sft.cern.ch/lcg/views/LCG_98/x86_64-centos7-gcc8-opt/setup.sh
+```
+
+on slc6:
+
+```shell
+source /cvmfs/sft.cern.ch/lcg/views/LCG_95/x86_64-slc6-gcc8-opt/setup.sh
+```
+
+</details>
+
+<details>
+<summary><b>Plot histogram with RDataFrame in python</b></summary>
+<p>
+In this example, we will reproduce the dimuon spectrum in the <a href="/record/12342">2012 DoubleMuParked outreach example</a>. A much smaller reduced NanoAOD-like ntuples was provided in the outreach example for educational purposes. The analysis scripts from this outreach example can also be used on the larger NanoAODRun1 ntuples. The original <a href="/record/12342">example</a> uses RDataFrame and is available in C++, python and Jupyter notebook. Here we only provide examples in python and Jupyter notebook. For using RDataFrame in C++, please refer to the previous subsection.
+</p>
   
-  <details>
-  <summary><h4>Reduce the AOD files to NanoAODRun1 tuples</h4></summary>
-    
-  <p>
-  The NanoAODRun1 format is a NanoAOD-like ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software. It contains the per-event information that is needed in most generic analyses. The goal is that about 50% of all publishable Open Data analyses can be performed using this simplified and easy-to-access data format without compromise of the quality of the scientific result. 
-  </p>
+Create a C++ script with the name "dimuonSpectrum2012_eospublic.py":
+```shell
+touch dimuonSpectrum2012_eospublic.py
+```
 
-  <p>
-   A list of variables in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
-  </p>
+Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_eospublic.py.txt">code</a> to the script.
+
+Execute it with 
+
+```shell
+python dimuonSpectrum2012_eospublic.py
+```
+
+The output plot looks like this:
+
+<img src="/static/docs/cms-getting-started-aod-2010-2012/dimuonSpectrum2012.png" width="70%"><br>
+
+If you prefer to download the data (80+110GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_local.py.txt">this script</a>.
+
+To get a simple demonstration from you web browser without installing ROOT, you can also plug NanoAODRun1 samples into the <a href="/record/12342">original Outreach Jupyter notebook example</a>:
+
+Start the notebook and execute all steps in the order indicated (click on each block and type control enter)
+
+In step \[3\], replace the input file by e.g. <code>root://eospublic.cern.ch//eos/opendata/cms/upload/NanoAODRun1/01-Jul-22/Run2012B_DoubleMuParked/01-Jul-22Run2012B_DoubleMuParked/03C5684F-8BAF-4312-8235-2B0039F2FB93.root</code> (for pasting, use control V).
+
+In step \[12\], change <code>%jsroot</code> on to <code>%jsroot</code> off .
+
+The (low statistics) result (just one file) should pop on on your screen. Note that the notebook might not work on the large merged samples for internal size and memory reasons. Making the usage of Jupyter notebooks possible realistically also for larger samples is currently under investigation.
+
+</details>
+
+</details>
+
+<details>
+<summary><h4>Reduce the AOD files using POET</h4></summary>
+<p>
+In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the muon collection that you printed out in the <a href="#EDAnalyzer">EDAnalyzer example</a> is not guaranteed to be from validated data. In order to analyze only the "good quality" data, you must apply some selection criteria.
+</p>
   
-  <p>
-  Note that NanoAODRun1 dfata format should not be confused with another NanoAOD-like <a href="/record/12353">reduced format created for educational purposes rather than for analysis purposes</a>, which is sometimes also referred to as "NanoAOD" in the Open Data context.
-  </p>
-  
-  <p>
-    Here we provide examples on how to use NanoAODRun1 data to reproduce published results. The setup and usage of NanoAODRun1 are the same for all years (2010-2012).
-  </p>
+<p>
+Physics Object Extractor Tool (POET) allows you to filter for validated data, apply selection criteria to select useful events and write out physics objects and their properties to a reduced dataset. For a quick start, check <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">this repository</a>. Similar to the NanoAODRun1 examples, you can use <a href="http://root.cern.ch">ROOT</a> to inspect reconstructed particles and the distributions of their properties.
+</p>
 
-  <details>
-  <summary><b>Plot histogram with standard ROOT macro in C++</b></summary>
+<p>
+Start by getting the code and compiling it. Note that POET does not work for the 2010 data, which requires an older version of CMSSW. Make sure that you are back in the <b>CMSSW_5_3_32/src/</b> folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with <code>cd ~/CMSSW_5_3_32/src</code>. In the container, keep using the normal container shell and go to the right folder with <code>cd $CMSSW_BASE/src</code>.
 
-  In this example, we are rerpoducing the plot of invariant mass spectrum of dimuons in a <a href="https://inspirehep.net/literature/1118729">CMS paper</a> that uses the 2010 muon data. 
+```shell
+$ git clone https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
+```
+</p>
 
-  The only thing we need to do is to write a C++ script and run it with ROOT.
+<p>
+If you are using the VM, change now back to the "CMS shell" terminal. Get the 2012 (2011) "branch" of the repository for 2012 (2011) data. In the following example, we use the 2012 data, so we checkout the 2012 branch. Make sure that you are always in the <b>CMSSW_5_3_32/src/</b> folder. Checkout the branch and compile the code with:
 
-  Create a C++ script with the name "MuHistos_eospublic.cxx":
-  ```shell
-  touch MuHistos_eospublic.cxx
-  ```
+```shell
+$ cd PhysObjectExtractorTool
+$ git checkout 2012
+$ scram b
+```
+</p>
 
-  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/MuHistos_eospublic.cxx">code</a> to the script.
+<p>
+Note how only the validated runs are selected in the configuration file. The relevant lines are:
 
-  Execute it with 
-  
-  ```shell
-  root -l MuHistos_eospublic.cxx++
-  ```
+```python
+  import FWCore.ParameterSet.Config as cms
+  import FWCore.PythonUtilities.LumiList as LumiList
 
-  <b>Troubleshoot</b>: Make sure you have access to ROOT. It is automatically available if you are in <a href="#vm">CMS environment</a>. To test if you have access to ROOT, execute <code>root -l</code>. This command should start a ROOT session for you, if it is available. If you the job finishes very fast and you get the the output <code>entries = 0</code> (failure of xrootd access, no data read) you might have to source the script described in the FAQ for the next example. 
+  [...]
 
-  The output plot looks like this:
-  
-  <img src="/static/docs/cms-getting-started-aod-2010-2012/MuHistos_eospublic_mass.png" width="70%">
+  goodJSON = "data/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.txt"
+  myLumis = LumiList.LumiList(filename=goodJSON).getCMSSWString().split(",")
+  process.source.lumisToProcess = CfgTypes.untracked(
+        CfgTypes.VLuminosityBlockRange())
+  process.source.lumisToProcess.extend(myLumis)
+```
+</p>
 
-  <br>
-  </details>
+<p>
+This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
+</p>
 
-  <details>
-  <summary><b>Plot histogram with interactive CINT/Cling and/or RDataFrame in C++</b></summary>
-  
-  <p>
-  In this example, we will reproduce one plot from a <a href="https://inspirehep.net/literature/1292243">CMS conference report</a> and one plot from <a href="https://inspirehep.net/literature/1485699"> a CMS paper</a>. This example is slightly more complicated than then previous example. It involves trigger selections, muon quality selections, an individually revertexed dimuon system to reduce pileup background, and dealing with two different overlapping datasets. Using this example, we show how to work on NanoAODRun1 data using interactive CINT/Cling or RDataFrame.
-  </p>
+<p>
+To produce a root file with selected objects, do the following:
 
-  <details>
-  <summary><h5>CINT/Cling</h5></summary>
-  <p>
-  CINT/Cling is the ROOT interactive C++ interpreter, which can be run as a script as well as be run line by line on the command line of an interactive Root session. One does not normally use CINT/Cling for advanced analyses, but it is worthwhile to try out this interactive option before converging to a final analysis strategy. This is the setup that was used for the original development of this example to find the relevant cuts.
-  </p>
-  <p>
-  With NanoAODRun1, the workflow is always the same -- writing an analysis script and execute it in ROOT, regardless of which interface we use it with.
-  </p>
+```shell
+$ cd PhysObjectExtractor
+$ cmsRun python/poet_cfg.py
+```
+</p>
 
-  Create a C++ script with the name "MuHistos_eospublic.cxx":
-  ```shell
-  touch Dimuon2011_eospublic.C
-  ```
+<p>
+The configuration file sets it to run over 1000 events in a simulated dataset. The script runs over all the events when the number is set to -1.
+</p>
 
-  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic.C">code</a> to the script.
+We can check the content of the output ROOT file through command lines or C++ scripts as we did in the previous examples. We can also check the content and make plots through an interactive Graphical User Interface (GUI). We use this example to show how to do so with ROOT GUI.
 
-  Execute it with 
-  
-  ```shell
-  root -l Dimuon2011_eospublic.C
-  ```
+If you are using the CMS open data container with the VNC application installed (see the <a href="/docs/cms-guide-docker#vnc">container guide page</a>), for opening the graphical user interface, start the VNC application in the container by typing
 
-  It takes at least 30 minutes to run. It might take longer because of your network, because it accesses data remotely from the CERN eospublic disks. If you prefer to download the data to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_local.C">this script</a>. 
-  
-  </details>
+```shell
+$ start_vnc
+```
 
-  <details>
-  <summary><h5>RDataFrame</h5></summary>
-  <p>
-  RDataFrame is a powerful interface for data analysis in ROOT. It reads columnar data from a data source and allows easy skimmming  and manipulation of the data in a simple and straightforward way. It also allows multi-threading and other low-level optimizations that may help to speed up the processing time. RDataFrame makes a good choice for analyses with a relatively straightforward cut and analysis flow. 
-  </p>
-
-  Create a C++ script with the name "MuHistos_eospublic.cxx":
-  ```shell
-  touch Dimuon2011_eospublic_RDF.C
-  ```
-
-  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF.C">code</a> to the script. This script plots the dimuon mass spectrum for different trigger paths.
-
-  Execute it with 
-  
-  ```shell
-  root -l Dimuon2011_eospublic_RDF.C
-  ```
-
-  If you prefer to download the data (50+80GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_local_RDF.C">this script</a>.
-  
-  The output plot looks like this:
-  
-  <img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF.png" width="70%"><br>
-
-  
-  If you would like to speed up the processing time through multithreading, try <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF2.C">this script</a>.
-
-  The output plot looks like this:
-  
-  <img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF2.png" width="70%">
-  
-  <br>
-  </details>
-
-  Exit the ROOT session with <code>.q</code> in the command line, if the session does not automatically end after the execution.
-
-  <b>Troubleshoot:</b> If you get the error <code>fatal error: 'Math/Vector4Dfwd.h' file not found</code> with your default ROOT setup, execute
-
-  on Centos7:
-  
-  ```shell
-    source /cvmfs/sft.cern.ch/lcg/views/LCG_98/x86_64-centos7-gcc8-opt/setup.sh
-  ```
-
-  on slc6:
-  
-  ```shell
-  source /cvmfs/sft.cern.ch/lcg/views/LCG_95/x86_64-slc6-gcc8-opt/setup.sh
-  ```
-
-  </details>
-
-  <details>
-  <summary><b>Plot histogram with RDataFrame in python</b></summary>
-  <p>
-  In this example, we will reproduce the dimuon spectrum in the <a href="/record/12342">2012 DoubleMuParked outreach example</a>. A much smaller reduced NanoAOD-like ntuples was provided in the outreach example for educational purposes. The analysis scripts from this outreach example can also be used on the larger NanoAODRun1 ntuples. The original <a href="/record/12342">example</a> uses RDataFrame and is available in C++, python and Jupyter notebook. Here we only provide examples in python and Jupyter notebook. For using RDataFrame in C++, please refer to the previous subsection.
-  </p>
-    
-  Create a C++ script with the name "dimuonSpectrum2012_eospublic.py":
-  ```shell
-  touch dimuonSpectrum2012_eospublic.py
-  ```
-
-  Copy and paste the <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_eospublic.py.txt">code</a> to the script.
-
-  Execute it with 
-  
-  ```shell
-  python dimuonSpectrum2012_eospublic.py
-  ```
-
-  The output plot looks like this:
-  
-  <img src="/static/docs/cms-getting-started-aod-2010-2012/dimuonSpectrum2012.png" width="70%"><br>
-
-  If you prefer to download the data (80+110GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_local.py.txt">this script</a>.
-
-  To get a simple demonstration from you web browser without installing ROOT, you can also plug NanoAODRun1 samples into the <a href="/record/12342">original Outreach Jupyter notebook example</a>:
-  
-  Start the notebook and execute all steps in the order indicated (click on each block and type control enter)
-
-  In step \[3\], replace the input file by e.g. <code>root://eospublic.cern.ch//eos/opendata/cms/upload/NanoAODRun1/01-Jul-22/Run2012B_DoubleMuParked/01-Jul-22Run2012B_DoubleMuParked/03C5684F-8BAF-4312-8235-2B0039F2FB93.root</code> (for pasting, use control V).
-
-  In step \[12\], change <code>%jsroot</code> on to <code>%jsroot</code> off .
-  
-  The (low statistics) result (just one file) should pop on on your screen. Note that the notebook might not work on the large merged samples for internal size and memory reasons. Making the usage of Jupyter notebooks possible realistically also for larger samples is currently under investigation.
-
-  </details>
-  
-  </details>
-
-  <details>
-  <summary><h4>Reduce the AOD files using POET</h4></summary>
-  <p>
-  In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the muon collection that you printed out in the <a href="#EDAnalyzer">EDAnalyzer example</a> is not guaranteed to be from validated data. In order to analyze only the "good quality" data, you must apply some selection criteria.
-  </p>
-    
-  <p>
-  Physics Object Extractor Tool (POET) allows you to filter for validated data, apply selection criteria to select useful events and write out physics objects and their properties to a reduced dataset. For a quick start, check <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">this repository</a>. Similar to the NanoAODRun1 examples, you can use <a href="http://root.cern.ch">ROOT</a> to inspect reconstructed particles and the distributions of their properties.
-  </p>
-
-  <p>
-  Start by getting the code and compiling it. Note that POET does not work for the 2010 data, which requires an older version of CMSSW. Make sure that you are back in the <b>CMSSW_5_3_32/src/</b> folder. If you are using the VM, do the git command to get the code in the "Outer shell" terminal. Go to the right folder with <code>cd ~/CMSSW_5_3_32/src</code>. In the container, keep using the normal container shell and go to the right folder with <code>cd $CMSSW_BASE/src</code>.
-
-  ```shell
-  $ git clone https://github.com/cms-opendata-analyses/PhysObjectExtractorTool.git
-  ```
-  </p>
-
-  <p>
-  If you are using the VM, change now back to the "CMS shell" terminal. Get the 2012 (2011) "branch" of the repository for 2012 (2011) data. In the following example, we use the 2012 data, so we checkout the 2012 branch. Make sure that you are always in the <b>CMSSW_5_3_32/src/</b> folder. Checkout the branch and compile the code with:
-  
-  ```shell
-  $ cd PhysObjectExtractorTool
-  $ git checkout 2012
-  $ scram b
-  ```
-  </p>
-
-  <p>
-  Note how only the validated runs are selected in the configuration file. The relevant lines are:
-  
-  ```python
-    import FWCore.ParameterSet.Config as cms
-    import FWCore.PythonUtilities.LumiList as LumiList
-
-    [...]
-  
-  	goodJSON = "data/Cert_190456-208686_8TeV_22Jan2013ReReco_Collisions12_JSON.txt"
-  	myLumis = LumiList.LumiList(filename=goodJSON).getCMSSWString().split(",")
-  	process.source.lumisToProcess = CfgTypes.untracked(
-  	    	CfgTypes.VLuminosityBlockRange())
-  	process.source.lumisToProcess.extend(myLumis)
-  ```
-  </p>
-
-  <p>
-  This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
-  </p>
-
-  <p>
-  To produce a root file with selected objects, do the following:
-  
-  ```shell
-  $ cd PhysObjectExtractor
-  $ cmsRun python/poet_cfg.py
-  ```
-  </p>
-
-  <p>
-  The configuration file sets it to run over 1000 events in a simulated dataset. The script runs over all the events when the number is set to -1.
-  </p>
-
-  We can check the content of the output ROOT file through command lines or C++ scripts as we did in the previous examples. We can also check the content and make plots through an interactive Graphical User Interface (GUI). We use this example to show how to do so with ROOT GUI.
-  
-  If you are using the CMS open data container with the VNC application installed (see the <a href="/docs/cms-guide-docker#vnc">container guide page</a>), for opening the graphical user interface, start the VNC application in the container by typing
-
-  ```shell
-  $ start_vnc
-  ```
-
-  Then start a VNC viewer on your local computer using the password <code>cms.cern</code>. The http option for a GUI in the browser is not guaranteed to work in the container with this CMSSW version.
+Then start a VNC viewer on your local computer using the password <code>cms.cern</code>. The http option for a GUI in the browser is not guaranteed to work in the container with this CMSSW version.
 
 
-  You can now open the POET output file in ROOT:
+You can now open the POET output file in ROOT:
 
-  ```shell
-  $ root myoutput.root
-  ```
-  
-  You will see the ROOT logo appear on screen. You can now open the ROOT GUI by entering:
-  
-  ```shell
-  TBrowser t
-  ```
+```shell
+$ root myoutput.root
+```
 
-  You will see the ROOT browser window:
-  
-  <img src="/static/docs/cms-getting-started-aod-2010-2012/getting_started_with_cms_2011_2012_data_1.png" width="70%"><br>
+You will see the ROOT logo appear on screen. You can now open the ROOT GUI by entering:
 
-  Now, let us take a closer look at some collections of the physics objects.
+```shell
+TBrowser t
+```
 
-  On the left window of ROOT, double-click on the file name (<code>myoutput.root</code>). You should see a list of names, each corresponding to a collection of reconstructed data.
+You will see the ROOT browser window:
 
-  Let us take a peek, for example, at the muons, which are found in <code>mymuons</code>. Look in there by double-clicking on that line and then double-clicking on <code>Events</code>. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: <code>muon_pt</code>. Double-click on it to draw the distribution.
+<img src="/static/docs/cms-getting-started-aod-2010-2012/getting_started_with_cms_2011_2012_data_1.png" width="70%"><br>
 
-  <img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%"><br>
+Now, let us take a closer look at some collections of the physics objects.
 
-  You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
+On the left window of ROOT, double-click on the file name (<code>myoutput.root</code>). You should see a list of names, each corresponding to a collection of reconstructed data.
 
-  </details>
-  
+Let us take a peek, for example, at the muons, which are found in <code>mymuons</code>. Look in there by double-clicking on that line and then double-clicking on <code>Events</code>. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: <code>muon_pt</code>. Double-click on it to draw the distribution.
+
+<img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%"><br>
+
+You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
+
 </details>
 <br>
+
 That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>.
