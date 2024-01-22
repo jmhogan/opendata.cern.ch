@@ -447,7 +447,7 @@ root -l MuHistos_eospublic.cxx++
 
 The output plot looks like this:
 
-<img src="/static/docs/cms-getting-started-aod-with-2010-2012/MuHistos_eospublic_mass.png" width="70%">
+<img src="/static/docs/cms-getting-started-with-aod-2010-2012/MuHistos_eospublic_mass.png" width="70%">
 
 <br>
 </details>
@@ -508,14 +508,14 @@ If you prefer to download the data (50+80GB) to your computer and access it loca
 
 The output plot looks like this:
 
-<img src="/static/docs/cms-getting-started-aod-with-2010-2012/Dimuon2011_eospublic_RDF.png" width="70%"><br>
+<img src="/static/docs/cms-getting-started-with-aod-2010-2012/Dimuon2011_eospublic_RDF.png" width="70%"><br>
 
 
 If you would like to speed up the processing time through multithreading, try <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF2.C">this script</a>.
 
 The output plot looks like this:
 
-<img src="/static/docs/cms-getting-started-aod-with-2010-2012/Dimuon2011_eospublic_RDF2.png" width="70%">
+<img src="/static/docs/cms-getting-started-with-aod-2010-2012/Dimuon2011_eospublic_RDF2.png" width="70%">
 
 <br>
 </details>
@@ -559,7 +559,7 @@ python dimuonSpectrum2012_eospublic.py
 
 The output plot looks like this:
 
-<img src="/static/docs/cms-getting-started-aod-with-2010-2012/dimuonSpectrum2012.png" width="70%"><br>
+<img src="/static/docs/cms-getting-started-with-aod-2010-2012/dimuonSpectrum2012.png" width="70%"><br>
 
 If you prefer to download the data (80+110GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/dimuonSpectrum2012_local.py.txt">this script</a>.
 
@@ -661,7 +661,7 @@ TBrowser t
 
 You will see the ROOT browser window:
 
-<img src="/static/docs/cms-getting-started-aod-with-2010-2012/getting_started_with_cms_2011_2012_data_1.png" width="70%"><br>
+<img src="/static/docs/cms-getting-started-with-aod-2010-2012/getting_started_with_cms_2011_2012_data_1.png" width="70%"><br>
 
 Now, let us take a closer look at some collections of the physics objects.
 
