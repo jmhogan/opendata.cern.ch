@@ -173,13 +173,17 @@ Documentation of the objects of main interest to physics analysis is available i
 </p>
 
 <p>
-        Below we provide examples of how to perfom analysis on both the primary AOD data and the reduced data. 
+  For 2010 - 2012 data, the NanoAODRun1 Producer can be used to produce NanoAOD files. For 2011 - 2012 data, the Physics Object Extractor Tool (POET) can be used to produce similar files, and is set up so that users could configure the types of physics objects or selected events to include in the files. 
+</p>
+
+<p>
+  Let's first see how to perform analysis on the primary AOD dataset. 
 </p>
 
 <h3>Analysing the primary AOD dataset using EDAnalyzer</h3>
 
 <p>
-As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment. Here we provide a simple example on how to use EDAnalyzer. 
+As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment.
 </p>
 
 <p>
@@ -217,7 +221,7 @@ or take action and remove the indicated section from <code>BuildFile.xml</code>.
 </p>
 
 <p>
-Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. Take the <a href="/record/14">Mu primary dataset</a> from Run2010B (<a href="/record/24460">SingleMu dataset</a> from Run2012D) as an example. Replace <code>file:myfile.root</code> with <code>file:myfile.root</code> with <code>root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root</code (<code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>). 
+Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> in the DemoAnalyzer directory. If we want to check the list of content in he <a href="/record/14">Mu primary dataset</a> from Run2010B, we can replace <code>file:myfile.root</code> with one of the root files in this record, e.g. <code>root://eospublic.cern.ch//eos/opendata/cms/Run2010B/Mu/AOD/Apr21ReReco-v1/0000/00459D48-EB70-E011-AF09-90E6BA19A252.root</code>. If we want to check the list of content in the <a href="/record/24460">SingleMu dataset</a> from Run2012D, we can replace <code>file:myfile.root</code> with one of the root files in this record, e.g. <code>root://eospublic.cern.ch//eos/opendata/cms/Run2012D/SingleMu/AOD/22Jan2013-v1/10000/0015EC7D-EAA7-E211-A9B9-E0CB4E5536A7.root</code>. 
 </p>
 
 <p>
