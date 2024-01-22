@@ -173,10 +173,6 @@ Documentation of the objects of main interest to physics analysis is available i
 </p>
 
 <p>
-  For 2010 - 2012 data, the NanoAODRun1 Producer can be used to produce NanoAOD files. For 2011 - 2012 data, the Physics Object Extractor Tool (POET) can be used to produce similar files, and is set up so that users could configure the types of physics objects or selected events to include in the files. 
-</p>
-
-<p>
   Let's first see how to perform analysis on the primary AOD dataset. 
 </p>
 
@@ -397,34 +393,34 @@ The output gives the energy of muons in these events:
 For detailed examples on applying selections and analyzing the full event content of AOD files through EDAnalyzer, refer to <a href="/record/560">this CMS analysis example for 2010 data</a> and <a href="/record/5500">this CMS analysis example for 2011-2012 data</a>. Take a look at the scripts to learn how selections and extractions are done. 
 </p><br>
 
+Next, let's see how to analyze the reduced datasets.
 
 <h3> analyzing reduced dataset </h3>
-  
-<p>
-AOD data can be reduced to NanoAOD-like data formats, which hold tuples instead of C++ class and thus can be read directly through ROOT. One useful otpion of analyzing the reduced dataset is using <b>NanoAODRun1</b> data, which is available for all Run1 data (2010-2012) on Open Data Portal. The <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">production code</a> is available but not intended to be used by non-expert users. Users who wish to produce reduced dataset by themselves should refer to the other option -- <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool"><b>Physics Object Extractor Tool (POET)</b></a>, which extracts information of different physics objects into a ROOT file and produces NanoAOD-like tuples from AOD files. It is in essence a collection of EDAnalyzer that we saw in the <a href="#EDAnalyzer">previous subsection</a>. Note that POET is only avaialble for 2011 and 2012 data. Users should refer back to the <a href="#EDAnalyzer">EDAnalyzer</a>, if they need more information from the 2010 data than what is already in NanoAODRun1. Examples on how to use NanoAODRun1 and POET are provided respectively. 
-</p><br>
 
 <p>
-        Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
+AOD data can be reduced to simpler formats that hold tuples instead of C++ class and thus can be read directly through ROOT. Within CMS, this type of data is called NanoAOD. For Open Data analyses, we can reduce the AOD data to some NanoAOD-like formats, using one of the two available production tools -- <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">NanoAODRun1 Producer</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">POET</a>. One useful otpion of analyzing the reduced dataset is using <b>NanoAODRun1</b> data, which is available for all Run1 data (2010-2012) on Open Data Portal. For 2010 - 2012 data, the NanoAODRun1 Producer can be used to produce NanoAOD files. For 2011 - 2012 data, the Physics Object Extractor Tool (POET) can be used to produce similar files, and is set up so that users could configure the types of physics objects or selected events to include in the files.
+</p>
+<p>
+<a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool">Physics Object Extractor Tool (POET)</a> is an example code to extract the physics object information from CMS data. It is essentially a collection of EDAnalyzer that we saw in the <a href="#EDAnalyzer">previous subsection</a>. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data.
 </p><br>
 
 
 <h4>Reduce the AOD files to NanoAODRun1 tuples</h4>
-  
+
 <p>
-The NanoAODRun1 format is a NanoAOD-like ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software. It contains the per-event information that is needed in most generic analyses. The goal is that about 50% of all publishable Open Data analyses can be performed using this simplified and easy-to-access data format without compromise of the quality of the scientific result. 
+The NanoAODRun1 format is a NanoAOD-like ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software. It contains the per-event information that is needed in most generic analyses. The goal is that about 50% of all publishable Open Data analyses can be performed using this simplified and easy-to-access data format without compromise of the quality of the scientific result. A list of variables in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
 </p>
 
 <p>
- A list of variables in NanoAODRun1 MC data can be found <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/WorkBookNanoAODRun1/doc_DYJetsToLL_M-50_7TeV.html">here</a>. Collision data contains the same variables, except for the generator-level information.
+Note that NanoAODRun1 data format should not be confused with another NanoAOD-like <a href="/record/12353">reduced format created for educational purposes rather than for analysis purposes</a>, which is sometimes also referred to as "NanoAOD" in the Open Data context.
 </p>
 
 <p>
-Note that NanoAODRun1 dfata format should not be confused with another NanoAOD-like <a href="/record/12353">reduced format created for educational purposes rather than for analysis purposes</a>, which is sometimes also referred to as "NanoAOD" in the Open Data context.
+Some datasets have already been processed as NanoAODRun1 files (link coming soon), and new datasets can be processed by following the <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">instructions</a>. <b>Note</b>: user customization is not supported for NanoAODRun1, but files can be produced according to this code. 
 </p>
 
 <p>
-  Here we provide examples on how to use NanoAODRun1 data to reproduce published results. The setup and usage of NanoAODRun1 are the same for all years (2010-2012).
+  Here we provide some examples on how to use NanoAODRun1 data to reproduce published results. For more examples and explanations on using NanoAODRun1 datasets, check <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/NanoAODRun1Examples">here</a>. The setup and usage of NanoAODRun1 should be the same for all years (2010-2012). 
 </p>
 
 <details>
