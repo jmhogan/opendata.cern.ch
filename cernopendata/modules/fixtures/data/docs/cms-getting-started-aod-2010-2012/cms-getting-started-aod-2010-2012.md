@@ -669,7 +669,7 @@ On the left window of ROOT, double-click on the file name (<code>myoutput.root</
 
 Let us take a peek, for example, at the muons, which are found in <code>mymuons</code>. Look in there by double-clicking on that line and then double-clicking on <code>Events</code>. Here, you can have a look at various properties of this collection, such as the transverse momentum of the muon: <code>muon_pt</code>. Double-click on it to draw the distribution.
 
-<img src="/static/docs/getting-started-with-cms-2011-data/getting_started_with_cms_2011_2012_data_2.png" width="70%"><br>
+<img src="/static/docs/cms-getting-started-aod-2010-2012/getting_started_with_cms_2011_2012_data_2.png" width="70%"><br>
 
 You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
 
