@@ -1,12 +1,12 @@
 1. ["I have installed the CMS open data environment: now what?"](#vm)
 2. ["OK! What is in the CMS data?"](#data)
-3. ["Nice! But how do I analyse these data?"](#nice)
+3. ["Nice! But how do I analyze these data?"](#nice)
 
-The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyse CMS data in this format for each year.
+The CMS primary data for 2010-2012 are provided on the CERN Open Data Portal in the Analysis Object Data (AOD) format. This page provides tutorials on how to access and analyze CMS data in this format for each year.
 
 ## <a name="vm">"I have installed the CMS open data environment / virtual machine: now what?"</a>
 
-To analyse CMS data collected in different years, you need different versions of CMSSW (an event processing model). The recommened version for the 2010 data is <b>version 4.2.8</b>, supported only on <b>Scientific Linux 5</b>. The recommended version for the 2011 and 2012 data is <b>version 5.3.32</b>, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a> or <a href="https://swcarpentry.github.io/shell-novice/">tutorial</a>.
+To analyze CMS data collected in different years, you need different versions of CMSSW (an event processing model). The recommened version for the 2010 data is <b>version 4.2.8</b>, supported only on <b>Scientific Linux 5</b>. The recommended version for the 2011 and 2012 data is <b>version 5.3.32</b>, supported only on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a> or <a href="https://swcarpentry.github.io/shell-novice/">tutorial</a>.
 
 <details>
 <summary><h4>2010</h4></summary>
@@ -37,7 +37,7 @@ $ cmsenv
 </header>
 
 <p>
-If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the <a href="/docs/cms-guide-docker">instruction</a>.
+If you do not want to work on a virtual machine, you can try to to analyze CMS data in a Docker container, following the <a href="/docs/cms-guide-docker">instruction</a>.
 </p>
 <br>
 </details>
@@ -81,7 +81,7 @@ Make sure that you are always in the <b>CMSSW_5_3_32/src/</b> directory, both in
 </header>
 
 <p>
-If you do not want to work on a virtual machine, you can try to to analyse CMS data in a Docker container, following the <a href="/docs/cms-guide-docker">instruction</a>.
+If you do not want to work on a virtual machine, you can try to to analyze CMS data in a Docker container, following the <a href="/docs/cms-guide-docker">instruction</a>.
 </p>
 <br>
 </details>
@@ -166,7 +166,7 @@ Documentation of the objects of main interest to physics analysis is available i
 </details>
 
 
-## <a name="nice">"Nice! But how do I analyse these data?"</a>
+## <a name="nice">"Nice! But how do I analyze these data?"</a>
 
 <p>
         You can perform analysis on the AOD dataset directly or on a reduced dataset that is derived from the AOD data. Analyzing on the original AOD dataset can be computationally heavy. Thus, it is recommended to use the reduced dataset, unless you need some information that is only contained in AOD data. 
@@ -180,7 +180,7 @@ Documentation of the objects of main interest to physics analysis is available i
   Let's first see how to perform analysis on the primary AOD dataset. 
 </p>
 
-<h3>Analysing the primary AOD dataset using EDAnalyzer</h3>
+<h3>analyzing the primary AOD dataset using EDAnalyzer</h3>
 
 <p>
 As mentioned above, you typically do not perform an analysis directly on the AOD files. However, there might be cases where only the AOD files contain some of the information you need. The objects contained in the AOD files can be accessed through a software module, which can be built with a helper script (EDAnalyzer) available in the CMS open data environment.
@@ -390,7 +390,7 @@ The output gives the energy of muons in these events:
 </p>
 
 <p>
-<strong>NOTE</strong>: To analyse the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. For simpler analyses, like the example above, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database.
+<strong>NOTE</strong>: To analyze the full event content, the analysis job needs access to the "condition data", such as the jet-energy corrections. To see how the connection to the condition database is established, you can check the <a href="/docs/cms-guide-for-condition-database">Guide to the CMS condition database</a>. For simpler analyses, like the example above, where we use only physics objects needing no further data for corrections, you do not need to connect to the condition database.
 </p>
 
 <p>
@@ -398,7 +398,7 @@ For detailed examples on applying selections and analyzing the full event conten
 </p><br>
 
 
-<h3> Analysing reduced dataset </h3>
+<h3> analyzing reduced dataset </h3>
   
 <p>
 AOD data can be reduced to NanoAOD-like data formats, which hold tuples instead of C++ class and thus can be read directly through ROOT. One useful otpion of analyzing the reduced dataset is using <b>NanoAODRun1</b> data, which is available for all Run1 data (2010-2012) on Open Data Portal. The <a href="https://github.com/cms-opendata-analyses/NanoAODRun1ProducerTool">production code</a> is available but not intended to be used by non-expert users. Users who wish to produce reduced dataset by themselves should refer to the other option -- <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool"><b>Physics Object Extractor Tool (POET)</b></a>, which extracts information of different physics objects into a ROOT file and produces NanoAOD-like tuples from AOD files. It is in essence a collection of EDAnalyzer that we saw in the <a href="#EDAnalyzer">previous subsection</a>. Note that POET is only avaialble for 2011 and 2012 data. Users should refer back to the <a href="#EDAnalyzer">EDAnalyzer</a>, if they need more information from the 2010 data than what is already in NanoAODRun1. Examples on how to use NanoAODRun1 and POET are provided respectively. 
@@ -408,8 +408,8 @@ AOD data can be reduced to NanoAOD-like data formats, which hold tuples instead 
         Physics Object Extractor Tool (POET) is an example code to extract the physics object information from CMS data. It is available for <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2011">2011</a> and <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2012">2012</a> AOD data. It is not available for the 2010 data, but we can perform selection and extraction directly with EDAnalyzer. POET is just a collection of Event Data Analyzer (EDAnalyzer). 
 </p><br>
 
-<details>
-<summary><h4>Reduce the AOD files to NanoAODRun1 tuples</h4></summary>
+
+<h4>Reduce the AOD files to NanoAODRun1 tuples</h4>
   
 <p>
 The NanoAODRun1 format is a NanoAOD-like ntuple format for CMS Run 1 data, readable with bare ROOT or other ROOT-compatible software. It contains the per-event information that is needed in most generic analyses. The goal is that about 50% of all publishable Open Data analyses can be performed using this simplified and easy-to-access data format without compromise of the quality of the scientific result. 
@@ -579,10 +579,7 @@ The (low statistics) result (just one file) should pop on on your screen. Note t
 
 </details>
 
-</details>
-
-<details>
-<summary><h4>Reduce the AOD files using POET</h4></summary>
+<h4>Reduce the AOD files using POET</h4>
 <p>
 In AOD files, reconstructed physics objects are included without checking their "quality". For example, the reconstructed objects in the muon collection that you printed out in the <a href="#EDAnalyzer">EDAnalyzer example</a> is not guaranteed to be from validated data. In order to analyze only the "good quality" data, you must apply some selection criteria.
 </p>
@@ -680,7 +677,6 @@ Let us take a peek, for example, at the muons, which are found in <code>mymuons<
 
 You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
 
-</details>
 <br>
 
 That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>.
