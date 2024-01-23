@@ -7,7 +7,7 @@
 <details>
 <summary> 2015 </summary>
  
-To analyse CMS data collected in 2015, you need <b>version 7.6.7</b> of CMSSW, supported on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a>. Once you have installed the [CMS open data container](/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine (VM)](/docs/cms-virtual-machine-2015), you need to open a terminal.
+To analyse CMS data collected in 2015, you need <b>version 7.6.7</b> of CMSSW, supported on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a>. Once you have installed the <a href="/docs/cms-guide-docker>CMS open data container</a> or the <a href="/docs/cms-virtual-machine-2015">CMS-specific CERN Virtual Machine (VM)</a>, you need to open a terminal.
 
 If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In VM, execute the following command in the terminal if you haven't done so before; it ensures that you have this version of CMSSW running:
 
