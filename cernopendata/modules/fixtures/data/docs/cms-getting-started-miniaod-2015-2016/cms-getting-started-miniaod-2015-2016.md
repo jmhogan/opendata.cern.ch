@@ -7,7 +7,7 @@
 <details>
 <summary> 2015 </summary>
  
-To analyse CMS data collected in 2015, you need **version 7.6.7** of CMSSW, supported on **Scientific Linux 6**. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or try this [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine (VM)](/docs/cms-virtual-machine-2015), you need to open a terminal.
+To analyse CMS data collected in 2015, you need <b>version 7.6.7</b> of CMSSW, supported on <b>Scientific Linux 6</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a>. Once you have installed the [CMS open data container](/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine (VM)](/docs/cms-virtual-machine-2015), you need to open a terminal.
 
 If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In VM, execute the following command in the terminal if you haven't done so before; it ensures that you have this version of CMSSW running:
 
@@ -17,7 +17,7 @@ $ cmsrel CMSSW_7_6_7
 
 Note that if you get a warning message about the current OS not being slc6, you are using a wrong terminal ("Outer Shell") which is CERN CentOS 7 (cc7). Open a "CMS Shell" terminal as explained above and execute the cmsrel command there.
 
-Both in CMS open data container and in the VM, make sure that you are always in the **CMSSW_7_6_7/src/** directory (and in the "CMS Shell" terminal in VM).
+Both in CMS open data container and in the VM, make sure that you are always in the <b>CMSSW_7_6_7/src/</b> directory (and in the "CMS Shell" terminal in VM).
 
 In VM, the CMS analysis environment needs to be properly setup by entering the following commands in the terminal (you must do so every time you boot the VM before you can proceed):
 
@@ -32,7 +32,7 @@ $ cmsenv # do not execute this command if you are working in the container
 <details>
 <summary> 2016 </summary>
 
-To analyse CMS data collected in 2016, you need **version 10.6.30** of CMSSW, supported on **Scientific Linux 7**. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or try this [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine (VM)](/docs/cms-virtual-machine-2016), you need to open a terminal.
+To analyse CMS data collected in 2016, you need <b>version 10.6.30</b> of CMSSW, supported on <b>Scientific Linux 7</b>. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or try this [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine (VM)](/docs/cms-virtual-machine-2016), you need to open a terminal.
 
 If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In VM, execute the following command in the terminal if you haven't done so before; it ensures that you have this version of CMSSW running:
 
@@ -42,7 +42,7 @@ $ cmsrel CMSSW_10_6_30
 
 Note that if you get a warning message about the current OS not being slc7, you are using a wrong terminal ("Outer Shell") which is CERN CentOS 7 (cc7) (HOW TO EDIT THIS?). Open a "CMS Shell" terminal as explained above and execute the cmsrel command there.
 
-Both in CMS open data container and in the VM, make sure that you are always in the **CMSSW_10_6_30/src/** directory (and in the "CMS Shell" terminal in VM).
+Both in CMS open data container and in the VM, make sure that you are always in the <b>CMSSW_10_6_30/src/</b> directory (and in the "CMS Shell" terminal in VM).
 
 In VM, the CMS analysis environment needs to be properly setup by entering the following commands in the terminal (you must do so every time you boot the VM before you can proceed):
 
@@ -64,7 +64,7 @@ The primary data provided by CMS on the CERN Open Data Portal is in a format cal
 
 So, let's see what a MINIAOD file looks like.
 
-Make sure that you are in the **CMSSW_7_6_7/src/** folder, and, in VM, you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+Make sure that you are in the <b>CMSSW_7_6_7/src/</b> folder, and, in VM, you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
 
 You can select a file from a dataset (a listing is available for each dataset record) and print out it contents with:
 
@@ -224,7 +224,7 @@ The primary data provided by CMS on the CERN Open Data Portal is in a format cal
 
 So, let's see what a MINIAOD file looks like.
 
-Make sure that you are in the **CMSSW_10_6_30/src/** folder, and, in VM, you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+Make sure that you are in the <b>CMSSW_10_6_30/src/</b> folder, and, in VM, you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
 
 You can select a file from a dataset (a listing is available for each dataset record) and print out it contents with:
 
@@ -387,9 +387,9 @@ Begin processing the 10th record. Run 258434, Event 268437313, LumiSection 165 a
 <details>
 <summary> 2015 </summary>
  
-We start off with a quick introduction to **[ROOT](http://root.cern.ch)**. ROOT is the framework used by several particle-physics experiments to work with the collected data. For a quick start on how to write the most common objects and their properties in a root file, use "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD). You can use ROOT to inspect reconstructed particles and the distributions of their properties.
+We start off with a quick introduction to <b>[ROOT](http://root.cern.ch)</b>. ROOT is the framework used by several particle-physics experiments to work with the collected data. For a quick start on how to write the most common objects and their properties in a root file, use "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD). You can use ROOT to inspect reconstructed particles and the distributions of their properties.
 
-Start by getting the code and compiling it. Make sure that you are back in the the **CMSSW_7_6_7/src/** folder. If you are using the VM, do the next two commands in the "Outer shell" terminal. In the container, keep using the normal container shell.
+Start by getting the code and compiling it. Make sure that you are back in the the <b>CMSSW_7_6_7/src/</b> folder. If you are using the VM, do the next two commands in the "Outer shell" terminal. In the container, keep using the normal container shell.
 
 ```shell
 $ cd ~/CMSSW_7_6_7/src
@@ -448,7 +448,7 @@ Let us take a peek, for example, at the electrons, which are found in `myelectro
 
 You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
 
-**NOTE**: To analyse the full event content, the analysis job may need access to the "condition data", such as event selection information. You can see how connections to the condition database are established in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database) and in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/). For simpler analyses, in which only physics objects needing no further data are used, you do not need to connect to the condition database.
+<b>NOTE</b>: To analyse the full event content, the analysis job may need access to the "condition data", such as event selection information. You can see how connections to the condition database are established in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database) and in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/). For simpler analyses, in which only physics objects needing no further data are used, you do not need to connect to the condition database.
 
 Note also that in your analysis of collision data, you would need to filter only the validated events by downloading [the validated data definition file](/record/14210) and adding these lines the job configuration:
 
@@ -467,7 +467,7 @@ process.source.lumisToProcess.extend(myLumis)
 
 This selection must always be applied to any analysis on CMS open data, and to do so you must have the validation file downloaded to your local area.
 
-That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/).
+That's it! Hope you enjoyed this exercise. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>.
 
 <br>
 </details>
