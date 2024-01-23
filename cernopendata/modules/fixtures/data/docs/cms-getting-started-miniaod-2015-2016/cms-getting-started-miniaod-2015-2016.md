@@ -32,7 +32,7 @@ $ cmsenv # do not execute this command if you are working in the container
 <details>
 <summary> 2016 </summary>
 
-To analyse CMS data collected in 2016, you need <b>version 10.6.30</b> of CMSSW, supported on <b>Scientific Linux 7</b>. If you are unfamiliar with Linux, take a look at [this short introduction to Linux](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux) or try this [tutorial](https://swcarpentry.github.io/shell-novice/). Once you have installed the [CMS open data container](/docs/cms-guide-docker) or the [CMS-specific CERN Virtual Machine (VM)](/docs/cms-virtual-machine-2016), you need to open a terminal.
+To analyse CMS data collected in 2016, you need <b>version 10.6.30</b> of CMSSW, supported on <b>Scientific Linux 7</b>. If you are unfamiliar with Linux, take a look at <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookBasicLinux">this short introduction to Linux</a>. Once you have installed the <a href="/docs/cms-guide-docker">CMS open data container</a> or the <a href="/docs/cms-virtual-machine-2015">CMS-specific CERN Virtual Machine (VM)</a>, you need to open a terminal. (MIGHT NEED TO UPDATE VM)
 
 If you are using the VM, always use the "CMS shell" terminal available from the "CMS Shell" icon on the desktop for all CMSSW-specific commands, such as compilation and run. In VM, execute the following command in the terminal if you haven't done so before; it ensures that you have this version of CMSSW running:
 
@@ -60,7 +60,7 @@ $ cmsenv # do not execute this command if you are working in the container
 <details>
 <summary> 2015 </summary>
  
-The primary data provided by CMS on the CERN Open Data Portal is in a format called "[Analysis Object Data](/docs/cms-physics-objects-2015)" or AOD for short, and from 2015 onwards, in a slimmer format called MINIAOD. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The files cannot be opened and understood as simple data tables but require specific sofware in order to be read.
+The primary data provided by CMS on the CERN Open Data Portal is in a format called <a href="/docs/cms-physics-objects-2015">Analysis Object Data</a> or AOD for short, and from 2015 onwards, in a slimmer format called MINIAOD. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The files cannot be opened and understood as simple data tables but require specific sofware in order to be read.
 
 So, let's see what a MINIAOD file looks like.
 
@@ -83,9 +83,9 @@ vector<pat::Electron>                 "slimmedElectrons"          ""            
 [...]
 ```
 
-Documentation of these objects is available in [the CMS WorkBook 2015 MiniAOD page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects). The objects are implemented as C++ classes in the CMS software package CMSSW, and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/annotated.html). To see the properties of electrons, you would navigate to "pat" and find the entry for "Electron". The [pat::Electron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/d2/d1f/classpat_1_1Electron.html) lists all member functions through which the different properties of reconstructed electron can be accessed. Note that many of the basic propertied are "inherited" from the parent classes, and are listed separately under "Public Member Functions inherited from ... ".
+Documentation of these objects is available in <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2015#High_level_physics_objects">the CMS WorkBook 2015 MiniAOD page</a>. The objects are implemented as C++ classes in the CMS software package CMSSW, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to "pat" and find the entry for "Electron". The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_7_6_7/doc/html/d2/d1f/classpat_1_1Electron.html">pat::Electron Class Reference</a> lists all member functions through which the different properties of reconstructed electron can be accessed. Note that many of the basic propertied are "inherited" from the parent classes, and are listed separately under "Public Member Functions inherited from ... ".
 
-These objects can be accessed in a software module which can be built with a helper script available in the CMS open data environment. If you are using the VM, this helper scripts does not work out of the box, so skip this part and go directly to [the next section](#nice). If you are using the CMS open data container, you can do the following:
+These objects can be accessed in a software module which can be built with a helper script available in the CMS open data environment. If you are using the VM, this helper scripts does not work out of the box, so skip this part and go directly to <a href="#nice">the next section</a>. If you are using the CMS open data container, you can do the following:
 
 ```shell
 $ mkdir Test
@@ -94,15 +94,15 @@ $ mkedanlzr MiniAnalyzer
 $ cd MiniAnalyzer
 ```
 
-This will create several template files in the new MiniAnalyzer directory. For more information, have a look in [the CMS open data guide](https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/).
+This will create several template files in the new MiniAnalyzer directory. For more information, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
 
-To access the physics object properties, add `<use name="DataFormats/PatCandidates"/>` in `plugins/BuildFile.xml`. Compile the code with:
+To access the physics object properties, add <code><use name="DataFormats/PatCandidates"/></code> in <code>plugins/BuildFile.xml</code>. Compile the code with:
 
 ```shell
 $ scram b
 ```
 
-To run over the example file, change the input file name `file:myfile.root` in `python/ConfFile_cfg.py` to `root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root`. Change the number of events from `-1` (runs over all events in the file) to `10` for testing. You can run this "empty" analyzer to see that the data are accessed properly:
+To run over the example file, change the input file name `file:myfile.root` in `python/ConfFile_cfg.py` to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code>. Change the number of events from `-1` (runs over all events in the file) to `10` for testing. You can run this "empty" analyzer to see that the data are accessed properly:
 
 ```shell
 $ cmsRun python/ConfFile_cfg.py
