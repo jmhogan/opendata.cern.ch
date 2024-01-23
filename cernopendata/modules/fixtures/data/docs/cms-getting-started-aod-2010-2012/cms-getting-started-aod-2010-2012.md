@@ -449,7 +449,7 @@ root -l MuHistos_eospublic.cxx++
 
 <b>Troubleshoot</b>: Make sure you have access to ROOT. It is automatically available if you are in <a href="#vm">CMS environment</a>. To test if you have access to ROOT, execute <code>root -l</code>. This command should start a ROOT session for you, if it is available. If you the job finishes very fast and you get the the output <code>entries = 0</code> (failure of xrootd access, no data read) you might have to source the script described in the FAQ for the next example. 
 
-The output plot looks like this:
+The output plot looks like this:<br>
 
 <img src="/static/docs/cms-getting-started-aod-2010-2012/MuHistos_eospublic_mass.png" width="70%">
 
@@ -510,14 +510,14 @@ root -l Dimuon2011_eospublic_RDF.C
 
 If you prefer to download the data (50+80GB) to your computer and access it locally, you may use the local data with <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_local_RDF.C">this script</a>.
 
-The output plot looks like this:
+The output plot looks like this:<br>
 
-<img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF.png" width="70%"><br>
+<img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic.png" width="70%"><br>
 
 
 If you would like to speed up the processing time through multithreading, try <a href="https://twiki.cern.ch/twiki/pub/CMSPublic/NanoAODRun1Examples/Dimuon2011_eospublic_RDF2.C">this script</a>.
 
-The output plot looks like this:
+The output plot looks like this:<br>
 
 <img src="/static/docs/cms-getting-started-aod-2010-2012/Dimuon2011_eospublic_RDF2.png" width="70%">
 
