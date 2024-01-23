@@ -434,17 +434,17 @@ You will see the ROOT logo appear on screen. You can now open the ROOT GUI by en
 TBrowser t
 ```
 
-and you will see the ROOT browser window:
+and you will see the ROOT browser window:<br>
 
-<img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_1.png" width="70%">
+<img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_1.png" width="70%"><br>
 
 Now, let us take a closer look at some collections of physics objects.
 
 On the left window of ROOT, double-click on the file name (`myoutput.root`). You should see a list of names, each corresponding to a collection of reconstructed data.
 
-Let us take a peek, for example, at the electrons, which are found in `myelectrons`. Look in there by double-clicking on that line and then double-clicking on `Events`. Here, you can have a look at various properties of this collection, such as the transverse momentum of the electrons: `electron_pt`. Double-click on it to draw the distribution.
+Let us take a peek, for example, at the electrons, which are found in `myelectrons`. Look in there by double-clicking on that line and then double-clicking on `Events`. Here, you can have a look at various properties of this collection, such as the transverse momentum of the electrons: `electron_pt`. Double-click on it to draw the distribution.<br>
 
-<img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_2.png" width="70%">
+<img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_2.png" width="70%"><br>
 
 You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
 
