@@ -435,7 +435,7 @@ TBrowser t
 
 and you will see the ROOT browser window:
 
-<img src="/static/docs/getting-started-with-cms-2015-data/getting_started_with_cms_2015_data_1.png" width="70%">
+<img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_1.png" width="70%">
 
 Now, let us take a closer look at some collections of physics objects.
 
@@ -443,7 +443,7 @@ On the left window of ROOT, double-click on the file name (`myoutput.root`). You
 
 Let us take a peek, for example, at the electrons, which are found in `myelectrons`. Look in there by double-clicking on that line and then double-clicking on `Events`. Here, you can have a look at various properties of this collection, such as the transverse momentum of the electrons: `electron_pt`. Double-click on it to draw the distribution.
 
-<img src="/static/docs/getting-started-with-cms-2015-data/getting_started_with_cms_2015_data_2.png" width="70%">
+<img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_2.png" width="70%">
 
 You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
 
@@ -474,7 +474,7 @@ That's it! Hope you enjoyed this exercise. Feel free to play around with the res
 <details>
 <summary> 2016 </summary>
 
-(POET DOES NOT HAVE 2016 BRANCH)
+POET is not available for the 2016 MiniAOD data. It is more recommended to work with the NanoAOD format of the 2016 data, which is going to be released soon. NanoAOD data is derived from MiniAOD. Instead of holding C++ classes, it holds tuples that can be directly read or analyzed using ROOT or other ROOT-compatible software. If you would like to analyze the 2016 data in the MiniAOD format, you may refer to the section on EDAnalyzer. You may use it to filter validated runs and apply selection cuts. POET is just a collection of these EDAnalyzers.
 
 <br>
 </details>
