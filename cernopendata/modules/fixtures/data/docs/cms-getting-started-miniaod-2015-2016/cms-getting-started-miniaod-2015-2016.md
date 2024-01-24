@@ -264,7 +264,7 @@ To access the physics object properties, add <code><use name="DataFormats/PatCan
 $ scram b
 ```
 
-To run over the example file, change the input file name <code>file:myfile.root</code> in <code>python/ConfFile_cfg.py</code> to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code> (UPDATE FILE PATH). Change the number of events from `-1` (runs over all events in the file) to <code>10</code> for testing. You can run this "empty" analyzer to see that the data are accessed properly:
+To run over the example file, change the input file name <code>file:myfile.root</code> in <code>python/ConfFile_cfg.py</code> to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code> (UPDATE FILE PATH). Change the number of events from <code>-1</code> (runs over all events in the file) to <code>10</code> for testing. You can run this "empty" analyzer to see that the data are accessed properly:
 
 (PASTE NEW OUTPUTS)
 ```shell
@@ -446,7 +446,7 @@ Let us take a peek, for example, at the electrons, which are found in <code>myel
 
 <img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_2.png" width="70%"><br>
 
-You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root<code> or by entering <code>.q</code> in the terminal.
+You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
 
 <b>NOTE</b>: To analyse the full event content, the analysis job may need access to the "condition data", such as event selection information. You can see how connections to the condition database are established in <a href="/docs/cms-guide-for-condition-database">the guide to the CMS condition database</a> and in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>. For simpler analyses, in which only physics objects needing no further data are used, you do not need to connect to the condition database.
 
