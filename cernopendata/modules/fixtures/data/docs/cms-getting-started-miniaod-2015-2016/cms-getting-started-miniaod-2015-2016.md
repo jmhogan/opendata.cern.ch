@@ -102,7 +102,7 @@ To access the physics object properties, add <code><use name="DataFormats/PatCan
 $ scram b
 ```
 
-To run over the example file, change the input file name <code>file:myfile.root</code> in <code>python/ConfFile_cfg.py</code> to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code>. Change the number of events from <code>-1</code> (runs over all events in the file) to `10` for testing. You can run this "empty" analyzer to see that the data are accessed properly:
+To run over the example file, change the input file name <code>file:myfile.root</code> in <code>python/ConfFile_cfg.py</code> to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code>. Change the number of events from <code>-1</code> (runs over all events in the file) to <code>10</code> for testing. You can run this "empty" analyzer to see that the data are accessed properly:
 
 ```shell
 $ cmsRun python/ConfFile_cfg.py
@@ -448,9 +448,9 @@ Let us take a peek, for example, at the electrons, which are found in <code>myel
 
 You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root<code> or by entering <code>.q</code> in the terminal.
 
-<b>NOTE</b>: To analyse the full event content, the analysis job may need access to the "condition data", such as event selection information. You can see how connections to the condition database are established in <a href="/docs/cms-guide-for-condition-database">the guide to the CMS condition database</a> and in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/). For simpler analyses, in which only physics objects needing no further data are used, you do not need to connect to the condition database.
+<b>NOTE</b>: To analyse the full event content, the analysis job may need access to the "condition data", such as event selection information. You can see how connections to the condition database are established in <a href="/docs/cms-guide-for-condition-database">the guide to the CMS condition database</a> and in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>. For simpler analyses, in which only physics objects needing no further data are used, you do not need to connect to the condition database.
 
-Note also that in your analysis of collision data, you would need to filter only the validated events by downloading [the validated data definition file](/record/14210) and adding these lines the job configuration:
+Note also that in your analysis of collision data, you would need to filter only the validated events by downloading <a href="/record/14210">the validated data definition file</a> and adding these lines the job configuration:
 
 ```python
 import FWCore.ParameterSet.Config as cms
@@ -458,7 +458,7 @@ import FWCore.PythonUtilities.LumiList as LumiList
 myLumis = LumiList.LumiList(filename='Cert_13TeV_16Dec2015ReReco_Collisions15_25ns_JSON_v2.txt').getCMSSWString().split(',')
 ```
 
-Add the following statements after the `process.source` input file definition:
+Add the following statements after the <code>process.source</code> input file definition:
 
 ```python
 process.source.lumisToProcess = cms.untracked.VLuminosityBlockRange()
