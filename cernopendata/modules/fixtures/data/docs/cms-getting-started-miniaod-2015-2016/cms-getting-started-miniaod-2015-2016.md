@@ -102,7 +102,7 @@ To access the physics object properties, add <code><use name="DataFormats/PatCan
 $ scram b
 ```
 
-To run over the example file, change the input file name `file:myfile.root` in `python/ConfFile_cfg.py` to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code>. Change the number of events from `-1` (runs over all events in the file) to `10` for testing. You can run this "empty" analyzer to see that the data are accessed properly:
+To run over the example file, change the input file name <code>file:myfile.root</code> in <code>python/ConfFile_cfg.py</code> to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code>. Change the number of events from <code>-1</code> (runs over all events in the file) to `10` for testing. You can run this "empty" analyzer to see that the data are accessed properly:
 
 ```shell
 $ cmsRun python/ConfFile_cfg.py
@@ -146,7 +146,7 @@ Warning                 1                   1
 System                  3                   3
 ```
 
-To access the physics object information in the code, for example that of electrons, add the following lines in `plugins/MiniAnalyzer.cc` (the lines before and after of the line to be added are also shown):
+To access the physics object information in the code, for example that of electrons, add the following lines in <code>plugins/MiniAnalyzer.cc</code> (the lines before and after of the line to be added are also shown):
 
 ```shell
 [...]
@@ -175,7 +175,7 @@ using namespace edm;
 [...]
 ```
 
-Replace the `process.demo` definition in `python/ConfFile_cfg.py` with the following:
+Replace the <code>process.demo</code> definition in <code>python/ConfFile_cfg.py</code> with the following:
 
 ```shell
 process.demo = cms.EDAnalyzer("MiniAnalyzer",
@@ -220,11 +220,11 @@ Begin processing the 10th record. Run 258434, Event 268437313, LumiSection 165 a
 <details>
 <summary> 2016 </summary>
 
-The primary data provided by CMS on the CERN Open Data Portal is in a format called "[Analysis Object Data](/docs/cms-physics-objects-2016)" or AOD for short, and from 2016 onwards, in a slimmer format called MINIAOD. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The files cannot be opened and understood as simple data tables but require specific sofware in order to be read.
+The primary data provided by CMS on the CERN Open Data Portal is in a format called <a href="/docs/cms-physics-objects-2016">Analysis Object Data</a> or AOD for short, and from 2016 onwards, in a slimmer format called MINIAOD. These AOD files are prepared by piecing raw data collected by various sub-detectors of CMS and contain all the information that is needed for analysis. The files cannot be opened and understood as simple data tables but require specific sofware in order to be read.
 
 So, let's see what a MINIAOD file looks like.
 
-Make sure that you are in the <b>CMSSW_10_6_30/src/</b> folder, and, in VM, you have executed the `cmsenv` command in your terminal to launch the CMS analysis environment.
+Make sure that you are in the <b>CMSSW_10_6_30/src/</b> folder, and, in VM, you have executed the <code>cmsenv</code> command in your terminal to launch the CMS analysis environment.
 
 You can select a file from a dataset (a listing is available for each dataset record) and print out it contents with:
 
@@ -245,9 +245,9 @@ vector<pat::Electron>                 "slimmedElectrons"          ""            
 [...]
 ```
 
-Documentation of these objects is available in [the CMS WorkBook 2016 MiniAOD page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2016#High_level_physics_objects). The objects are implemented as C++ classes in the CMS software package CMSSW, and detailed reference documentation of all classes is available in [the class list of the CMSSW reference manual](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_10_6_30/doc/html/annotated.html). To see the properties of electrons, you would navigate to "pat" and find the entry for "Electron". The [pat::Electron Class Reference](https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_10_6_30/doc/html/d2/d1f/classpat_1_1Electron.html) lists all member functions through which the different properties of reconstructed electron can be accessed. Note that many of the basic propertied are "inherited" from the parent classes, and are listed separately under "Public Member Functions inherited from ... ".
+Documentation of these objects is available in <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMiniAOD2016#High_level_physics_objects">the CMS WorkBook 2016 MiniAOD page</a>. The objects are implemented as C++ classes in the CMS software package CMSSW, and detailed reference documentation of all classes is available in <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_10_6_30/doc/html/annotated.html">the class list of the CMSSW reference manual</a>. To see the properties of electrons, you would navigate to "pat" and find the entry for "Electron". The <a href="https://cmsdoxygen.web.cern.ch/cmsdoxygen/CMSSW_10_6_30/doc/html/d2/d1f/classpat_1_1Electron.html">pat::Electron Class Reference</a> lists all member functions through which the different properties of reconstructed electron can be accessed. Note that many of the basic propertied are "inherited" from the parent classes, and are listed separately under "Public Member Functions inherited from ... ".
 
-These objects can be accessed in a software module which can be built with a helper script available in the CMS open data environment. If you are using the VM, this helper scripts does not work out of the box, so skip this part and go directly to [the next section](#nice). If you are using the CMS open data container, you can do the following:
+These objects can be accessed in a software module which can be built with a helper script available in the CMS open data environment. If you are using the VM, this helper scripts does not work out of the box, so skip this part and go directly to <a href="#nice">the next section</a>. If you are using the CMS open data container, you can do the following:
 
 ```shell
 $ mkdir Test
@@ -256,15 +256,15 @@ $ mkedanlzr MiniAnalyzer
 $ cd MiniAnalyzer
 ```
 
-This will create several template files in the new MiniAnalyzer directory. For more information, have a look in [the CMS open data guide](https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/).
+This will create several template files in the new MiniAnalyzer directory. For more information, have a look in <a href="https://cms-opendata-guide.web.cern.ch/cmssw/cmsswanalyzers/">the CMS open data guide</a>.
 
-To access the physics object properties, add `<use name="DataFormats/PatCandidates"/>` in `plugins/BuildFile.xml`. Compile the code with:
+To access the physics object properties, add <code><use name="DataFormats/PatCandidates"/></code> in <code>plugins/BuildFile.xml</code>. Compile the code with:
 
 ```shell
 $ scram b
 ```
 
-To run over the example file, change the input file name `file:myfile.root` in `python/ConfFile_cfg.py` to `root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root` (UPDATE FILE PATH). Change the number of events from `-1` (runs over all events in the file) to `10` for testing. You can run this "empty" analyzer to see that the data are accessed properly:
+To run over the example file, change the input file name <code>file:myfile.root</code> in <code>python/ConfFile_cfg.py</code> to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code> (UPDATE FILE PATH). Change the number of events from `-1` (runs over all events in the file) to <code>10</code> for testing. You can run this "empty" analyzer to see that the data are accessed properly:
 
 (PASTE NEW OUTPUTS)
 ```shell
@@ -309,7 +309,7 @@ Warning                 1                   1
 System                  3                   3
 ```
 
-To access the physics object information in the code, for example that of electrons, add the following lines in `plugins/MiniAnalyzer.cc` (the lines before and after of the line to be added are also shown):
+To access the physics object information in the code, for example that of electrons, add the following lines in <code>plugins/MiniAnalyzer.cc</code> (the lines before and after of the line to be added are also shown):
 
 ```shell
 [...]
@@ -338,7 +338,7 @@ using namespace edm;
 [...]
 ```
 
-Replace the `process.demo` definition in `python/ConfFile_cfg.py` with the following:
+Replace the <code>process.demo</code> definition in <code>python/ConfFile_cfg.py</code> with the following:
 
 ```shell
 process.demo = cms.EDAnalyzer("MiniAnalyzer",
@@ -387,7 +387,7 @@ Begin processing the 10th record. Run 258434, Event 268437313, LumiSection 165 a
 <details>
 <summary> 2015 </summary>
  
-We start off with a quick introduction to <b>[ROOT](http://root.cern.ch)</b>. ROOT is the framework used by several particle-physics experiments to work with the collected data. For a quick start on how to write the most common objects and their properties in a root file, use "Physics Object Extractor Tool (POET)" available in [this repository](https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD). You can use ROOT to inspect reconstructed particles and the distributions of their properties.
+We start off with a quick introduction to <b><a href="http://root.cern.ch">ROOT</a></b>. ROOT is the framework used by several particle-physics experiments to work with the collected data. For a quick start on how to write the most common objects and their properties in a root file, use "Physics Object Extractor Tool (POET)" available in <a href="https://github.com/cms-opendata-analyses/PhysObjectExtractorTool/tree/2015MiniAOD">this repository</a>. You can use ROOT to inspect reconstructed particles and the distributions of their properties.
 
 Start by getting the code and compiling it. Make sure that you are back in the the <b>CMSSW_7_6_7/src/</b> folder. If you are using the VM, do the next two commands in the "Outer shell" terminal. In the container, keep using the normal container shell.
 
@@ -414,13 +414,13 @@ $ cmsRun python/poet_cfg.py
 
 The configuration file sets it to run over 1000 events in a simulated dataset.
 
-If you are using the CMS open data container with the VNC application installed (see the [container guide page](/docs/cms-guide-docker)), open the graphical user interface in the container by typing
+If you are using the CMS open data container with the VNC application installed (see the <a href="/docs/cms-guide-docker">container guide page</a>), open the graphical user interface in the container by typing
 
 ```shell
 $ start_vnc
 ```
 
-and then start the graphics window on your browser with the link provided and using the password `cms.cern`.
+and then start the graphics window on your browser with the link provided and using the password <code>cms.cern</code>.
 
 You can now open the POET output file in ROOT:
 
@@ -440,15 +440,15 @@ and you will see the ROOT browser window:<br>
 
 Now, let us take a closer look at some collections of physics objects.
 
-On the left window of ROOT, double-click on the file name (`myoutput.root`). You should see a list of names, each corresponding to a collection of reconstructed data.
+On the left window of ROOT, double-click on the file name (<code>myoutput.root</code>). You should see a list of names, each corresponding to a collection of reconstructed data.
 
-Let us take a peek, for example, at the electrons, which are found in `myelectrons`. Look in there by double-clicking on that line and then double-clicking on `Events`. Here, you can have a look at various properties of this collection, such as the transverse momentum of the electrons: `electron_pt`. Double-click on it to draw the distribution.<br>
+Let us take a peek, for example, at the electrons, which are found in <code>myelectrons</code>. Look in there by double-clicking on that line and then double-clicking on <code>Events</code>. Here, you can have a look at various properties of this collection, such as the transverse momentum of the electrons: <code>electron_pt</code>. Double-click on it to draw the distribution.<br>
 
 <img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_2.png" width="70%"><br>
 
-You can exit the ROOT browser through the GUI by clicking on `Browser` on the menu and then clicking on `Quit Root` or by entering `.q` in the terminal.
+You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root<code> or by entering <code>.q</code> in the terminal.
 
-<b>NOTE</b>: To analyse the full event content, the analysis job may need access to the "condition data", such as event selection information. You can see how connections to the condition database are established in [the guide to the CMS condition database](/docs/cms-guide-for-condition-database) and in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/). For simpler analyses, in which only physics objects needing no further data are used, you do not need to connect to the condition database.
+<b>NOTE</b>: To analyse the full event content, the analysis job may need access to the "condition data", such as event selection information. You can see how connections to the condition database are established in <a href="/docs/cms-guide-for-condition-database">the guide to the CMS condition database</a> and in [the CMS Open data guide](https://cms-opendata-guide.web.cern.ch/). For simpler analyses, in which only physics objects needing no further data are used, you do not need to connect to the condition database.
 
 Note also that in your analysis of collision data, you would need to filter only the validated events by downloading [the validated data definition file](/record/14210) and adding these lines the job configuration:
 
