@@ -270,7 +270,7 @@ To access the physics object properties, add <code><use name="DataFormats/PatCan
 $ scram b
 ```
 
-To run over the example file, change the input file name <code>file:myfile.root</code> in <code>python/ConfFile_cfg.py</code> to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root</code> (UPDATE FILE PATH). Change the number of events from <code>-1</code> (runs over all events in the file) to <code>10</code> for testing. You can run this "empty" analyzer to see that the data are accessed properly:
+To run over the example file, change the input file name <code>file:myfile.root</code> in <code>python/ConfFile_cfg.py</code> to <code>root://eospublic.cern.ch//eos/opendata/cms/Run2016G/SingleElectron/MINIAOD/UL2016_MiniAODv2-v2/120000/FF99404A-8F07-444E-B931-7B2AE327070B.root</code>. Change the number of events from <code>-1</code> (runs over all events in the file) to <code>10</code> for testing. You can run this "empty" analyzer to see that the data are accessed properly:
 
 (PASTE NEW OUTPUTS)
 ```shell
