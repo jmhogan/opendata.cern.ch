@@ -183,7 +183,7 @@ As mentioned above, you typically do not perform an analysis directly on the AOD
 </p>
 
 <p>
-In CMS environment (after running <code>cmsenv</code> in <a href="#vm">the first section</a>), do the following:
+In CMS environment (after running <code>cmsenv</code>), do the following:
 
 ```shell
 $ mkdir Demo
