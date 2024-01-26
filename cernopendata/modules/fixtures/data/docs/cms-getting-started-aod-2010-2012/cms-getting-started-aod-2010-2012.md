@@ -221,7 +221,7 @@ Change the file name in the configuration file <code>demoanalyzer_cfg.py</code> 
 </p>
 
 <p>
-Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>).
+Change the max number of events to 10 (i.e change -1 to 10 in <code>process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1)</code>). The default <code>-1</code> means running over all events.
 </p>
 
 <p>
