@@ -235,10 +235,9 @@ Make sure that you are in the <b>CMSSW_10_6_30/src/</b> folder, and, in VM, you 
 <p>
 You can select a file from a dataset (a listing is available for each dataset record) and print out it contents with:
 </p>
-(Now using the 2015 data as a place holder. Will update it to 2016 data, once they are released.)
 
 ```shell
-$ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2015D/DoubleEG/MINIAOD/08Jun2016-v1/10000/00387F48-342F-E611-AB5D-0CC47A4D76AC.root
+$ edmDumpEventContent root://eospublic.cern.ch//eos/opendata/cms/Run2016G/SingleElectron/MINIAOD/UL2016_MiniAODv2-v2/120000/FF99404A-8F07-444E-B931-7B2AE327070B.root
 ```
 
 The ouput is a list of different objects that the file contains, such as
