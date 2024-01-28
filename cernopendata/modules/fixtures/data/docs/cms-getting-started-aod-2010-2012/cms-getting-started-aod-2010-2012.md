@@ -447,7 +447,11 @@ Execute it with
 root -l MuHistos_eospublic.cxx++
 ```
 
-<b>Troubleshoot</b>: Make sure you have access to ROOT. It is automatically available if you are in <a href="#vm">CMS environment</a>. To test if you have access to ROOT, execute <code>root -l</code>. This command should start a ROOT session for you, if it is available. If you the job finishes very fast and you get the the output <code>entries = 0</code> (failure of xrootd access, no data read) you might have to source the script described in the FAQ for the next example. 
+<p>
+This script produces a ROOT file with the desired histograms. If you are using a Docker container, to visualize the histograms, either use VNC or restart the Docker container with X11 fowarding. The detailed instructions cane be found on <a href="/docs/cms-guide-docker">the CMS Docker setup page</a>. Note that VNC is not available for the 2010 container. 
+</p>
+
+<b>Troubleshoot</b>: Make sure you have access to ROOT. It is automatically available if you are in <a href="#vm">CMS environment</a>. To test if you have access to ROOT, execute <code>root -l</code>. This command should start a ROOT session for you, if it is available. If you have ROOT properly running but get interpreter errors, please double check if the code is copied and pasted correctly. If you are using vi editor, make sure you have entered the edit mode by pressing i before pasting. If you encounter other issues (e.g. runtime issues or setup issues), please refer to the <a href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/NanoAODRun1Examples">NanoAODRun1 Example Twiki</a> for more information. 
 
 The output plot looks like this:<br>
 
@@ -525,20 +529,6 @@ The output plot looks like this:<br>
 </details>
 
 Exit the ROOT session with <code>.q</code> in the command line, if the session does not automatically end after the execution.
-
-<b>Troubleshoot:</b> If you get the error <code>fatal error: 'Math/Vector4Dfwd.h' file not found</code> with your default ROOT setup, execute
-
-on Centos7:
-
-```shell
-  source /cvmfs/sft.cern.ch/lcg/views/LCG_98/x86_64-centos7-gcc8-opt/setup.sh
-```
-
-on slc6:
-
-```shell
-source /cvmfs/sft.cern.ch/lcg/views/LCG_95/x86_64-slc6-gcc8-opt/setup.sh
-```
 
 </details>
 
@@ -679,4 +669,4 @@ You can exit the ROOT browser through the GUI by clicking on <code>Browser</code
 
 <br>
 
-That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>. Many tutorial lessons can be found in the <a href="https://cms-opendata-guide.web.cern.ch/cmsOpenData/workshops/">CMS Open Data Workshops</a>, particularly from 2020-2021 for AOD data
+That's it! Hope you enjoyed the exercises. Feel free to play around with the rest of the data and write your own analyzers and analysis code. Learn more in <a href="https://cms-opendata-guide.web.cern.ch/">the CMS Open data guide</a>. Many tutorial lessons can be found in the <a href="https://cms-opendata-guide.web.cern.ch/cmsOpenData/workshops/">CMS Open Data Workshops</a>, particularly from 2020-2021 for AOD data.
