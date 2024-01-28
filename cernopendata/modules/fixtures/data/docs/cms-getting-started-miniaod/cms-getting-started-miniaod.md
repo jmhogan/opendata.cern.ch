@@ -444,7 +444,7 @@ TBrowser t
 
 and you will see the ROOT browser window:<br>
 
-<img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_1.png" width="70%"><br>
+<img src="/static/docs/cms-getting-started-miniaod/getting_started_with_cms_2015_data_1.png" width="70%"><br>
 <p>
 Now, let us take a closer look at some collections of physics objects.
 </p>
@@ -453,7 +453,7 @@ On the left window of ROOT, double-click on the file name (<code>myoutput.root</
 </p>
 Let us take a peek, for example, at the electrons, which are found in <code>myelectrons</code>. Look in there by double-clicking on that line and then double-clicking on <code>Events</code>. Here, you can have a look at various properties of this collection, such as the transverse momentum of the electrons: <code>electron_pt</code>. Double-click on it to draw the distribution.<br>
 
-<img src="/static/docs/cms-getting-started-miniaod-2015-2016/getting_started_with_cms_2015_data_2.png" width="70%"><br>
+<img src="/static/docs/cms-getting-started-miniaod/getting_started_with_cms_2015_data_2.png" width="70%"><br>
 
 <p>
 You can exit the ROOT browser through the GUI by clicking on <code>Browser</code> on the menu and then clicking on <code>Quit Root</code> or by entering <code>.q</code> in the terminal.
