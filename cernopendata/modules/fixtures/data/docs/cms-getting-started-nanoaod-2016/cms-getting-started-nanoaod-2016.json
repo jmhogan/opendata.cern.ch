@@ -1,0 +1,34 @@
+[
+  {
+    "body": {
+      "content": "cms-getting-started-nanoaod-2016.md",
+      "format": "md"
+    },
+    "collections": [
+      {
+        "experiment": "CMS"
+      },
+      {
+        "primary": "education"
+      },
+      {
+        "year": "2016"
+      }
+    ],
+    "experiment": "CMS",
+    "short_description": {
+      "content": "The CMS simulation and collsion data for 2016 and beyond are available on the CERN Open Data Portal in the nanoAOD format, derived from miniAOD, which is a subset of Analysis Object Data (AOD). This page provides tutorials on how to access and analyse CMS data in NanoAOD format for 2016."
+    },
+    "slug": "cms-getting-started-nanoaod-2016",
+    "tags": [
+      "Getting Started"
+    ],
+    "title": "Getting Started with CMS NanoAOD Open Data 2016 and beyond",
+    "type": {
+      "primary": "Documentation",
+      "secondary": [
+        "Guide"
+      ]
+    }
+  }
+]
