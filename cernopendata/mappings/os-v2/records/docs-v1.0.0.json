@@ -12,6 +12,9 @@
       "author": {
         "type": "keyword"
       },
+      "experiment": {
+        "type": "keyword"
+      },
       "id": {
         "type": "keyword"
       },
@@ -30,9 +33,6 @@
       },
       "date_created": {
         "type": "keyword"
-      },
-      "date_published": {
-        "type": "date"
       },
       "experiment": {
         "type": "keyword"
@@ -101,8 +101,7 @@
         "type": "keyword"
       },
       "title": {
-        "type": "keyword",
-        "fields": {"tokens":  {"type": "text"}}
+        "type": "keyword"
       },
       "type": {
         "properties": {
