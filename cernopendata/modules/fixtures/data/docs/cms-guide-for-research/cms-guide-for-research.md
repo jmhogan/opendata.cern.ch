@@ -15,21 +15,17 @@ This page offers hints, tips and guidance for conducting a research-oriented ana
 
 * Read the instructions related to [educational content](/docs/cms-guide-for-education) and follow the corresponding exercises.
 
-
 **I want to learn about the terms under which I can access and use the CMS Open Data, and publish results obtained from them.**
 
 * Go to ["Data preservation and open access policy"](/record/414) (if you are a CMS member, also see the internal document ["Rules for use of open access CMS data by individual members of CMS"](https://cms-docdb.cern.ch/cgi-bin/DocDB/ShowDocument?docid=12242)).
 
-
 **I want to get inspiration for some potential physics topics.**
 
 * See what others are doing with CMS Open Data! Papers citing DOI [10.7483/OPENDATA.CMS](https://inspirehep.net/literature?sort=mostrecent&size=25&page=1&q=references.reference.dois%3A10.7483%2FOPENDATA.CMS%2A) show a broad scope of usage for Open Data, including physics analyses, data science, and research tool development.
-  
 
 **I want to learn about the nature of the CMS physics objects and the corresponding variables and terminology.**
 
 * Check out the ["CMS Open Data Guide"](https://cms-opendata-guide.web.cern.ch/) as well as the pages describing CMS Physics Objects for [2011-2012 data](/docs/cms-physics-objects-2011) and for [2015 data](/docs/cms-physics-objects-2015).
-
 
 **I want to follow a set of detailed tutorials to learn how to analyze CMS Open Data.**
 
@@ -41,11 +37,27 @@ This page offers hints, tips and guidance for conducting a research-oriented ana
 
 CMS has released data proton collision data from Run 1 and Run 2, as well as heavy ion collision data from Run 1.
 
-High-energy proton collisions: 
+High-energy proton collisions:
 
-| Collision type and year | Energy (TeV) | Corresponding simulation? | Getting Started page | CMSSW environment |
-| ----------------------- | ------------ | ------------------------- | --------------- | ---------------- | 
-| [proton-proton 2010](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2010&f=collision_energy%3A7TeV&l=list&order=desc&p=1&s=10&sort=mostrecent) | 7 | [2010 simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=year%3A2010&f=collision_energy%3A7TeV&l=list&order=desc&p=1&s=10&sort=mostrecent) | [AOD data](/docs/cms-getting-started-aod) | CMSSW_4_2_8 | 
+<table class=\"ui table\">
+  <thead>
+    <tr>
+      <th>Collisions</th>
+      <th>Energy (TeV)</th>
+      <th>Simulation</th>
+      <th>Getting Started</th>
+      <th>CMSSW version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[proton-proton 2010](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2010&f=collision_energy%3A7TeV&l=list&order=desc&p=1&s=10&sort=mostrecent)</td>
+      <td>7</td>
+      <td>[2010 simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=year%3A2010&f=collision_energy%3A7TeV&l=list&order=desc&p=1&s=10&sort=mostrecent)</td>
+      <td>[AOD data](/docs/cms-getting-started-aod)</td>
+      <td>CMSSW_4_2_8</td>
+    </tr>
+    <tr>
 | [proton-proton 2011](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2011&f=collision_energy%3A7TeV&l=list&order=desc&p=1&s=10&sort=mostrecent) | 7 | [2011 simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=collision_energy%3A7TeV&f=year%3A2011&l=list&order=desc&p=1&s=10&sort=mostrecent) | [AOD data](/docs/cms-getting-started-aod) | CMSSW_5_3_32 | 
 | [proton-proton 2012](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2012&l=list&order=desc&p=1&s=10&sort=mostrecent) | 8 | [2012 simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=year%3A2012&l=list&order=desc&p=1&s=10&sort=mostrecent) | [AOD data](/docs/cms-getting-started-aod) | CMSSW_5_3_32 | 
 | [proton-proton 2015](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2015&f=collision_energy%3A13TeV&l=list&order=desc&p=1&s=10&sort=mostrecent) | 13 | [2015 simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=year%3A2015&l=list&order=desc&p=1&s=10&sort=mostrecent) | [MiniAOD data](/docs/cms-getting-started-miniaod) | CMSSW_7_6_7 | 
@@ -53,17 +65,18 @@ High-energy proton collisions:
 
 For Run 1 data, the 2010 datasets are smaller and offer a better environment for low-momentum, low-pileup studies. The 2011-2012 datasets are suitable for replicating CMS Run 1 physics results or performing new searches or studies at 7 - 8 TeV collision energy. Considering Run 2, the 2015 dataset is smaller than the 2011-2012 Run 1 datasets, but offered the first look at 13 TeV collisions and a much broader array of simulation. The 2016 13 TeV dataset (released as of 2024) has a similar luminosity to the Run 1 datasets, and offers a more advanced computing environment and new identification algorithms for Run 2. Information on the respective luminosities and pile-up rates vs time can be found in [public CMS luminosity information](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults#Multi_year_Collisions_Plots).
 
-Heavy-ion program: 
-| Collision type and year | Energy (TeV) | Corresponding simulation? | Getting Started page | CMSSW environment |
-| ----------------------- | ------------ | ------------------------- | --------------- | ---------------- | 
+Heavy-ion program:
+
+| Collisions | Energy (TeV) | Simulation | Getting Started | CMSSW version |
+| ---------- | ------------ | ---------- | --------------- | ------------- | 
 | [lead-lead 2010](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=collision_energy%3A2.76TeV&f=collision_type%3APbPb&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2010&l=list&order=desc&p=1&s=10&sort=mostrecent) | 2.76 | [2010-2011 Pb-Pb simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=year%3A2013&f=collision_type%3APbPb&l=list&order=desc&p=1&s=10&sort=mostrecent) | [Pb-Pb 2010](https://opendata.cern.ch/record/466)| CMSSW_3_9_2_patch5\* |
 | [lead-lead 2011](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=collision_energy%3A2.76TeV&f=collision_type%3APbPb&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2011&l=list&order=desc&p=1&s=10&sort=mostrecent) | 2.76 | [2010-2011 Pb-Pb simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=year%3A2013&f=collision_type%3APbPb&l=list&order=desc&p=1&s=10&sort=mostrecent) | [Pb-Pb 2011](https://opendata.cern.ch/record/467)| CMSSW_4_4_7\* |
-| [proton-proton 2011](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2011&f=collision_energy%3A2.76TeV&f=collision_type%3App&l=list&order=desc&p=1&s=10&sort=mostrecent) | 2.76 | No | [Pb-Pb 2011](https://opendata.cern.ch/record/467) | CMSSW_4_4_7
+| [proton-proton 2011](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=year%3A2011&f=collision_energy%3A2.76TeV&f=collision_type%3App&l=list&order=desc&p=1&s=10&sort=mostrecent) | 2.76 | N/A | [Pb-Pb 2011](https://opendata.cern.ch/record/467) | CMSSW_4_4_7
 | [proton-proton 2013](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=collision_energy%3A2.76TeV&f=collision_type%3App&f=year%3A2013&l=list&order=desc&p=1&s=10&sort=mostrecent) | 2.76 | [2013 p-p simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=year%3A2013&f=collision_type%3App&l=list&order=desc&p=1&s=10&sort=mostrecent) | [p-Pb data](/docs/cms-getting-started-hi-2013-2015) | CMSSW_5_3_20 |
 | [proton-lead 2013](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=collision_energy%3A5.02TeV&f=collision_type%3ApPb&l=list&order=desc&p=1&s=10&sort=mostrecent) | 5.02 | [2013 p-Pb simulation](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ASimulated&f=year%3A2013&f=collision_type%3ApPb&l=list&order=desc&p=1&s=10&sort=mostrecent) | [p-Pb data](/docs/cms-getting-started-hi-2013-2015) | CMSSW_5_3_20 |
-| [proton-proton 2015](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=collision_type%3App&f=collision_energy%3A5.02TeV&l=list&order=desc&p=1&s=10&sort=mostrecent) | 5.02 | No  | [p-Pb data](/docs/cms-getting-started-hi-2013-2015) | CMSSW_7_5_8_patch3 |
+| [proton-proton 2015](https://opendata.cern.ch/search?q=&f=experiment%3ACMS&f=type%3ADataset%2Bsubtype%3ACollision&f=collision_type%3App&f=collision_energy%3A5.02TeV&l=list&order=desc&p=1&s=10&sort=mostrecent) | 5.02 | N/A | [p-Pb data](/docs/cms-getting-started-hi-2013-2015) | CMSSW_7_5_8_patch3 |
 
-\* The Pb-Pb simulation linked in these rows is analyzed using CMSSW_5_3_20. 
+\* The Pb-Pb simulation linked in these rows is analyzed using CMSSW_5_3_20.
 
 ---
 
@@ -75,7 +88,6 @@ Visualizing CMS events is a very helpful way to get acquainted with the CMS dete
 * From the menu bar at the top, choose `Open File` &rarr; `Open Files from Web` &rarr; choose a year, and choose a dataset.
 * Select a particular event from the list, and then other events can be explore using the arrow buttons in the menu bar.
 * Various detector and/or physics features can be toggled on or off in the left-hand-side menu.
-
 
 ### Exploring example analyses
 
