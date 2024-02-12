@@ -56,7 +56,7 @@ MAIL_DEBUG = 0
 
 # Piwik tracking code: set None to disabled it
 THEME_PIWIK_ID = os.environ.get("PIWIK_ID", None)
-
+ACCOUNTS_SESSION_ACTIVITY_ENABLED = None
 SITE_URL = os.environ.get("CERNOPENDATA_SITE_URL", "opendata.cern.ch")
 
 # Logging - Set up Sentry for Invenio-Logging
@@ -90,6 +90,17 @@ APP_DEFAULT_SECURE_HEADERS = {
             "'self'",
             "data:",
             "https://cdnjs.cloudflare.com",
+        ],
+        "img-src": [
+            "'self'",
+            "cms-results.web.cern.ch",
+            "raw.githubusercontent.com",
+            "www.github.com",
+            "github.com",
+            "cms-docdb.cern.ch",
+            "mybinder.org",
+            "cms-results.web.cern.ch",
+            "cds.cern.ch",
         ],
     },
     "content_security_policy_report_uri": None,
@@ -427,10 +438,8 @@ CERNOPENDATA_MAX_DOWNLOAD_SIZE = os.environ.get(
 CERNOPENDATA_DISABLE_DOWNLOADS = os.environ.get("CERNOPENDATA_DISABLE_DOWNLOADS", False)
 # Search
 # ======
-#: Default Elasticsearch document type.
+#: Default OpenSearch document type.
 SEARCH_DOC_TYPE_DEFAULT = None
-#: Do not map any keywords.
-SEARCH_ELASTIC_KEYWORD_MAPPING = {}
 
 # This one can be used to have multiple instances on the same cluster
 # SEARCH_INDEX_PREFIX = "opendata-dev-"
@@ -447,7 +456,7 @@ SEARCH_UI_SEARCH_CONFIG_GEN = {
 SEARCH_UI_SEARCH_VIEW = search_legacy
 # OAI-PMH
 # =======
-#: Default Elasticsearch index.
+#: Default OpenSearch index.
 OAISERVER_RECORD_INDEX = "records"
 #: OAI ID prefix.
 OAISERVER_ID_PREFIX = "oai:opendata.cern.ch:recid/"
