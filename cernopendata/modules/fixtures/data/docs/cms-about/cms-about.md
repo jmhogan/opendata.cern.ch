@@ -45,7 +45,7 @@ AOD/AODSIM files are provided for Run 1 primary datasets and contain the informa
 * candidate particles created by the Particle Flow algorithm;
 * information about event selection (triggers), data needed for further selection and identification criteria for the physics objects.
 
-See the [Getting Started page for AOD data](/docs/cms-getting-started-aod) to learn more about analyzing AOD files. 
+See the [Getting Started page for AOD data](/docs/cms-getting-started-aod) to learn more about analyzing AOD files.
 
 Starting from Run 2 (2015), MiniAOD/MiniAODSIM files are provided. These files contain similar information to AOD, but physics objects are processed to include more
 identification and selection information within a lighter C++ object, transverse momentum thresholds for storing objects are increased,
@@ -111,7 +111,7 @@ Small samples of [raw data](/search?page=1&size=20&q=&experiment=CMS&file_type=r
     * The release of 2012 data includes a larger sample of simulated data. A part of 2012 simulated data is released with the bibliographic information content only, and these datasets will be made available online on demand.
     * The release of 2013 heavy-ion-related data includes simulated data corresponding to different collision types and centre-of mass energies.
     * The release of 2015 data includes a large collection of simulated data, reprocessed with a software release compatible with the 2015 collision data, but it may still happen that some simulated data did not make it to this reprocessing and are therefore not available in this collection.
-    * The release of 2016 data includes a large collection of simulated data, reprocessed with a software release compatible with the 2016 collision data. 
+    * The release of 2016 data includes a large collection of simulated data, reprocessed with a software release compatible with the 2016 collision data.
 * If you are interested in joining the CMS Collaboration, please read [How to join CMS](https://cms.cern/collaboration/how-join-cms).
 
 ## <a name="other">Other CMS open data</a>

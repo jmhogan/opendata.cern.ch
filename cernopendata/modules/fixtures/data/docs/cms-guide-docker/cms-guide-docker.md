@@ -1,4 +1,4 @@
-1. [Introduction](#intro)
+. [Introduction](#intro)
 2. [Available general-purpose container images](#nanoaod)
 2. [Available CMSSW container images](#images)
 3. [Fetch an image and start a container](#fetch-start)
@@ -290,7 +290,7 @@ mkdir cms_open_data_work
 chmod -R 777 cms_open_data_work
 ```
 
-Then create a container that includes mounting information through the `-v` option. 
+Then create a container that includes mounting information through the `-v` option.
 
 ```sh
 docker run -it --name my_od -P -p 5901:5901 -p 6080:6080 -v ${workpath}/cms_open_data_work:/code cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493 /bin/bash

@@ -3,7 +3,7 @@ If you are interested in step-by-step instructions to start working with CMS Ope
 * [Install Virtual Machine](https://opendata.cern.ch/search?q=&f=tags%3AVM&f=experiment%3ACMS&l=list&order=desc&p=1&s=10&sort=mostrecent) or [Use a container](/docs/cms-guide-docker)
 * Getting started with CMS [AOD Data](/docs/cms-getting-started-aod), for data collected during Run 1 of the LHC.
 * Getting started with CMS [MiniAOD Data](/docs/cms-getting-started-miniaod) or [NanoAOD Data](/docs/cms-getting-started-nanoaod), for data collected during Run 2 of the LHC.
-* Getting started with CMS [Heavy Ion Data](/docs/cms-getting-started-hi-2013-2015). 
+* Getting started with CMS [Heavy Ion Data](/docs/cms-getting-started-hi-2013-2015).
 
 This page offers hints, tips and guidance for conducting a research-oriented analysis using CMS Open Data. More detailed information can be found in the [CMS Open Data Guide](https://cms-opendata-guide.web.cern.ch/).
 
@@ -29,7 +29,7 @@ This page offers hints, tips and guidance for conducting a research-oriented ana
 
 **I want to follow a set of detailed tutorials to learn how to analyze CMS Open Data.**
 
-* Beginning in 2020, CMS has offered workshops targeting research use of Open Data. You can follow the lessons of previous workshops by [visiting this page](https://cms-opendata-guide.web.cern.ch/cmsOpenData/workshops/). 
+* Beginning in 2020, CMS has offered workshops targeting research use of Open Data. You can follow the lessons of previous workshops by [visiting this page](https://cms-opendata-guide.web.cern.ch/cmsOpenData/workshops/).
 
 ---
 
@@ -150,7 +150,7 @@ Heavy-ion program:
 
 \* The Pb-Pb simulation linked in these rows was produced later and should be analyzed using CMSSW_5_3_20.
 
-The Pb-Pb collisions from 2010 and 2011 are accompanied by "reference" proton-proton collisions at the same energy, collected during 2011 and 2013. The p-Pb collisions from 2013 are accompanied by referece proton-proton collisions collected during 2015. Some simulations have also been released that correspond to the heavy-ion collisions, as well as some of the reference collision data. 
+The Pb-Pb collisions from 2010 and 2011 are accompanied by "reference" proton-proton collisions at the same energy, collected during 2011 and 2013. The p-Pb collisions from 2013 are accompanied by referece proton-proton collisions collected during 2015. Some simulations have also been released that correspond to the heavy-ion collisions, as well as some of the reference collision data.
 
 ---
 
@@ -188,12 +188,12 @@ Example analyses help demonstrate how analysts can process CMS data files to acc
 
 **I want to find the luminosity of my dataset, possibly constrained by using specific triggers.**
 
-* Check the [Guide to calculate luminosity](https://opendata.cern.ch/docs/cms-guide-luminosity-calculation) 
+* Check the [Guide to calculate luminosity](https://opendata.cern.ch/docs/cms-guide-luminosity-calculation)
 
 **I want to find out whether I need condition data base information, and if so, how to access it.**
 
 * Condition data are needed for examples using e.g. jet energy corrections and trigger configuration information, many of the simpler analysis examples do not need any additional corrections from the conditions database.
-* The most recent CMSSW containers contain the conditions database information needed for the relevant year's data, and example analysis frameworks such as the [Physics Object Extractor Tool](https://opendata.cern.ch/search?q=PhysObjectExtractorTool&f=type%3ASoftware%2Bsubtype%3ATool&l=list&order=asc&p=1&s=10&sort=bestmatch) demonstrate how to access this information. 
+* The most recent CMSSW containers contain the conditions database information needed for the relevant year's data, and example analysis frameworks such as the [Physics Object Extractor Tool](https://opendata.cern.ch/search?q=PhysObjectExtractorTool&f=type%3ASoftware%2Bsubtype%3ATool&l=list&order=asc&p=1&s=10&sort=bestmatch) demonstrate how to access this information.
 * More information is available in the ["Guide to the CMS condition database"](/docs/cms-guide-for-condition-database).
 
 ---
@@ -211,7 +211,7 @@ Example analyses help demonstrate how analysts can process CMS data files to acc
 **I want to find the effective luminosity of my simulated dataset.**
 
 * Effective luminosity = (cross section) $\times$ (generator matching efficiency, if applicable) $\times$ (generator filter efficiency, if applicable) / (Number of positive-weight events - Number of negative-weight events).
-* Find more information about using simulation in the [CMS Open Data Guide](https://cms-opendata-guide.web.cern.ch/analysis/backgrounds/)
+* Find more information about using simulation in the [CMS Open Data Guide](https://cms-opendata-guide.web.cern.ch/analysis/backgrounds/).
 
 ---
 
@@ -219,10 +219,10 @@ Example analyses help demonstrate how analysts can process CMS data files to acc
 
 **I want information that is not documented here and elsewhere on the [CERN Open Data portal](http://opendata.cern.ch/).**
 
-* Please check the [CMS Open Data Guide](https://cms-opendata-guide.web.cern.ch). 
-* Kindly reach out on the [CERN Open Data Forum](https://opendata-forum.cern.ch/) and tag "CMS" in your message. 
+* Please check the [CMS Open Data Guide](https://cms-opendata-guide.web.cern.ch).
+* Kindly reach out on the [CERN Open Data Forum](https://opendata-forum.cern.ch/) and tag "CMS" in your message.
 
 **I ran into a problem and need help!**
 
 * Please check [our page related to known errors](/docs/cms-guide-troubleshooting).
-* Kindly reach out on the [CERN Open Data Forum](https://opendata-forum.cern.ch/) and tag "CMS" in your message. 
+* Kindly reach out on the [CERN Open Data Forum](https://opendata-forum.cern.ch/) and tag "CMS" in your message.

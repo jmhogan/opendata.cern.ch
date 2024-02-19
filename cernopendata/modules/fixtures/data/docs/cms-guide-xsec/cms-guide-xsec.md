@@ -20,7 +20,7 @@ Higher-order top quark cross sections are available from the LHC Physics Working
       <th>Order<br></th>
       <th>Final state<br></th>
       <th>Cross section (pb)<br></th>
-      <th>Uncertainty (pb):<br>Scale unc. (PDF unc.)</th>      
+      <th>Uncertainty (pb):<br>Scale unc. (PDF unc.)</th>
     </tr>
   </thead>
   <tbody>
@@ -58,7 +58,7 @@ Higher-order top quark cross sections are available from the LHC Physics Working
       <th>Order<br></th>
       <th>Final state<br></th>
       <th>Cross section (pb)<br></th>
-      <th>Uncertainty (pb):<br>Scale unc. (PDF unc.)</th>      
+      <th>Uncertainty (pb):<br>Scale unc. (PDF unc.)</th>
     </tr>
   </thead>
   <tbody>
@@ -106,7 +106,7 @@ For Run2, the [GenXSecAnalyzer tool](https://github.com/cms-sw/cmssw/blob/CMSSW_
 
 The following instructions show how to compute a cross section from a MiniAOD sample. This example is given for a 2015
 MiniAOD dataset using CMSSW_7_6_7, but the commands can be adapted for later MiniAOD samples by using the corresponding
-CMSSW release and updating the input file or dataset names. 
+CMSSW release and updating the input file or dataset names.
 
 Setup the CMS environment by following the [instructions for MiniAOD](/docs/cms-getting-started-miniaod).
 
@@ -156,7 +156,7 @@ Depending on the type of simulation, the analyzer will present different informa
 * Filter efficiency: the efficiency of any filter.
 * After filter: the cross section after jet matching and additional filters are applied. This is your final cross section.
 
-To compute the cross section of *QCDuubar_Pt-15to3000_TuneZ2star_Flat_13TeV_pythia6* for 2015 data using **all the files** in this sample, find the link to the filelist on this dataset's [record](https://opendata.cern.ch/record/18392). 
+To compute the cross section of *QCDuubar_Pt-15to3000_TuneZ2star_Flat_13TeV_pythia6* for 2015 data using **all the files** in this sample, find the link to the filelist on this dataset's [record](https://opendata.cern.ch/record/18392).
 
 In `CMSSW_7_6_7/src` (or `CMSSW_10_6_30/src` for 2016 datasets), download the filelist using its URL:
 ```
@@ -180,7 +180,7 @@ for rootfile in filelist:
    if('root' in rootfile):
        inputFiles += ' inputFiles='+rootfile + ' '
 
-# compute cross section  
+# compute cross section
 command = 'cmsRun genXSecAnalyzer_cfg.py {} maxEvents={} 2>&1 | tee {}'.format(inputFiles, maxEvents, outfileName)
 os.system(command)
 ```
