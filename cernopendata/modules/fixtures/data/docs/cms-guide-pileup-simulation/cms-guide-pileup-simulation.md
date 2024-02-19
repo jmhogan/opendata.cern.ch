@@ -1,13 +1,13 @@
 ## Introduction
 
-At the LHC, many collisions occur simultaneously within one proton-proton bunch crossing. These additional interactions, beyond the "primary" interaction, from the current bunch crossing are called in-time pileup. The detector response may be affected by pileup interactions from the current brunch crossing as well as nearby bunch crossings. The interactions from the nearby bunch crossings are called out-of-time pileup. We need to model the additional "pileup" collisions in CMS simulation.
+At the LHC, many collisions occur simultaneously within one proton-proton bunch crossing. These additional interactions, beyond the "primary" interaction, from the current bunch crossing are called "in-time pileup". The detector response may be affected by pileup interactions from the current brunch crossing as well as nearby bunch crossings. The interactions from the nearby bunch crossings are called "out-of-time pileup". We need to model the additional pileup collisions in CMS simulation.
 
 Monte Carlo simulation of pile-up is controlled by the code and configuration files in the `SimGeneral/MixingModule` of the CMSSW software. The simulation proceeds as follows:
 
 1. A distribution of the mean number of interactions per bunch crossing is created for a given year of data taking, as seen below. A value chosen from this distribution is assigned as the mean number of interactions to be simulated in an event, for all bunch crossings. This value is recorded as the "true number of interactions" for the event. This sets the instantaneous luminosity to be simulated for all of the bunch crossings in that event.
 
 2. The number of interactions per bunch crossing (in-time and out-of-time) in the event is randomly sampled from a poisson distribution with its mean equal to the valule chosen in (1). This determines how many pileup interactions are added to the simulated event. This value is recorded as the "number of pileup interactions" in the event.
-   
+
 Note that applying the same mean number of interactions to all the bunch crossings in an event imposes that all bunches have the same instantaneous luminosity. Neglecting bunch-to-bunch luminosity variations is a negligible effect: in practice, the spread of bunch-by-bunch luminosities is much smaller than the spread of the poisson distribution, and the long bunch trains used in the LHC make the effect of ignoring any variations from the bunch-train structure negligibly small as well.
 
 ## Pileup distributions
@@ -20,33 +20,30 @@ The pileup distributions measured from data are available in the [CMS Luminosity
 
 The numerical contents of the estimated pileup distributions used in the MC productions can be found on [this Twiki page](https://twiki.cern.ch/twiki/bin/view/CMSPublic/Pileup_MC_Gen_Scenarios). The distribution varies for each year. The plots below are made from the numerical values (corresponding to each year's pileup scenario) provided on the TWiki page. The x-axis of the histograms below are "mean number of interactions per bunch crossing".
 
-#### 2011
+**2011**
 
 For the 2011 Data, the distribution shown here was used to generate the Monte Carlo events. It is matched directly to that observed in the data for the 2011 running, so little or no reweighting should be necessary to achieve good agreement between data and simulation as far as pileup is concerned.
 
-The pileup distribution used to generate 2011 Monte Carlo events.:
-
 <p align="center">
-<img src="/static/docs/cms-pileup-simulation/pileup_2011_plot.jpg" width="70%"></p>
+<img src="/static/docs/cms-pileup-simulation/pileup_2011_plot.jpg" width="60%"></p>
 
-#### 2012
+**2012**
 
 For the 2012 data, the distribution shown here was used to generate the Monte Carlo events. On the Twiki page referenced above, this is the S10 distribution. Unlike 2011, this distribution is not an exact match to the data, so reweighting of the Monte Carlo samples is required in order to obtain good agreement.
-Pileup distribution used to generate the 2012 Monte Carlo samples:
 
 <p align="center">
-<img src="/static/docs/cms-pileup-simulation/MC2012_PU.png" width="70%"></p>
+<img src="/static/docs/cms-pileup-simulation/MC2012_PU.png" width="60%"></p>
 
-#### 2015
+**2015**
 
 For the 2015 data, the distribution measured from the [2012 collision data](https://twiki.cern.ch/twiki/bin/view/CMSPublic/LumiPublicResults#2012_proton_proton_8_TeV_collisi), scaled by 4/5 to correspond to the estimated mean number of interactions per crossing in 2015, was used to generated the Monte Carlo events.
 
-#### 2016
+**2016**
 
 For the 2016 data, the distribution shown here was used to generate the Monte Carlo events. This distribution is not an exact match to the data, so reweighting of the Monte Carlo samples is required in order to obtain good agreement.
 
 <p align="center">
-<img src="/static/docs/cms-pileup-simulation/MC2016_PU.png" width="70%"></p>
+<img src="/static/docs/cms-pileup-simulation/MC2016_PU.png" width="60%"></p>
 
 ## Access Pileup Information Stored in Datasets
 
@@ -66,13 +63,13 @@ At the top of the EDAnalyzer's `MyAnalyzer.cc` file, include the pileup info hea
 #include "SimDataFormats/PileupSummaryInfo/interface/PileupSummaryInfo.h"
 ```
 
-In the class definition of the analyzer, define a "token" in the member data section:
+In the class definition of the EDanalyzer, define a "token" in the member data section:
 ```
 // ----------member data ---------------------------
 edm::EDGetTokenT<std::vector<PileupSummaryInfo>> PileupToken;
 ```
 
-In the default `BeginJob` function, set up access to the pileup collection using the token:
+In the constructor function for the EDAnalyzer, set up access to the pileup collection using the token:
 ```
 MyAnalyzer::MyAnalyzer(const edm::ParameterSet& iConfig)
 {
@@ -106,8 +103,3 @@ void MyAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup
 - The true mean number of the poisson distribution, from which the number of interactions in each bunch crossing in the event has been sampled, is stored in the branch `Pileup_nTrueInt`.
 
 - The number of insteractions that have been added to the event in the current bunch crossing is stored in the branch `Pileup_nPU`.
-
-## Disclaimer
-
-The open data are released under the [Creative Commons CC0 waiver](http://creativecommons.org/publicdomain/zero/1.0/). Neither CMS nor CERN endorse any works, scientific or otherwise, produced using these data.
-All releases will have a unique DOI that you are requested to cite in any applications or publications.
