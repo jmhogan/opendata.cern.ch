@@ -66,9 +66,9 @@ Additional knowledge is needed to define a "good" physics object, and this defin
 Only the runs that are validated by data quality monitoring should be used in any analysis.
 The [list of the validated runs](/search?page=1&size=20&q=&type=Environment&subtype=Validation) is provided.
 
-**NanoAOD files**
+**NanoAOD(SIM) files**
 
-Starting from data collected in 2016, data sets in NanoAOD format are provided alongside MiniAOD.
+Starting from data collected in 2016, datasets in NanoAOD format are provided alongside MiniAOD.
 Only a limited set of observables for each physics object is kept, with limited numerical precision.
 For example, detector information is typically dropped in favor of pre-computed identification algorithm results.
 The Particle Flow candidates are also dropped, since they are primarily used as inputs to higher-level physics object

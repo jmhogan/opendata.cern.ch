@@ -1,4 +1,4 @@
-. [Introduction](#intro)
+1. [Introduction](#intro)
 2. [Available general-purpose container images](#nanoaod)
 2. [Available CMSSW container images](#images)
 3. [Fetch an image and start a container](#fetch-start)
@@ -171,7 +171,7 @@ gitlab-registry.cern.ch/cms-cloud/cmssw-docker-opendata/cmssw_3_9_2_patch5-slc5_
 In the following instructions, make sure to replace the example container image name according to the table above.
 These commands are for 2015 proton-proton data, with the CMSSW version 7_6_7 and the `cmssw_7_6_7-slc6_amd64_gcc493` container image.
 
-Once you have installed Docker on your computer, you can fetch a CMSSW image, and create and start a container using the `docker run` command:
+Once you have installed Docker on your computer, you can fetch a container image, and create and start a container using the `docker run` command:
 
 ```sh
 docker run -it --name my_od -P -p 5901:5901 -p 6080:6080 cmsopendata/cmssw_7_6_7-slc6_amd64_gcc493 /bin/bash
@@ -262,20 +262,21 @@ If the container was created and started using the `--rm` option (e.g. `docker r
 You can copy file out of a runnning container to your local computer. Create an file in the container (for example) with
 
 ```sh
-echo $CMSSW_VERSION > $HOME/example.txt
+echo $SHELL > $HOME/example.txt
 ```
 
-In order to copy this file out of a running container, open another terminal of your local computer and run the following command:
+In order to copy this file out of a running container, open another terminal of your local computer and run one of the following commands:
 
 ```sh
-docker cp my_od:/home/cmsusr/example.txt .
+docker cp my_od:/home/cmsusr/example.txt .  # for CMSSW container
+docker cp my_od:/code/example.txt . # ROOT or Python container
 ```
 
 Likewise, in order to copy a file into a running container:
 
-
 ```sh
-docker cp <my file> my_od:/home/cmsusr/
+docker cp <my file> my_od:/home/cmsusr/ # for CMSSW container
+docker cp <my file> my_od:/code # for ROOT or Python container
 ```
 
 #### <a name="mount">Mounting a local file area in the container</a>
