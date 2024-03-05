@@ -98,6 +98,9 @@ Higher-order top quark cross sections are available from the LHC Physics Working
 
 ## <a name="run2">Run 2</a>
 
+For simulated datasets corresponding to Run 2 proton-proton collisions, cross sections can be computed from information
+stored in the simulation, following the [instructions given here](#genxsec). By definition, such cross sections correspond to the order of the simulation, typically either leading-order or next-to-leading-order in perturbative QCD. However, in CMS analyses simulations for SM processes are often normalized using higher-order cross sections from theoretical calculations or precision measurements. Listings of higher-order cross sections for several SM processes [are provided below](#higher).
+
 ### <a name="genxsec">Calculate cross sections using GenXSecAnalyzer</a>
 
 For Run2, the [GenXSecAnalyzer tool](https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/GeneratorInterface/Core/plugins/GenXSecAnalyzer.cc) is available to compute cross section from an existing MC sample in [MiniAOD format](/docs/cms-getting-started-miniaod). It retrieves information from collections called [GenLumiInfoProduct](https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/SimDataFormats/GeneratorProducts/interface/GenLumiInfoProduct.h) and [GenFilterInfo](https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/SimDataFormats/GeneratorProducts/interface/GenFilterInfo.h) to compute averaged cross sections over all the input luminosity blocks.
