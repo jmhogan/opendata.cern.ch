@@ -20,7 +20,7 @@ Original Source: [SWGuideHighLevelTrigger](https://twiki.cern.ch/twiki/bin/view/
 
 ### Persistent Trigger Results Objects and Available Software
 
-- <b>AOD (2010-2012)</b>
+#### <b>AOD (2010-2012)</b>
 
   Two persistent HLT products are available:
 
@@ -57,7 +57,7 @@ configuration can only change between runs.
 
 <br>
 
-- <b>MiniAOD (2015 and beyond)</b>
+#### <b>MiniAOD (2015 and beyond)</b>
   
   MiniAOD contains:
   - trigger bits accosciated to all paths
@@ -83,7 +83,7 @@ configuration can only change between runs.
 
   Note: POET is not available for the CMS 2016 MiniAOD data, but the trigger information can still be accessed using EDAnalyzers similar to those available for 2015 MiniAOD.
 
-- <b>NanoAOD (2016 and beyond)</b>
+#### <b>NanoAOD (2016 and beyond)</b>
 
   In NanoAOD, trigger bit information is available for all trigger paths in the input files. The bits that are not available in some events are filled with zeros. Trigger objects are stored in NanoAOD for some filters as defined [here](https://github.com/cms-sw/cmssw/blob/master/PhysicsTools/NanoAOD/python/triggerObjects_cff.py#L53). Trigger prescales are not stored in NanoAOD, but this information can be found using the `brilcalc` command line tool, as described in the last two sections of the [CMS luminosity calculation guide](/docs/cms-guide-luminosity-calculation).
  
@@ -91,7 +91,7 @@ configuration can only change between runs.
  
   - `L1_*`: Trigger bit for each L1 path.
   - `L1PreFiringWeight_*`: L1 pre-firing event correction weight. Prefiring of L1 triggers represents a problem in their combined effect with the CMS trigger rules. It causes inefficiency in recording potentially interesting events. See the [CMS Open Data Guide](https://cms-opendata-guide.web.cern.ch/analysis/selection/triggers/) for more details.
-  - HLT: Trigger bit for each HLT path.
+  - `HLT_*`: Trigger bit for each HLT path.
 
    
 ### HLT Trigger Path definitions
